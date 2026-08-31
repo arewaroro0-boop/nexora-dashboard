@@ -1,1 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NEXORA — Profile</title>
+
+    <meta name="description" content="NEXORA administrator profile and account management dashboard.">
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            NEXORA
+        </div>
+
+        <nav class="navigation">
+
+            <a href="../index.html" class="nav-link">
+                <span>▦</span>
+                Dashboard
+            </a>
+
+            <a href="analytics.html" class="nav-link">
+                <span>◫</span>
+                Analytics
+            </a>
+
+            <a href="products.html" class="nav-link">
+                <span>□</span>
+                Products
+            </a>
+
+            <a href="orders.html" class="nav-link">
+                <span>◷</span>
+                Orders
+            </a>
+
+            <a href="customers.html" class="nav-link">
+                <span>♙</span>
+                Customers
+            </a>
+
+            <a href="messages.html" class="nav-link">
+                <span>✉</span>
+                Messages
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <a href="settings.html" class="nav-link">
+                <span>⚙</span>
+                Settings
+            </a>
+
+            <a href="profile.html" class="nav-link active">
+                <span>◉</span>
+                Profile
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <div class="header-left">
+
+                <button class="menu-button" id="menuButton">
+                    ☰
+                </button>
+
+                <div>
+                    <h1>Profile</h1>
+                    <p>Manage your personal information and account preferences.</p>
+                </div>
+
+            </div>
+
+
+            <div class="header-right">
+
+                <button class="icon-button" id="notificationButton">
+                    🔔
+                    <span class="notification-dot"></span>
+                </button>
+
+                <div class="user-profile">
+
+                    <div class="avatar">
+                        A
+                    </div>
+
+                    <div class="user-info">
+                        <strong>Alex Morgan</strong>
+                        <span>Administrator</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <section class="dashboard-grid">
+
+            <article class="dashboard-card">
+
+                <div class="profile-header">
+
+                    <div class="profile-avatar">
+                        A
+                    </div>
+
+                    <div>
+
+                        <h2>Alex Morgan</h2>
+
+                        <p>
+                            Administrator
+                        </p>
+
+                        <span>
+                            alex.morgan@example.com
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article class="dashboard-card">
+
+                <div class="card-header">
+
+                    <div>
+                        <h2>Account Status</h2>
+                        <p>Your current account information.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="activity-list">
+
+                    <div class="activity-item">
+
+                        <div class="activity-icon">
+                            ✓
+                        </div>
+
+                        <div class="activity-text">
+                            <strong>Account Verified</strong>
+                            <span>Your account is fully verified.</span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="activity-item">
+
+                        <div class="activity-icon">
+                            ◷
+                        </div>
+
+                        <div class="activity-text">
+                            <strong>Member Since</strong>
+                            <span>January 2026</span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="activity-item">
+
+                        <div class="activity-icon">
+                            ●
+                        </div>
+
+                        <div class="activity-text">
+                            <strong>Account Status</strong>
+                            <span>Active and secure</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </section>
+                <section class="dashboard-card">
+
+            <div class="card-header">
+
+                <div>
+                    <h2>Personal Information</h2>
+                    <p>Update your personal account information.</p>
+                </div>
+
+            </div>
+
+
+            <div class="settings-form">
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="firstName">
+                            First Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="firstName"
+                            value="Alex"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="lastName">
+                            Last Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="lastName"
+                            value="Morgan"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="profileEmail">
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="profileEmail"
+                            value="alex.morgan@example.com"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="phone">
+                            Phone Number
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="phone"
+                            value="+1 (555) 014-8290"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="role">
+                        Role
+                    </label>
+
+                    <input
+                        type="text"
+                        id="role"
+                        value="Administrator"
+                        disabled
+                    >
+
+                </div>
+
+            </div>
+
+        </section>
+                <section class="dashboard-grid">
+
+            <article class="dashboard-card">
+
+                <div class="card-header">
+
+                    <div>
+                        <h2>Security</h2>
+                        <p>Keep your account protected.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="settings-list">
+
+                    <div class="setting-item">
+
+                        <div>
+                            <strong>Password</strong>
+                            <span>Last changed 30 days ago.</span>
+                        </div>
+
+                        <button type="button" class="secondary-button">
+                            Change
+                        </button>
+
+                    </div>
+
+
+                    <div class="setting-item">
+
+                        <div>
+                            <strong>Two-Factor Authentication</strong>
+                            <span>Extra protection for your account.</span>
+                        </div>
+
+                        <label class="toggle">
+
+                            <input type="checkbox" checked>
+
+                            <span class="toggle-slider"></span>
+
+                        </label>
+
+                    </div>
+
+
+                    <div class="setting-item">
+
+                        <div>
+                            <strong>Login Notifications</strong>
+                            <span>Get notified about new account logins.</span>
+                        </div>
+
+                        <label class="toggle">
+
+                            <input type="checkbox" checked>
+
+                            <span class="toggle-slider"></span>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article class="dashboard-card">
+
+                <div class="card-header">
+
+                    <div>
+                        <h2>Account Activity</h2>
+                        <p>Recent activity on your account.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="activity-list">
+
+                    <div class="activity-item">
+
+                        <div class="activity-icon">
+                            ✓
+                        </div>
+
+                        <div class="activity-text">
+                            <strong>Successful Login</strong>
+                            <span>Today at 08:42 AM</span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="activity-item">
+
+                        <div class="activity-icon">
+                            ⚙
+                        </div>
+
+                        <div class="activity-text">
+                            <strong>Settings Updated</strong>
+                            <span>Yesterday at 04:18 PM</span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="activity-item">
+
+                        <div class="activity-icon">
+                            🔒
+                        </div>
+
+                        <div class="activity-text">
+                            <strong>Password Updated</strong>
+                            <span>30 days ago</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </section>
+                <div class="settings-actions">
+
+            <button type="button" class="secondary-button">
+                Cancel
+            </button>
+
+            <button type="button" class="primary-button">
+                Save Changes
+            </button>
+
+        </div>
+
+
+        <footer class="footer">
+
+            <span>
+                © 2026 NEXORA. All rights reserved.
+            </span>
+
+            <div>
+                <a href="#">Documentation</a>
+                <a href="#">Support</a>
+            </div>
+
+        </footer>
+
+    </main>
+
+
+    <script src="../js/script.js"></script>
+
+</body>
+</html>
