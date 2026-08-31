@@ -1,562 +1,575 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>NEXORA — Orders</title>
+```
+<title>NEXORA — Orders</title>
 
-    <meta name="description" content="NEXORA order management dashboard for tracking and managing customer orders.">
+<meta name="description" content="NEXORA order management dashboard for tracking orders, customers and sales.">
 
-    <link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/style.css">
+```
+
 </head>
 
 <body>
 
-    <aside class="sidebar">
+```
+<aside class="sidebar">
 
-        <div class="logo">
-            NEXORA
+    <div class="logo">
+        NEXORA
+    </div>
+
+    <nav class="navigation">
+
+        <a href="../index.html" class="nav-link">
+            <span>▦</span>
+            Dashboard
+        </a>
+
+        <a href="analytics.html" class="nav-link">
+            <span>◫</span>
+            Analytics
+        </a>
+
+        <a href="products.html" class="nav-link">
+            <span>□</span>
+            Products
+        </a>
+
+        <a href="orders.html" class="nav-link active">
+            <span>◷</span>
+            Orders
+        </a>
+
+        <a href="customers.html" class="nav-link">
+            <span>♙</span>
+            Customers
+        </a>
+
+        <a href="messages.html" class="nav-link">
+            <span>✉</span>
+            Messages
+        </a>
+
+    </nav>
+
+    <div class="sidebar-bottom">
+
+        <a href="settings.html" class="nav-link">
+            <span>⚙</span>
+            Settings
+        </a>
+
+        <a href="profile.html" class="nav-link">
+            <span>◉</span>
+            Profile
+        </a>
+
+    </div>
+
+</aside>
+
+
+<main class="main-content">
+
+    <header class="topbar">
+
+        <div class="header-left">
+
+            <button class="menu-button" id="menuButton">
+                ☰
+            </button>
+
+            <div>
+                <h1>Orders</h1>
+                <p>Track and manage your customer orders.</p>
+            </div>
+
         </div>
 
-        <nav class="navigation">
+        <div class="header-right">
 
-            <a href="../index.html" class="nav-link">
-                <span>▦</span>
-                Dashboard
-            </a>
+            <button class="icon-button" id="notificationButton">
+                🔔
+                <span class="notification-dot"></span>
+            </button>
 
-            <a href="analytics.html" class="nav-link">
-                <span>◫</span>
-                Analytics
-            </a>
+            <div class="user-profile">
 
-            <a href="products.html" class="nav-link">
-                <span>□</span>
-                Products
-            </a>
+                <div class="avatar">
+                    A
+                </div>
 
-            <a href="orders.html" class="nav-link active">
-                <span>◷</span>
-                Orders
-            </a>
-
-            <a href="customers.html" class="nav-link">
-                <span>♙</span>
-                Customers
-            </a>
-
-            <a href="messages.html" class="nav-link">
-                <span>✉</span>
-                Messages
-            </a>
-
-        </nav>
-
-        <div class="sidebar-bottom">
-
-            <a href="settings.html" class="nav-link">
-                <span>⚙</span>
-                Settings
-            </a>
-
-            <a href="profile.html" class="nav-link">
-                <span>◉</span>
-                Profile
-            </a>
-
-        </div>
-
-    </aside>
-
-
-    <main class="main-content">
-
-        <header class="topbar">
-
-            <div class="header-left">
-
-                <button class="menu-button" id="menuButton">
-                    ☰
-                </button>
-
-                <div>
-                    <h1>Orders</h1>
-                    <p>Track and manage your customer orders.</p>
+                <div class="user-info">
+                    <strong>Alex Morgan</strong>
+                    <span>Administrator</span>
                 </div>
 
             </div>
 
-            <div class="header-right">
+        </div>
 
-                <button class="icon-button" id="notificationButton">
-                    🔔
-                    <span class="notification-dot"></span>
-                </button>
+    </header>
 
-                <div class="user-profile">
 
-                    <div class="avatar">
-                        A
-                    </div>
+    <section class="stats-grid">
 
-                    <div class="user-info">
-                        <strong>Alex Morgan</strong>
-                        <span>Administrator</span>
-                    </div>
+        <article class="stat-card">
 
-                </div>
-
+            <div class="stat-icon">
+                ◷
             </div>
 
-        </header>
+            <div class="stat-content">
+                <span class="stat-label">Total Orders</span>
+                <strong class="stat-value">1,284</strong>
+                <small class="positive">↑ 8.4% this month</small>
+            </div>
+
+        </article>
 
 
-        <section class="stats-grid">
+        <article class="stat-card">
 
-            <article class="stat-card">
+            <div class="stat-icon">
+                ✓
+            </div>
 
-                <div class="stat-icon">
-                    ◷
-                </div>
+            <div class="stat-content">
+                <span class="stat-label">Completed</span>
+                <strong class="stat-value">1,012</strong>
+                <small class="positive">78.8% of orders</small>
+            </div>
 
-                <div class="stat-content">
-                    <span class="stat-label">Total Orders</span>
-                    <strong class="stat-value">1,284</strong>
-                    <small class="positive">↑ 8.4% this month</small>
-                </div>
-
-            </article>
+        </article>
 
 
-            <article class="stat-card">
+        <article class="stat-card">
 
-                <div class="stat-icon">
-                    ✓
-                </div>
+            <div class="stat-icon">
+                ↻
+            </div>
 
-                <div class="stat-content">
-                    <span class="stat-label">Completed</span>
-                    <strong class="stat-value">986</strong>
-                    <small class="positive">76.8% of all orders</small>
-                </div>
+            <div class="stat-content">
+                <span class="stat-label">Processing</span>
+                <strong class="stat-value">184</strong>
+                <small>Orders in progress</small>
+            </div>
 
-            </article>
-
-
-            <article class="stat-card">
-
-                <div class="stat-icon">
-                    ◐
-                </div>
-
-                <div class="stat-content">
-                    <span class="stat-label">Processing</span>
-                    <strong class="stat-value">184</strong>
-                    <small>14.3% of all orders</small>
-                </div>
-
-            </article>
+        </article>
 
 
-            <article class="stat-card">
+        <article class="stat-card">
 
-                <div class="stat-icon">
-                    !
-                </div>
+            <div class="stat-icon">
+                $
+            </div>
 
-                <div class="stat-content">
-                    <span class="stat-label">Pending</span>
-                    <strong class="stat-value">114</strong>
-                    <small>8.9% of all orders</small>
-                </div>
+            <div class="stat-content">
+                <span class="stat-label">Order Revenue</span>
+                <strong class="stat-value">$48,290</strong>
+                <small class="positive">↑ 12.8% this month</small>
+            </div>
 
-            </article>
+        </article>
 
-        </section>
-                <section class="dashboard-card orders-card">
+    </section>
+
+
+    <section class="dashboard-card orders-card">
+
+        <div class="card-header">
+
+            <div>
+                <h2>Recent Orders</h2>
+                <p>Latest customer orders and their status.</p>
+            </div>
+
+            <select>
+                <option>All Orders</option>
+                <option>Completed</option>
+                <option>Processing</option>
+                <option>Pending</option>
+            </select>
+
+        </div>
+
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Customer</th>
+                        <th>Product</th>
+                        <th>Date</th>
+                        <th>Total</th>
+                        <th>Status</th>
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    <tr>
+
+                        <td>
+                            <strong>#NX-10482</strong>
+                        </td>
+
+                        <td>
+                            Olivia Smith
+                        </td>
+
+                        <td>
+                            Wireless Headphones
+                        </td>
+
+                        <td>
+                            Aug 31, 2026
+                        </td>
+
+                        <td>
+                            <strong>$249</strong>
+                        </td>
+
+                        <td>
+                            <span class="status completed">
+                                Completed
+                            </span>
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            <strong>#NX-10481</strong>
+                        </td>
+
+                        <td>
+                            Ethan Williams
+                        </td>
+
+                        <td>
+                            Smart Watch Pro
+                        </td>
+
+                        <td>
+                            Aug 31, 2026
+                        </td>
+
+                        <td>
+                            <strong>$189</strong>
+                        </td>
+
+                        <td>
+                            <span class="status processing">
+                                Processing
+                            </span>
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            <strong>#NX-10480</strong>
+                        </td>
+
+                        <td>
+                            Sophia Brown
+                        </td>
+
+                        <td>
+                            Premium Backpack
+                        </td>
+
+                        <td>
+                            Aug 30, 2026
+                        </td>
+
+                        <td>
+                            <strong>$129</strong>
+                        </td>
+
+                        <td>
+                            <span class="status pending">
+                                Pending
+                            </span>
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            <strong>#NX-10479</strong>
+                        </td>
+
+                        <td>
+                            James Wilson
+                        </td>
+
+                        <td>
+                            Mechanical Keyboard
+                        </td>
+
+                        <td>
+                            Aug 30, 2026
+                        </td>
+
+                        <td>
+                            <strong>$159</strong>
+                        </td>
+
+                        <td>
+                            <span class="status completed">
+                                Completed
+                            </span>
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            <strong>#NX-10478</strong>
+                        </td>
+
+                        <td>
+                            Ava Johnson
+                        </td>
+
+                        <td>
+                            USB-C Hub
+                        </td>
+
+                        <td>
+                            Aug 29, 2026
+                        </td>
+
+                        <td>
+                            <strong>$79</strong>
+                        </td>
+
+                        <td>
+                            <span class="status completed">
+                                Completed
+                            </span>
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            <strong>#NX-10477</strong>
+                        </td>
+
+                        <td>
+                            Noah Davis
+                        </td>
+
+                        <td>
+                            Wireless Headphones
+                        </td>
+
+                        <td>
+                            Aug 29, 2026
+                        </td>
+
+                        <td>
+                            <strong>$249</strong>
+                        </td>
+
+                        <td>
+                            <span class="status processing">
+                                Processing
+                            </span>
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <section class="dashboard-grid">
+
+        <article class="dashboard-card">
 
             <div class="card-header">
 
                 <div>
-                    <h2>All Orders</h2>
-                    <p>View and manage every customer order.</p>
+                    <h2>Order Status</h2>
+                    <p>Current order distribution.</p>
                 </div>
-
-                <select>
-                    <option>All Orders</option>
-                    <option>Completed</option>
-                    <option>Processing</option>
-                    <option>Pending</option>
-                </select>
 
             </div>
 
 
-            <div class="table-wrapper">
+            <div class="activity-list">
 
-                <table>
+                <div class="activity-item">
 
-                    <thead>
+                    <div class="activity-icon">
+                        ✓
+                    </div>
 
-                        <tr>
-                            <th>Order</th>
-                            <th>Customer</th>
-                            <th>Product</th>
-                            <th>Date</th>
-                            <th>Amount</th>
-                            <th>Status</th>
-                        </tr>
+                    <div class="activity-text">
+                        <strong>Completed</strong>
+                        <span>Successfully delivered orders</span>
+                    </div>
 
-                    </thead>
+                    <strong>1,012</strong>
 
-
-                    <tbody>
-
-                        <tr>
-
-                            <td>
-                                <strong>#NX-10482</strong>
-                            </td>
-
-                            <td>
-                                Emily Johnson
-                            </td>
-
-                            <td>
-                                Wireless Headphones
-                            </td>
-
-                            <td>
-                                Aug 31, 2026
-                            </td>
-
-                            <td>
-                                <strong>$249.00</strong>
-                            </td>
-
-                            <td>
-                                <span class="status completed">
-                                    Completed
-                                </span>
-                            </td>
-
-                        </tr>
+                </div>
 
 
-                        <tr>
+                <div class="activity-item">
 
-                            <td>
-                                <strong>#NX-10481</strong>
-                            </td>
+                    <div class="activity-icon">
+                        ↻
+                    </div>
 
-                            <td>
-                                Daniel Smith
-                            </td>
+                    <div class="activity-text">
+                        <strong>Processing</strong>
+                        <span>Orders currently being prepared</span>
+                    </div>
 
-                            <td>
-                                Smart Watch Pro
-                            </td>
+                    <strong>184</strong>
 
-                            <td>
-                                Aug 31, 2026
-                            </td>
-
-                            <td>
-                                <strong>$189.00</strong>
-                            </td>
-
-                            <td>
-                                <span class="status pending">
-                                    Pending
-                                </span>
-                            </td>
-
-                        </tr>
+                </div>
 
 
-                        <tr>
+                <div class="activity-item">
 
-                            <td>
-                                <strong>#NX-10480</strong>
-                            </td>
+                    <div class="activity-icon">
+                        !
+                    </div>
 
-                            <td>
-                                Olivia Brown
-                            </td>
+                    <div class="activity-text">
+                        <strong>Pending</strong>
+                        <span>Orders waiting for confirmation</span>
+                    </div>
 
-                            <td>
-                                Premium Backpack
-                            </td>
+                    <strong>88</strong>
 
-                            <td>
-                                Aug 30, 2026
-                            </td>
-
-                            <td>
-                                <strong>$129.00</strong>
-                            </td>
-
-                            <td>
-                                <span class="status processing">
-                                    Processing
-                                </span>
-                            </td>
-
-                        </tr>
-
-
-                        <tr>
-
-                            <td>
-                                <strong>#NX-10479</strong>
-                            </td>
-
-                            <td>
-                                James Wilson
-                            </td>
-
-                            <td>
-                                Mechanical Keyboard
-                            </td>
-
-                            <td>
-                                Aug 30, 2026
-                            </td>
-
-                            <td>
-                                <strong>$159.00</strong>
-                            </td>
-
-                            <td>
-                                <span class="status completed">
-                                    Completed
-                                </span>
-                            </td>
-
-                        </tr>
-
-
-                        <tr>
-
-                            <td>
-                                <strong>#NX-10478</strong>
-                            </td>
-
-                            <td>
-                                Sophia Davis
-                            </td>
-
-                            <td>
-                                USB-C Hub
-                            </td>
-
-                            <td>
-                                Aug 29, 2026
-                            </td>
-
-                            <td>
-                                <strong>$79.00</strong>
-                            </td>
-
-                            <td>
-                                <span class="status processing">
-                                    Processing
-                                </span>
-                            </td>
-
-                        </tr>
-
-
-                        <tr>
-
-                            <td>
-                                <strong>#NX-10477</strong>
-                            </td>
-
-                            <td>
-                                Michael Miller
-                            </td>
-
-                            <td>
-                                Premium Backpack
-                            </td>
-
-                            <td>
-                                Aug 29, 2026
-                            </td>
-
-                            <td>
-                                <strong>$129.00</strong>
-                            </td>
-
-                            <td>
-                                <span class="status completed">
-                                    Completed
-                                </span>
-                            </td>
-
-                        </tr>
-
-                    </tbody>
-
-                </table>
+                </div>
 
             </div>
 
-        </section>
-                <section class="dashboard-grid">
+        </article>
 
-            <article class="dashboard-card">
 
-                <div class="card-header">
+        <article class="dashboard-card">
 
-                    <div>
-                        <h2>Order Status</h2>
-                        <p>Current order distribution.</p>
-                    </div>
+            <div class="card-header">
 
+                <div>
+                    <h2>Order Insights</h2>
+                    <p>Quick overview of sales activity.</p>
                 </div>
 
-
-                <div class="activity-list">
-
-                    <div class="activity-item">
-
-                        <div class="activity-icon">
-                            ✓
-                        </div>
-
-                        <div class="activity-text">
-                            <strong>Completed</strong>
-                            <span>Successfully delivered orders</span>
-                        </div>
-
-                        <strong>986</strong>
-
-                    </div>
-
-
-                    <div class="activity-item">
-
-                        <div class="activity-icon">
-                            ◐
-                        </div>
-
-                        <div class="activity-text">
-                            <strong>Processing</strong>
-                            <span>Orders currently being prepared</span>
-                        </div>
-
-                        <strong>184</strong>
-
-                    </div>
-
-
-                    <div class="activity-item">
-
-                        <div class="activity-icon">
-                            !
-                        </div>
-
-                        <div class="activity-text">
-                            <strong>Pending</strong>
-                            <span>Orders waiting for confirmation</span>
-                        </div>
-
-                        <strong>114</strong>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-
-            <article class="dashboard-card">
-
-                <div class="card-header">
-
-                    <div>
-                        <h2>Quick Summary</h2>
-                        <p>Today's order activity.</p>
-                    </div>
-
-                </div>
-
-
-                <div class="activity-list">
-
-                    <div class="activity-item">
-
-                        <div class="activity-icon">
-                            +
-                        </div>
-
-                        <div class="activity-text">
-                            <strong>New Orders</strong>
-                            <span>Orders received today</span>
-                        </div>
-
-                        <strong>42</strong>
-
-                    </div>
-
-
-                    <div class="activity-item">
-
-                        <div class="activity-icon">
-                            $
-                        </div>
-
-                        <div class="activity-text">
-                            <strong>Today's Revenue</strong>
-                            <span>Total sales generated today</span>
-                        </div>
-
-                        <strong>$6,842</strong>
-
-                    </div>
-
-
-                    <div class="activity-item">
-
-                        <div class="activity-icon">
-                            ↗
-                        </div>
-
-                        <div class="activity-text">
-                            <strong>Average Order</strong>
-                            <span>Average customer order value</span>
-                        </div>
-
-                        <strong>$163</strong>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-        </section>
-                <footer class="footer">
-
-            <span>
-                © 2026 NEXORA. All rights reserved.
-            </span>
-
-            <div>
-                <a href="#">Documentation</a>
-                <a href="#">Support</a>
             </div>
 
-        </footer>
 
-    </main>
+            <div class="activity-list">
+
+                <div class="activity-item">
+
+                    <div class="activity-icon">
+                        $
+                    </div>
+
+                    <div class="activity-text">
+                        <strong>Average Order Value</strong>
+                        <span>Average amount per order</span>
+                    </div>
+
+                    <strong>$37.61</strong>
+
+                </div>
 
 
-    <script src="../js/script.js"></script>
+                <div class="activity-item">
+
+                    <div class="activity-icon">
+                        ↑
+                    </div>
+
+                    <div class="activity-text">
+                        <strong>Growth</strong>
+                        <span>Compared with last month</span>
+                    </div>
+
+                    <strong class="positive">12.8%</strong>
+
+                </div>
+
+
+                <div class="activity-item">
+
+                    <div class="activity-icon">
+                        ↗
+                    </div>
+
+                    <div class="activity-text">
+                        <strong>Conversion Rate</strong>
+                        <span>Visitors who placed an order</span>
+                    </div>
+
+                    <strong>6.84%</strong>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    </section>
+
+
+    <footer class="footer">
+
+        <span>
+            © 2026 NEXORA. All rights reserved.
+        </span>
+
+        <div>
+            <a href="#">Documentation</a>
+            <a href="#">Support</a>
+        </div>
+
+    </footer>
+
+</main>
+
+
+<script src="../js/script.js"></script>
+```
 
 </body>
+
 </html>
