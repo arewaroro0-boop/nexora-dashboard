@@ -1,1 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NEXORA — Settings</title>
+
+    <meta name="description" content="NEXORA dashboard settings for managing store preferences and account configuration.">
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            NEXORA
+        </div>
+
+        <nav class="navigation">
+
+            <a href="../index.html" class="nav-link">
+                <span>▦</span>
+                Dashboard
+            </a>
+
+            <a href="analytics.html" class="nav-link">
+                <span>◫</span>
+                Analytics
+            </a>
+
+            <a href="products.html" class="nav-link">
+                <span>□</span>
+                Products
+            </a>
+
+            <a href="orders.html" class="nav-link">
+                <span>◷</span>
+                Orders
+            </a>
+
+            <a href="customers.html" class="nav-link">
+                <span>♙</span>
+                Customers
+            </a>
+
+            <a href="messages.html" class="nav-link">
+                <span>✉</span>
+                Messages
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <a href="settings.html" class="nav-link active">
+                <span>⚙</span>
+                Settings
+            </a>
+
+            <a href="profile.html" class="nav-link">
+                <span>◉</span>
+                Profile
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <div class="header-left">
+
+                <button class="menu-button" id="menuButton">
+                    ☰
+                </button>
+
+                <div>
+                    <h1>Settings</h1>
+                    <p>Manage your store preferences and account settings.</p>
+                </div>
+
+            </div>
+
+
+            <div class="header-right">
+
+                <button class="icon-button" id="notificationButton">
+                    🔔
+                    <span class="notification-dot"></span>
+                </button>
+
+                <div class="user-profile">
+
+                    <div class="avatar">
+                        A
+                    </div>
+
+                    <div class="user-info">
+                        <strong>Alex Morgan</strong>
+                        <span>Administrator</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <section class="dashboard-grid">
+
+            <article class="dashboard-card">
+
+                <div class="card-header">
+
+                    <div>
+                        <h2>Store Settings</h2>
+                        <p>Configure your store information.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="settings-form">
+
+                    <div class="form-group">
+
+                        <label for="storeName">
+                            Store Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="storeName"
+                            value="NEXORA Store"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="storeEmail">
+                            Store Email
+                        </label>
+
+                        <input
+                            type="email"
+                            id="storeEmail"
+                            value="hello@nexora.store"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="currency">
+                            Currency
+                        </label>
+
+                        <select id="currency">
+
+                            <option>USD — US Dollar</option>
+                            <option>EUR — Euro</option>
+                            <option>GBP — British Pound</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="timezone">
+                            Timezone
+                        </label>
+
+                        <select id="timezone">
+
+                            <option>UTC+01:00</option>
+                            <option>UTC+00:00</option>
+                            <option>UTC-05:00</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </article>
+                        <article class="dashboard-card">
+
+                <div class="card-header">
+
+                    <div>
+                        <h2>Notifications</h2>
+                        <p>Choose how you receive updates.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="settings-list">
+
+                    <div class="setting-item">
+
+                        <div>
+                            <strong>New Orders</strong>
+                            <span>Get notified when a new order is placed.</span>
+                        </div>
+
+                        <label class="toggle">
+
+                            <input type="checkbox" checked>
+
+                            <span class="toggle-slider"></span>
+
+                        </label>
+
+                    </div>
+
+
+                    <div class="setting-item">
+
+                        <div>
+                            <strong>New Customers</strong>
+                            <span>Receive notifications when customers register.</span>
+                        </div>
+
+                        <label class="toggle">
+
+                            <input type="checkbox" checked>
+
+                            <span class="toggle-slider"></span>
+
+                        </label>
+
+                    </div>
+
+
+                    <div class="setting-item">
+
+                        <div>
+                            <strong>Customer Messages</strong>
+                            <span>Get notified when a customer sends a message.</span>
+                        </div>
+
+                        <label class="toggle">
+
+                            <input type="checkbox" checked>
+
+                            <span class="toggle-slider"></span>
+
+                        </label>
+
+                    </div>
+
+
+                    <div class="setting-item">
+
+                        <div>
+                            <strong>Weekly Reports</strong>
+                            <span>Receive a weekly summary of store performance.</span>
+                        </div>
+
+                        <label class="toggle">
+
+                            <input type="checkbox">
+
+                            <span class="toggle-slider"></span>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+            </article>
+                        <article class="dashboard-card">
+
+                <div class="card-header">
+
+                    <div>
+                        <h2>Security</h2>
+                        <p>Manage your account security preferences.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="settings-list">
+
+                    <div class="setting-item">
+
+                        <div>
+                            <strong>Two-Factor Authentication</strong>
+                            <span>Add an extra layer of security to your account.</span>
+                        </div>
+
+                        <label class="toggle">
+
+                            <input type="checkbox" checked>
+
+                            <span class="toggle-slider"></span>
+
+                        </label>
+
+                    </div>
+
+
+                    <div class="setting-item">
+
+                        <div>
+                            <strong>Login Alerts</strong>
+                            <span>Receive an alert when a new login is detected.</span>
+                        </div>
+
+                        <label class="toggle">
+
+                            <input type="checkbox" checked>
+
+                            <span class="toggle-slider"></span>
+
+                        </label>
+
+                    </div>
+
+
+                    <div class="setting-item">
+
+                        <div>
+                            <strong>Session Protection</strong>
+                            <span>Automatically secure inactive sessions.</span>
+                        </div>
+
+                        <label class="toggle">
+
+                            <input type="checkbox" checked>
+
+                            <span class="toggle-slider"></span>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article class="dashboard-card">
+
+                <div class="card-header">
+
+                    <div>
+                        <h2>Appearance</h2>
+                        <p>Customize the dashboard experience.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="settings-form">
+
+                    <div class="form-group">
+
+                        <label for="theme">
+                            Theme
+                        </label>
+
+                        <select id="theme">
+
+                            <option>Light</option>
+                            <option>Dark</option>
+                            <option>System Default</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="language">
+                            Language
+                        </label>
+
+                        <select id="language">
+
+                            <option>English</option>
+                            <option>French</option>
+                            <option>Spanish</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </article>
+                    </section>
+
+
+        <div class="settings-actions">
+
+            <button type="button" class="secondary-button">
+                Cancel
+            </button>
+
+            <button type="button" class="primary-button">
+                Save Changes
+            </button>
+
+        </div>
+
+
+        <footer class="footer">
+
+            <span>
+                © 2026 NEXORA. All rights reserved.
+            </span>
+
+            <div>
+                <a href="#">Documentation</a>
+                <a href="#">Support</a>
+            </div>
+
+        </footer>
+
+    </main>
+
+
+    <script src="../js/script.js"></script>
+
+</body>
+</html>
