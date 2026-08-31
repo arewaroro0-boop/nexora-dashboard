@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NEXORA — Modern Admin Dashboard</title>
+
+    <meta name="description" content="NEXORA is a modern, professional and responsive admin dashboard template.">
+    <meta name="author" content="NEXORA">
+</head>
+<body>
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            NEXORA
+        </div>
+
+        <nav class="navigation">
+
+            <a href="#" class="nav-link active">
+                <span>▦</span>
+                Dashboard
+            </a>
+
+            <a href="#" class="nav-link">
+                <span>◫</span>
+                Analytics
+            </a>
+
+            <a href="#" class="nav-link">
+                <span>□</span>
+                Products
+            </a>
+
+            <a href="#" class="nav-link">
+                <span>◷</span>
+                Orders
+            </a>
+
+            <a href="#" class="nav-link">
+                <span>♙</span>
+                Customers
+            </a>
+
+            <a href="#" class="nav-link">
+                <span>✉</span>
+                Messages
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <a href="#" class="nav-link">
+                <span>⚙</span>
+                Settings
+            </a>
+
+            <a href="#" class="nav-link">
+                <span>◉</span>
+                Profile
+            </a>
+
+        </div>
+
+    </aside>
+        <main class="main-content">
+
+        <header class="topbar">
+
+            <div class="header-left">
+
+                <button class="menu-button" id="menuButton">
+                    ☰
+                </button>
+
+                <div>
+                    <h1>Dashboard</h1>
+                    <p>Welcome back! Here's what's happening today.</p>
+                </div>
+
+            </div>
+
+            <div class="header-right">
+
+                <button class="icon-button" id="notificationButton">
+                    🔔
+                    <span class="notification-dot"></span>
+                </button>
+
+                <div class="user-profile">
+
+                    <div class="avatar">
+                        A
+                    </div>
+
+                    <div class="user-info">
+                        <strong>Alex Morgan</strong>
+                        <span>Administrator</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+                <section class="stats-grid">
+
+            <article class="stat-card">
+
+                <div class="stat-icon">
+                    $
+                </div>
+
+                <div class="stat-content">
+                    <span class="stat-label">Total Revenue</span>
+                    <strong class="stat-value">$48,290</strong>
+                    <small class="positive">↑ 12.8% from last month</small>
+                </div>
+
+            </article>
+
+
+            <article class="stat-card">
+
+                <div class="stat-icon">
+                    ◷
+                </div>
+
+                <div class="stat-content">
+                    <span class="stat-label">Total Orders</span>
+                    <strong class="stat-value">1,284</strong>
+                    <small class="positive">↑ 8.4% from last month</small>
+                </div>
+
+            </article>
+
+
+            <article class="stat-card">
+
+                <div class="stat-icon">
+                    ♙
+                </div>
+
+                <div class="stat-content">
+                    <span class="stat-label">Customers</span>
+                    <strong class="stat-value">8,492</strong>
+                    <small class="positive">↑ 6.2% from last month</small>
+                </div>
+
+            </article>
+
+
+            <article class="stat-card">
+
+                <div class="stat-icon">
+                    ↗
+                </div>
+
+                <div class="stat-content">
+                    <span class="stat-label">Conversion Rate</span>
+                    <strong class="stat-value">6.84%</strong>
+                    <small class="positive">↑ 2.1% from last month</small>
+                </div>
+
+            </article>
+
+        </section>
+                <section class="dashboard-grid">
+
+            <article class="dashboard-card revenue-card">
+
+                <div class="card-header">
+
+                    <div>
+                        <h2>Revenue Overview</h2>
+                        <p>Your revenue performance over the last 7 months.</p>
+                    </div>
+
+                    <select id="revenuePeriod">
+                        <option>Last 7 months</option>
+                        <option>Last 30 days</option>
+                        <option>Last 12 months</option>
+                    </select>
+
+                </div>
+
+                <div class="chart-container">
+
+                    <div class="chart-y-axis">
+                        <span>$50K</span>
+                        <span>$40K</span>
+                        <span>$30K</span>
+                        <span>$20K</span>
+                        <span>$10K</span>
+                        <span>$0</span>
+                    </div>
+
+                    <div class="chart">
+
+                        <div class="grid-line"></div>
+                        <div class="grid-line"></div>
+                        <div class="grid-line"></div>
+                        <div class="grid-line"></div>
+                        <div class="grid-line"></div>
+
+                        <div class="chart-bars">
+
+                            <div class="bar-group">
+                                <div class="bar" style="height: 45%;"></div>
+                                <span>Jan</span>
+                            </div>
+
+                            <div class="bar-group">
+                                <div class="bar" style="height: 58%;"></div>
+                                <span>Feb</span>
+                            </div>
+
+                            <div class="bar-group">
+                                <div class="bar" style="height: 52%;"></div>
+                                <span>Mar</span>
+                            </div>
+
+                            <div class="bar-group">
+                                <div class="bar" style="height: 70%;"></div>
+                                <span>Apr</span>
+                            </div>
+
+                            <div class="bar-group">
+                                <div class="bar" style="height: 64%;"></div>
+                                <span>May</span>
+                            </div>
+
+                            <div class="bar-group">
+                                <div class="bar" style="height: 82%;"></div>
+                                <span>Jun</span>
+                            </div>
+
+                            <div class="bar-group">
+                                <div class="bar" style="height: 94%;"></div>
+                                <span>Jul</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+                        <article class="dashboard-card activity-card">
+
+                <div class="card-header">
+
+                    <div>
+                        <h2>Recent Activity</h2>
+                        <p>Latest activity from your store.</p>
+                    </div>
+
+                    <a href="#" class="view-all">
+                        View all
+                    </a>
+
+                </div>
+
+                <div class="activity-list">
+
+                    <div class="activity-item">
+
+                        <div class="activity-icon">
+                            +
+                        </div>
+
+                        <div class="activity-text">
+                            <strong>New order received</strong>
+                            <span>Order #NX-10482</span>
+                        </div>
+
+                        <time>2m</time>
+
+                    </div>
+
+
+                    <div class="activity-item">
+
+                        <div class="activity-icon">
+                            ♙
+                        </div>
+
+                        <div class="activity-text">
+                            <strong>New customer registered</strong>
+                            <span>Emily Johnson</span>
+                        </div>
+
+                        <time>18m</time>
+
+                    </div>
+
+
+                    <div class="activity-item">
+
+                        <div class="activity-icon">
+                            $
+                        </div>
+
+                        <div class="activity-text">
+                            <strong>Payment received</strong>
+                            <span>$249.00 from Order #NX-10471</span>
+                        </div>
+
+                        <time>42m</time>
+
+                    </div>
+
+
+                    <div class="activity-item">
+
+                        <div class="activity-icon">
+                            □
+                        </div>
+
+                        <div class="activity-text">
+                            <strong>Product stock updated</strong>
+                            <span>Wireless Headphones</span>
+                        </div>
+
+                        <time>1h</time>
+
+                    </div>
+
+
+                    <div class="activity-item">
+
+                        <div class="activity-icon">
+                            ✓
+                        </div>
+
+                        <div class="activity-text">
+                            <strong>Order completed</strong>
+                            <span>Order #NX-10463</span>
+                        </div>
+
+                        <time>2h</time>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </section>
+                <section class="dashboard-card orders-card">
+
+            <div class="card-header">
+
+                <div>
+                    <h2>Recent Orders</h2>
+                    <p>Track your latest customer orders.</p>
+                </div>
+
+                <a href="#" class="view-all">
+                    View all orders →
+                </a>
+
+            </div>
+
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>Order</th>
+                            <th>Customer</th>
+                            <th>Product</th>
+                            <th>Date</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>
+                                <strong>#NX-10482</strong>
+                            </td>
+
+                            <td>
+                                Emily Johnson
+                            </td>
+
+                            <td>
+                                Wireless Headphones
+                            </td>
+
+                            <td>
+                                Aug 31, 2026
+                            </td>
+
+                            <td>
+                                <strong>$249.00</strong>
+                            </td>
+
+                            <td>
+                                <span class="status completed">
+                                    Completed
+                                </span>
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                <strong>#NX-10481</strong>
+                            </td>
+
+                            <td>
+                                Daniel Smith
+                            </td>
+
+                            <td>
+                                Smart Watch Pro
+                            </td>
+
+                            <td>
+                                Aug 31, 2026
+                            </td>
+
+                            <td>
+                                <strong>$189.00</strong>
+                            </td>
+
+                            <td>
+                                <span class="status pending">
+                                    Pending
+                                </span>
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                <strong>#NX-10480</strong>
+                            </td>
+
+                            <td>
+                                Olivia Brown
+                            </td>
+
+                            <td>
+                                Premium Backpack
+                            </td>
+
+                            <td>
+                                Aug 30, 2026
+                            </td>
+
+                            <td>
+                                <strong>$129.00</strong>
+                            </td>
+
+                            <td>
+                                <span class="status processing">
+                                    Processing
+                                </span>
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                <strong>#NX-10479</strong>
+                            </td>
+
+                            <td>
+                                James Wilson
+                            </td>
+
+                            <td>
+                                Mechanical Keyboard
+                            </td>
+
+                            <td>
+                                Aug 30, 2026
+                            </td>
+
+                            <td>
+                                <strong>$159.00</strong>
+                            </td>
+
+                            <td>
+                                <span class="status completed">
+                                    Completed
+                                </span>
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+                <footer class="footer">
+
+            <span>
+                © 2026 NEXORA. All rights reserved.
+            </span>
+
+            <div>
+                <a href="#">Documentation</a>
+                <a href="#">Support</a>
+            </div>
+
+        </footer>
+
+    </main>
+
+
+    <div class="notification-panel" id="notificationPanel">
+
+        <div class="notification-header">
+
+            <h3>Notifications</h3>
+
+            <button id="closeNotifications">
+                ×
+            </button>
+
+        </div>
+
+        <div class="notification-content">
+
+            <p>
+                You have 3 new notifications.
+            </p>
+
+        </div>
+
+    </div>
+        <script>
+
+        const menuButton =
+            document.getElementById("menuButton");
+
+        const sidebar =
+            document.querySelector(".sidebar");
+
+
+        menuButton.addEventListener("click", function () {
+
+            sidebar.classList.toggle("open");
+
+        });
+
+
+        const notificationButton =
+            document.getElementById("notificationButton");
+
+        const notificationPanel =
+            document.getElementById("notificationPanel");
+
+        const closeNotifications =
+            document.getElementById("closeNotifications");
+
+
+        notificationButton.addEventListener("click", function () {
+
+            notificationPanel.classList.toggle("show");
+
+        });
+
+
+        closeNotifications.addEventListener("click", function () {
+
+            notificationPanel.classList.remove("show");
+
+        });
+
+
+        document.addEventListener("click", function (event) {
+
+            if (
+                notificationPanel.classList.contains("show") &&
+                !notificationPanel.contains(event.target) &&
+                !notificationButton.contains(event.target)
+            ) {
+
+                notificationPanel.classList.remove("show");
+
+            }
+
+        });
+
+
+        const revenuePeriod =
+            document.getElementById("revenuePeriod");
+
+
+        revenuePeriod.addEventListener("change", function () {
+
+            console.log(
+                "Selected period:",
+                revenuePeriod.value
+            );
+
+        });
+
+    </script>
+
+</body>
+</html>
