@@ -1,1 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NEXORA — Customers</title>
+
+    <meta name="description" content="NEXORA customer management dashboard for managing customer profiles and activity.">
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            NEXORA
+        </div>
+
+        <nav class="navigation">
+
+            <a href="../index.html" class="nav-link">
+                <span>▦</span>
+                Dashboard
+            </a>
+
+            <a href="analytics.html" class="nav-link">
+                <span>◫</span>
+                Analytics
+            </a>
+
+            <a href="products.html" class="nav-link">
+                <span>□</span>
+                Products
+            </a>
+
+            <a href="orders.html" class="nav-link">
+                <span>◷</span>
+                Orders
+            </a>
+
+            <a href="customers.html" class="nav-link active">
+                <span>♙</span>
+                Customers
+            </a>
+
+            <a href="messages.html" class="nav-link">
+                <span>✉</span>
+                Messages
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <a href="settings.html" class="nav-link">
+                <span>⚙</span>
+                Settings
+            </a>
+
+            <a href="profile.html" class="nav-link">
+                <span>◉</span>
+                Profile
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <div class="header-left">
+
+                <button class="menu-button" id="menuButton">
+                    ☰
+                </button>
+
+                <div>
+                    <h1>Customers</h1>
+                    <p>Manage your customers and their activity.</p>
+                </div>
+
+            </div>
+
+            <div class="header-right">
+
+                <button class="icon-button" id="notificationButton">
+                    🔔
+                    <span class="notification-dot"></span>
+                </button>
+
+                <div class="user-profile">
+
+                    <div class="avatar">
+                        A
+                    </div>
+
+                    <div class="user-info">
+                        <strong>Alex Morgan</strong>
+                        <span>Administrator</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <section class="stats-grid">
+
+            <article class="stat-card">
+
+                <div class="stat-icon">
+                    ♙
+                </div>
+
+                <div class="stat-content">
+                    <span class="stat-label">Total Customers</span>
+                    <strong class="stat-value">8,492</strong>
+                    <small class="positive">↑ 6.2% this month</small>
+                </div>
+
+            </article>
+
+
+            <article class="stat-card">
+
+                <div class="stat-icon">
+                    +
+                </div>
+
+                <div class="stat-content">
+                    <span class="stat-label">New Customers</span>
+                    <strong class="stat-value">284</strong>
+                    <small class="positive">↑ 12.5% this month</small>
+                </div>
+
+            </article>
+
+
+            <article class="stat-card">
+
+                <div class="stat-icon">
+                    ✓
+                </div>
+
+                <div class="stat-content">
+                    <span class="stat-label">Active Customers</span>
+                    <strong class="stat-value">7,126</strong>
+                    <small class="positive">83.9% of customers</small>
+                </div>
+
+            </article>
+
+
+            <article class="stat-card">
+
+                <div class="stat-icon">
+                    $
+                </div>
+
+                <div class="stat-content">
+                    <span class="stat-label">Average Spend</span>
+                    <strong class="stat-value">$286</strong>
+                    <small class="positive">↑ 4.8% this month</small>
+                </div>
+
+            </article>
+
+        </section>
+                <section class="dashboard-card orders-card">
+
+            <div class="card-header">
+
+                <div>
+                    <h2>Customer Directory</h2>
+                    <p>View and manage your customers.</p>
+                </div>
+
+                <a href="#" class="view-all">
+                    + Add Customer
+                </a>
+
+            </div>
+
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>Customer</th>
+                            <th>Email</th>
+                            <th>Orders</th>
+                            <th>Total Spent</th>
+                            <th>Joined</th>
+                            <th>Status</th>
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>
+                                <strong>Emily Johnson</strong>
+                            </td>
+
+                            <td>
+                                emily.johnson@example.com
+                            </td>
+
+                            <td>
+                                24
+                            </td>
+
+                            <td>
+                                <strong>$4,286</strong>
+                            </td>
+
+                            <td>
+                                Aug 12, 2026
+                            </td>
+
+                            <td>
+                                <span class="status completed">
+                                    Active
+                                </span>
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                <strong>Daniel Smith</strong>
+                            </td>
+
+                            <td>
+                                daniel.smith@example.com
+                            </td>
+
+                            <td>
+                                18
+                            </td>
+
+                            <td>
+                                <strong>$3,742</strong>
+                            </td>
+
+                            <td>
+                                Jul 28, 2026
+                            </td>
+
+                            <td>
+                                <span class="status completed">
+                                    Active
+                                </span>
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                <strong>Olivia Brown</strong>
+                            </td>
+
+                            <td>
+                                olivia.brown@example.com
+                            </td>
+
+                            <td>
+                                12
+                            </td>
+
+                            <td>
+                                <strong>$2,184</strong>
+                            </td>
+
+                            <td>
+                                Jul 19, 2026
+                            </td>
+
+                            <td>
+                                <span class="status completed">
+                                    Active
+                                </span>
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                <strong>James Wilson</strong>
+                            </td>
+
+                            <td>
+                                james.wilson@example.com
+                            </td>
+
+                            <td>
+                                9
+                            </td>
+
+                            <td>
+                                <strong>$1,829</strong>
+                            </td>
+
+                            <td>
+                                Jun 30, 2026
+                            </td>
+
+                            <td>
+                                <span class="status pending">
+                                    Inactive
+                                </span>
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                <strong>Sophia Davis</strong>
+                            </td>
+
+                            <td>
+                                sophia.davis@example.com
+                            </td>
+
+                            <td>
+                                31
+                            </td>
+
+                            <td>
+                                <strong>$5,624</strong>
+                            </td>
+
+                            <td>
+                                Jun 14, 2026
+                            </td>
+
+                            <td>
+                                <span class="status completed">
+                                    Active
+                                </span>
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                <strong>Michael Miller</strong>
+                            </td>
+
+                            <td>
+                                michael.miller@example.com
+                            </td>
+
+                            <td>
+                                7
+                            </td>
+
+                            <td>
+                                <strong>$1,246</strong>
+                            </td>
+
+                            <td>
+                                May 26, 2026
+                            </td>
+
+                            <td>
+                                <span class="status pending">
+                                    Inactive
+                                </span>
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+                <section class="dashboard-grid">
+
+            <article class="dashboard-card">
+
+                <div class="card-header">
+
+                    <div>
+                        <h2>Customer Activity</h2>
+                        <p>Recent customer engagement.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="activity-list">
+
+                    <div class="activity-item">
+
+                        <div class="activity-icon">
+                            +
+                        </div>
+
+                        <div class="activity-text">
+                            <strong>New customer</strong>
+                            <span>Emma Wilson joined your store</span>
+                        </div>
+
+                        <time>12m</time>
+
+                    </div>
+
+
+                    <div class="activity-item">
+
+                        <div class="activity-icon">
+                            $
+                        </div>
+
+                        <div class="activity-text">
+                            <strong>New purchase</strong>
+                            <span>Sophia Davis placed an order</span>
+                        </div>
+
+                        <time>34m</time>
+
+                    </div>
+
+
+                    <div class="activity-item">
+
+                        <div class="activity-icon">
+                            ✓
+                        </div>
+
+                        <div class="activity-text">
+                            <strong>Customer verified</strong>
+                            <span>Daniel Smith verified his email</span>
+                        </div>
+
+                        <time>1h</time>
+
+                    </div>
+
+
+                    <div class="activity-item">
+
+                        <div class="activity-icon">
+                            ↗
+                        </div>
+
+                        <div class="activity-text">
+                            <strong>Returning customer</strong>
+                            <span>Emily Johnson made another purchase</span>
+                        </div>
+
+                        <time>2h</time>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article class="dashboard-card">
+
+                <div class="card-header">
+
+                    <div>
+                        <h2>Customer Insights</h2>
+                        <p>Important customer statistics.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="activity-list">
+
+                    <div class="activity-item">
+
+                        <div class="activity-icon">
+                            ↗
+                        </div>
+
+                        <div class="activity-text">
+                            <strong>Returning Customers</strong>
+                            <span>Customers who purchased before</span>
+                        </div>
+
+                        <strong>64%</strong>
+
+                    </div>
+
+
+                    <div class="activity-item">
+
+                        <div class="activity-icon">
+                            $
+                        </div>
+
+                        <div class="activity-text">
+                            <strong>Average Customer Value</strong>
+                            <span>Average lifetime spending</span>
+                        </div>
+
+                        <strong>$486</strong>
+
+                    </div>
+
+
+                    <div class="activity-item">
+
+                        <div class="activity-icon">
+                            ◷
+                        </div>
+
+                        <div class="activity-text">
+                            <strong>Average Orders</strong>
+                            <span>Orders per customer</span>
+                        </div>
+
+                        <strong>3.8</strong>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </section>
+                <footer class="footer">
+
+            <span>
+                © 2026 NEXORA. All rights reserved.
+            </span>
+
+            <div>
+                <a href="#">Documentation</a>
+                <a href="#">Support</a>
+            </div>
+
+        </footer>
+
+    </main>
+
+
+    <script src="../js/script.js"></script>
+
+</body>
+</html>
