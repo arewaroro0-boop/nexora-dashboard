@@ -554,75 +554,8 @@
         </div>
 
     </div>
-        <script>
-
-        const menuButton =
-            document.getElementById("menuButton");
-
-        const sidebar =
-            document.querySelector(".sidebar");
-
-
-        menuButton.addEventListener("click", function () {
-
-            sidebar.classList.toggle("open");
-
-        });
-
-
-        const notificationButton =
-            document.getElementById("notificationButton");
-
-        const notificationPanel =
-            document.getElementById("notificationPanel");
-
-        const closeNotifications =
-            document.getElementById("closeNotifications");
-
-
-        notificationButton.addEventListener("click", function () {
-
-            notificationPanel.classList.toggle("show");
-
-        });
-
-
-        closeNotifications.addEventListener("click", function () {
-
-            notificationPanel.classList.remove("show");
-
-        });
-
-
-        document.addEventListener("click", function (event) {
-
-            if (
-                notificationPanel.classList.contains("show") &&
-                !notificationPanel.contains(event.target) &&
-                !notificationButton.contains(event.target)
-            ) {
-
-                notificationPanel.classList.remove("show");
-
-            }
-
-        });
-
-
-        const revenuePeriod =
-            document.getElementById("revenuePeriod");
-
-
-        revenuePeriod.addEventListener("change", function () {
-
-            console.log(
-                "Selected period:",
-                revenuePeriod.value
-            );
-
-        });
-
-    </script>
-
+        
+    <script src="js/script.js"></script>
+    
 </body>
 </html>
