@@ -1,18 +1,36 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>NEXORA — Analytics</title>
 
-    <meta name="description" content="NEXORA analytics dashboard with revenue, orders, customers and performance insights.">
+    <meta
+        name="description"
+        content="NEXORA analytics dashboard with revenue, orders, customers and performance insights."
+    >
 
-    <link rel="stylesheet" href="../css/style.css">
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
 </head>
 
+
 <body>
+
+    <!-- =====================================================
+         SIDEBAR
+         ===================================================== -->
 
     <aside class="sidebar">
 
@@ -20,48 +38,80 @@
             NEXORA
         </div>
 
+
         <nav class="navigation">
 
-            <a href="../index.html" class="nav-link">
+            <a
+                href="../index.html"
+                class="nav-link"
+            >
                 <span>▦</span>
                 Dashboard
             </a>
 
-            <a href="analytics.html" class="nav-link active">
+
+            <a
+                href="analytics.html"
+                class="nav-link active"
+            >
                 <span>◫</span>
                 Analytics
             </a>
 
-            <a href="products.html" class="nav-link">
+
+            <a
+                href="products.html"
+                class="nav-link"
+            >
                 <span>□</span>
                 Products
             </a>
 
-            <a href="orders.html" class="nav-link">
+
+            <a
+                href="orders.html"
+                class="nav-link"
+            >
                 <span>◷</span>
                 Orders
             </a>
 
-            <a href="customers.html" class="nav-link">
+
+            <a
+                href="customers.html"
+                class="nav-link"
+            >
                 <span>♙</span>
                 Customers
             </a>
 
-            <a href="messages.html" class="nav-link">
+
+            <a
+                href="messages.html"
+                class="nav-link"
+            >
                 <span>✉</span>
                 Messages
             </a>
 
         </nav>
 
+
         <div class="sidebar-bottom">
 
-            <a href="settings.html" class="nav-link">
+            <a
+                href="settings.html"
+                class="nav-link"
+            >
                 <span>⚙</span>
                 Settings
             </a>
 
-            <a href="profile.html" class="nav-link">
+
+            <a
+                href="profile.html"
+                class="nav-link"
+            >
                 <span>◉</span>
                 Profile
             </a>
@@ -71,29 +121,83 @@
     </aside>
 
 
+
+    <!-- =====================================================
+         MAIN CONTENT
+         ===================================================== -->
+
     <main class="main-content">
+
+
+        <!-- =================================================
+             TOPBAR
+             ================================================= -->
 
         <header class="topbar">
 
+
             <div class="header-left">
 
-                <button class="menu-button" id="menuButton">
+                <button
+                    class="menu-button"
+                    id="menuButton"
+                    type="button"
+                    aria-label="Open menu"
+                >
                     ☰
                 </button>
 
+
                 <div>
-                    <h1>Analytics</h1>
-                    <p>Track your business performance and growth.</p>
+
+                    <h1>
+                        Analytics
+                    </h1>
+
+                    <p>
+                        Track your business performance and growth.
+                    </p>
+
                 </div>
 
             </div>
 
+
+
             <div class="header-right">
 
-                <button class="icon-button" id="notificationButton">
-                    🔔
-                    <span class="notification-dot"></span>
+
+                <!-- LANGUAGE BUTTON -->
+
+                <button
+                    class="icon-button language-button"
+                    id="languageButton"
+                    type="button"
+                    data-language-button
+                    aria-label="Language"
+                    title="Language"
+                >
+                    文
                 </button>
+
+
+                <!-- NOTIFICATIONS -->
+
+                <button
+                    class="icon-button"
+                    id="notificationButton"
+                    type="button"
+                    aria-label="Notifications"
+                >
+
+                    🔔
+
+                    <span class="notification-dot"></span>
+
+                </button>
+
+
+                <!-- USER -->
 
                 <div class="user-profile">
 
@@ -101,9 +205,17 @@
                         A
                     </div>
 
+
                     <div class="user-info">
-                        <strong>Alex Morgan</strong>
-                        <span>Administrator</span>
+
+                        <strong>
+                            Alex Morgan
+                        </strong>
+
+                        <span>
+                            Administrator
+                        </span>
+
                     </div>
 
                 </div>
@@ -113,7 +225,13 @@
         </header>
 
 
+
+        <!-- =================================================
+             STATISTICS
+             ================================================= -->
+
         <section class="stats-grid">
+
 
             <article class="stat-card">
 
@@ -121,13 +239,25 @@
                     $
                 </div>
 
+
                 <div class="stat-content">
-                    <span class="stat-label">Revenue</span>
-                    <strong class="stat-value">$48,290</strong>
-                    <small class="positive">↑ 12.8%</small>
+
+                    <span class="stat-label">
+                        Revenue
+                    </span>
+
+                    <strong class="stat-value">
+                        $48,290
+                    </strong>
+
+                    <small class="positive">
+                        ↑ 12.8%
+                    </small>
+
                 </div>
 
             </article>
+
 
 
             <article class="stat-card">
@@ -136,13 +266,25 @@
                     ◷
                 </div>
 
+
                 <div class="stat-content">
-                    <span class="stat-label">Orders</span>
-                    <strong class="stat-value">1,284</strong>
-                    <small class="positive">↑ 8.4%</small>
+
+                    <span class="stat-label">
+                        Orders
+                    </span>
+
+                    <strong class="stat-value">
+                        1,284
+                    </strong>
+
+                    <small class="positive">
+                        ↑ 8.4%
+                    </small>
+
                 </div>
 
             </article>
+
 
 
             <article class="stat-card">
@@ -151,13 +293,25 @@
                     ♙
                 </div>
 
+
                 <div class="stat-content">
-                    <span class="stat-label">Customers</span>
-                    <strong class="stat-value">8,492</strong>
-                    <small class="positive">↑ 6.2%</small>
+
+                    <span class="stat-label">
+                        Customers
+                    </span>
+
+                    <strong class="stat-value">
+                        8,492
+                    </strong>
+
+                    <small class="positive">
+                        ↑ 6.2%
+                    </small>
+
                 </div>
 
             </article>
+
 
 
             <article class="stat-card">
@@ -166,88 +320,210 @@
                     ↗
                 </div>
 
+
                 <div class="stat-content">
-                    <span class="stat-label">Conversion</span>
-                    <strong class="stat-value">6.84%</strong>
-                    <small class="positive">↑ 2.1%</small>
+
+                    <span class="stat-label">
+                        Conversion
+                    </span>
+
+                    <strong class="stat-value">
+                        6.84%
+                    </strong>
+
+                    <small class="positive">
+                        ↑ 2.1%
+                    </small>
+
                 </div>
 
             </article>
 
         </section>
-                <section class="dashboard-grid">
+
+
+
+        <!-- =================================================
+             ANALYTICS GRID
+             ================================================= -->
+
+        <section class="dashboard-grid">
+
+
+            <!-- SALES PERFORMANCE -->
 
             <article class="dashboard-card revenue-card">
 
+
                 <div class="card-header">
 
+
                     <div>
-                        <h2>Sales Performance</h2>
-                        <p>Monthly revenue performance.</p>
+
+                        <h2>
+                            Sales Performance
+                        </h2>
+
+                        <p>
+                            Monthly revenue performance.
+                        </p>
+
                     </div>
 
-                    <select>
-                        <option>2026</option>
-                        <option>2025</option>
-                        <option>2024</option>
+
+                    <select
+                        aria-label="Year"
+                    >
+
+                        <option>
+                            2026
+                        </option>
+
+                        <option>
+                            2025
+                        </option>
+
+                        <option>
+                            2024
+                        </option>
+
                     </select>
 
                 </div>
 
+
+
                 <div class="chart-container">
 
+
                     <div class="chart-y-axis">
+
                         <span>$60K</span>
                         <span>$50K</span>
                         <span>$40K</span>
                         <span>$30K</span>
                         <span>$20K</span>
                         <span>$0</span>
+
                     </div>
+
+
 
                     <div class="chart">
 
+
                         <div class="grid-line"></div>
                         <div class="grid-line"></div>
                         <div class="grid-line"></div>
                         <div class="grid-line"></div>
                         <div class="grid-line"></div>
+
+
 
                         <div class="chart-bars">
 
-                            <div class="bar-group">
-                                <div class="bar" style="height: 42%;"></div>
-                                <span>Jan</span>
-                            </div>
 
                             <div class="bar-group">
-                                <div class="bar" style="height: 55%;"></div>
-                                <span>Feb</span>
+
+                                <div
+                                    class="bar"
+                                    style="height:42%;"
+                                ></div>
+
+                                <span>
+                                    Jan
+                                </span>
+
                             </div>
 
-                            <div class="bar-group">
-                                <div class="bar" style="height: 49%;"></div>
-                                <span>Mar</span>
-                            </div>
+
 
                             <div class="bar-group">
-                                <div class="bar" style="height: 68%;"></div>
-                                <span>Apr</span>
+
+                                <div
+                                    class="bar"
+                                    style="height:55%;"
+                                ></div>
+
+                                <span>
+                                    Feb
+                                </span>
+
                             </div>
 
-                            <div class="bar-group">
-                                <div class="bar" style="height: 61%;"></div>
-                                <span>May</span>
-                            </div>
+
 
                             <div class="bar-group">
-                                <div class="bar" style="height: 79%;"></div>
-                                <span>Jun</span>
+
+                                <div
+                                    class="bar"
+                                    style="height:49%;"
+                                ></div>
+
+                                <span>
+                                    Mar
+                                </span>
+
                             </div>
 
+
+
                             <div class="bar-group">
-                                <div class="bar" style="height: 91%;"></div>
-                                <span>Jul</span>
+
+                                <div
+                                    class="bar"
+                                    style="height:68%;"
+                                ></div>
+
+                                <span>
+                                    Apr
+                                </span>
+
+                            </div>
+
+
+
+                            <div class="bar-group">
+
+                                <div
+                                    class="bar"
+                                    style="height:61%;"
+                                ></div>
+
+                                <span>
+                                    May
+                                </span>
+
+                            </div>
+
+
+
+                            <div class="bar-group">
+
+                                <div
+                                    class="bar"
+                                    style="height:79%;"
+                                ></div>
+
+                                <span>
+                                    Jun
+                                </span>
+
+                            </div>
+
+
+
+                            <div class="bar-group">
+
+                                <div
+                                    class="bar"
+                                    style="height:91%;"
+                                ></div>
+
+                                <span>
+                                    Jul
+                                </span>
+
                             </div>
 
                         </div>
@@ -259,18 +535,32 @@
             </article>
 
 
+
+            <!-- TRAFFIC SOURCES -->
+
             <article class="dashboard-card">
+
 
                 <div class="card-header">
 
                     <div>
-                        <h2>Traffic Sources</h2>
-                        <p>Where your customers come from.</p>
+
+                        <h2>
+                            Traffic Sources
+                        </h2>
+
+                        <p>
+                            Where your customers come from.
+                        </p>
+
                     </div>
 
                 </div>
 
+
+
                 <div class="activity-list">
+
 
                     <div class="activity-item">
 
@@ -279,13 +569,23 @@
                         </div>
 
                         <div class="activity-text">
-                            <strong>Organic Search</strong>
-                            <span>Google and other search engines</span>
+
+                            <strong>
+                                Organic Search
+                            </strong>
+
+                            <span>
+                                Google and other search engines
+                            </span>
+
                         </div>
 
-                        <strong>42%</strong>
+                        <strong>
+                            42%
+                        </strong>
 
                     </div>
+
 
 
                     <div class="activity-item">
@@ -295,13 +595,23 @@
                         </div>
 
                         <div class="activity-text">
-                            <strong>Social Media</strong>
-                            <span>Social platforms</span>
+
+                            <strong>
+                                Social Media
+                            </strong>
+
+                            <span>
+                                Social platforms
+                            </span>
+
                         </div>
 
-                        <strong>28%</strong>
+                        <strong>
+                            28%
+                        </strong>
 
                     </div>
+
 
 
                     <div class="activity-item">
@@ -311,13 +621,23 @@
                         </div>
 
                         <div class="activity-text">
-                            <strong>Referral</strong>
-                            <span>External websites</span>
+
+                            <strong>
+                                Referral
+                            </strong>
+
+                            <span>
+                                External websites
+                            </span>
+
                         </div>
 
-                        <strong>18%</strong>
+                        <strong>
+                            18%
+                        </strong>
 
                     </div>
+
 
 
                     <div class="activity-item">
@@ -327,11 +647,20 @@
                         </div>
 
                         <div class="activity-text">
-                            <strong>Direct</strong>
-                            <span>Direct visits</span>
+
+                            <strong>
+                                Direct
+                            </strong>
+
+                            <span>
+                                Direct visits
+                            </span>
+
                         </div>
 
-                        <strong>12%</strong>
+                        <strong>
+                            12%
+                        </strong>
 
                     </div>
 
@@ -340,45 +669,88 @@
             </article>
 
         </section>
-                <section class="dashboard-card orders-card">
+
+
+
+        <!-- =================================================
+             TOP PRODUCTS
+             ================================================= -->
+
+        <section class="dashboard-card orders-card">
+
 
             <div class="card-header">
 
+
                 <div>
-                    <h2>Top Products</h2>
-                    <p>Best performing products this month.</p>
+
+                    <h2>
+                        Top Products
+                    </h2>
+
+                    <p>
+                        Best performing products this month.
+                    </p>
+
                 </div>
 
-                <a href="products.html" class="view-all">
+
+                <a
+                    href="products.html"
+                    class="view-all"
+                >
                     View products →
                 </a>
 
             </div>
 
 
+
             <div class="table-wrapper">
 
+
                 <table>
+
 
                     <thead>
 
                         <tr>
-                            <th>Product</th>
-                            <th>Category</th>
-                            <th>Sales</th>
-                            <th>Revenue</th>
-                            <th>Growth</th>
+
+                            <th>
+                                Product
+                            </th>
+
+                            <th>
+                                Category
+                            </th>
+
+                            <th>
+                                Sales
+                            </th>
+
+                            <th>
+                                Revenue
+                            </th>
+
+                            <th>
+                                Growth
+                            </th>
+
                         </tr>
 
                     </thead>
 
 
+
                     <tbody>
+
 
                         <tr>
 
                             <td>
-                                <strong>Wireless Headphones</strong>
+                                <strong>
+                                    Wireless Headphones
+                                </strong>
                             </td>
 
                             <td>
@@ -390,22 +762,29 @@
                             </td>
 
                             <td>
-                                <strong>$12,018</strong>
+                                <strong>
+                                    $12,018
+                                </strong>
                             </td>
 
                             <td>
+
                                 <span class="positive">
                                     ↑ 18.4%
                                 </span>
+
                             </td>
 
                         </tr>
 
 
+
                         <tr>
 
                             <td>
-                                <strong>Smart Watch Pro</strong>
+                                <strong>
+                                    Smart Watch Pro
+                                </strong>
                             </td>
 
                             <td>
@@ -417,22 +796,29 @@
                             </td>
 
                             <td>
-                                <strong>$9,864</strong>
+                                <strong>
+                                    $9,864
+                                </strong>
                             </td>
 
                             <td>
+
                                 <span class="positive">
                                     ↑ 14.7%
                                 </span>
+
                             </td>
 
                         </tr>
 
 
+
                         <tr>
 
                             <td>
-                                <strong>Premium Backpack</strong>
+                                <strong>
+                                    Premium Backpack
+                                </strong>
                             </td>
 
                             <td>
@@ -444,22 +830,29 @@
                             </td>
 
                             <td>
-                                <strong>$7,281</strong>
+                                <strong>
+                                    $7,281
+                                </strong>
                             </td>
 
                             <td>
+
                                 <span class="positive">
                                     ↑ 9.2%
                                 </span>
+
                             </td>
 
                         </tr>
 
 
+
                         <tr>
 
                             <td>
-                                <strong>Mechanical Keyboard</strong>
+                                <strong>
+                                    Mechanical Keyboard
+                                </strong>
                             </td>
 
                             <td>
@@ -471,16 +864,21 @@
                             </td>
 
                             <td>
-                                <strong>$6,423</strong>
+                                <strong>
+                                    $6,423
+                                </strong>
                             </td>
 
                             <td>
+
                                 <span class="positive">
                                     ↑ 7.8%
                                 </span>
+
                             </td>
 
                         </tr>
+
 
                     </tbody>
 
@@ -489,23 +887,88 @@
             </div>
 
         </section>
-                <footer class="footer">
+
+
+
+        <!-- =================================================
+             FOOTER
+             ================================================= -->
+
+        <footer class="footer">
+
 
             <span>
                 © 2026 NEXORA. All rights reserved.
             </span>
 
+
             <div>
-                <a href="#">Documentation</a>
-                <a href="#">Support</a>
+
+                <a href="#">
+                    Documentation
+                </a>
+
+                <a href="#">
+                    Support
+                </a>
+
             </div>
 
         </footer>
 
+
     </main>
 
 
+
+    <!-- =====================================================
+         NOTIFICATION PANEL
+         ===================================================== -->
+
+    <div
+        class="notification-panel"
+        id="notificationPanel"
+    >
+
+
+        <div class="notification-header">
+
+            <h3>
+                Notifications
+            </h3>
+
+
+            <button
+                id="closeNotifications"
+                type="button"
+                aria-label="Close notifications"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="notification-content">
+
+            <p>
+                You have 3 new notifications.
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         GOOGLE TRANSLATE / NEXORA SCRIPT
+         ===================================================== -->
+
     <script src="../js/script.js"></script>
 
+
 </body>
+
 </html>
+```
