@@ -1649,6 +1649,476 @@ function buildSettingsLanguageList(
         return;
 
     }
+    container.innerHTML = "";
+
+    LANGUAGES.forEach(language => {
+
+        const option = document.createElement("button");
+
+        option.type = "button";
+
+        option.className = "settings-language-option";
+
+        option.dataset.language = language.code;
+
+        option.innerHTML = `
+            <span class="language-native">
+                ${escapeHTML(language.nativeName)}
+            </span>
+
+            <span class="language-name">
+                ${escapeHTML(language.name)}
+            </span>
+        `;
+
+        option.addEventListener("click", () => {
+
+            selectLanguage(language.code);
+
+        });
+
+        container.appendChild(option);
+
+    });
+
+    updateSettingsLanguageList(container);
+
+}
+/* =========================================================
+   26. UPDATE SETTINGS LANGUAGE LIST
+   ========================================================= */
+
+function updateSettingsLanguageList(container) {
+
+    if (!container) {
+        return;
+    }
+
+    const currentLanguage = getCurrentLanguage();
+
+    container
+        .querySelectorAll(".settings-language-option")
+        .forEach(option => {
+
+            const isCurrent =
+                option.dataset.language === currentLanguage;
+
+            option.classList.toggle(
+                "active",
+                isCurrent
+            );
+
+            option.setAttribute(
+                "aria-selected",
+                String(isCurrent)
+            );
+
+        });
+
+}
 
 
-    container.inner
+/* =========================================================
+   27. ESCAPE HTML
+   ========================================================= */
+
+function escapeHTML(value) {
+
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+/* =========================================================
+   28. MOBILE SIDEBAR
+   ========================================================= */
+
+function initializeMobileSidebar() {
+
+    const menuButton = document.getElementById("menuButton");
+    const sidebar = document.querySelector(".sidebar");
+
+    if (!menuButton || !sidebar) {
+        return;
+    }
+
+    if (menuButton.dataset.nexoraSidebarReady === "true") {
+        return;
+    }
+
+    menuButton.dataset.nexoraSidebarReady = "true";
+
+    menuButton.addEventListener("click", event => {
+
+        event.stopPropagation();
+
+        NEXORA_STATE.sidebarOpen =
+            !NEXORA_STATE.sidebarOpen;
+
+        sidebar.classList.toggle(
+            "open",
+            NEXORA_STATE.sidebarOpen
+        );
+
+        document.body.classList.toggle(
+            "sidebar-open",
+            NEXORA_STATE.sidebarOpen
+        );
+
+    });
+
+    document.addEventListener("click", event => {
+
+        if (
+            !NEXORA_STATE.sidebarOpen
+        ) {
+            return;
+        }
+
+        if (
+            sidebar.contains(event.target) ||
+            menuButton.contains(event.target)
+        ) {
+            return;
+        }
+
+        closeMobileSidebar();
+
+    });
+
+}
+
+
+/* =========================================================
+   29. CLOSE MOBILE SIDEBAR
+   ========================================================= */
+
+function closeMobileSidebar() {
+
+    const sidebar =
+        document.querySelector(".sidebar");
+
+    if (!sidebar) {
+        return;
+    }
+
+    NEXORA_STATE.sidebarOpen = false;
+
+    sidebar.classList.remove("open");
+
+    document.body.classList.remove(
+        "sidebar-open"
+    );
+
+}
+
+
+/* =========================================================
+   30. NOTIFICATION PANEL
+   ========================================================= */
+
+function initializeNotifications() {
+
+    const button =
+        document.getElementById(
+            "notificationButton"
+        );
+
+    const panel =
+        document.getElementById(
+            "notificationPanel"
+        );
+
+    const closeButton =
+        document.getElementById(
+            "closeNotifications"
+        );
+
+    if (!button || !panel) {
+        return;
+    }
+
+    button.addEventListener("click", event => {
+
+        event.stopPropagation();
+
+        NEXORA_STATE.notificationOpen =
+            !NEXORA_STATE.notificationOpen;
+
+        panel.classList.toggle(
+            "open",
+            NEXORA_STATE.notificationOpen
+        );
+
+    });
+
+    if (closeButton) {
+
+        closeButton.addEventListener(
+            "click",
+            event => {
+
+                event.stopPropagation();
+
+                closeNotifications();
+
+            }
+        );
+
+    }
+
+    document.addEventListener("click", event => {
+
+        if (!NEXORA_STATE.notificationOpen) {
+            return;
+        }
+
+        if (
+            panel.contains(event.target) ||
+            button.contains(event.target)
+        ) {
+            return;
+        }
+
+        closeNotifications();
+
+    });
+
+}
+
+
+/* =========================================================
+   31. CLOSE NOTIFICATIONS
+   ========================================================= */
+
+function closeNotifications() {
+
+    const panel =
+        document.getElementById(
+            "notificationPanel"
+        );
+
+    if (!panel) {
+        return;
+    }
+
+    NEXORA_STATE.notificationOpen = false;
+
+    panel.classList.remove("open");
+
+}
+/* =========================================================
+   32. THEME SYSTEM
+   ========================================================= */
+
+function getCurrentTheme() {
+
+    const savedTheme =
+        localStorage.getItem(
+            NEXORA.storage.theme
+        );
+
+    if (
+        savedTheme === "light" ||
+        savedTheme === "dark" ||
+        savedTheme === "system"
+    ) {
+        return savedTheme;
+    }
+
+    return NEXORA.defaults.theme;
+}
+
+
+/* ---------------------------------------------------------
+   Save theme
+   --------------------------------------------------------- */
+
+function saveTheme(theme) {
+
+    if (
+        theme !== "light" &&
+        theme !== "dark" &&
+        theme !== "system"
+    ) {
+        theme = NEXORA.defaults.theme;
+    }
+
+    localStorage.setItem(
+        NEXORA.storage.theme,
+        theme
+    );
+
+    NEXORA_STATE.currentTheme = theme;
+
+}
+
+
+/* ---------------------------------------------------------
+   Apply theme
+   --------------------------------------------------------- */
+
+function applyTheme(theme) {
+
+    saveTheme(theme);
+
+    const root =
+        document.documentElement;
+
+    root.setAttribute(
+        "data-theme",
+        theme
+    );
+
+    document.body.setAttribute(
+        "data-theme",
+        theme
+    );
+
+}
+
+
+/* ---------------------------------------------------------
+   Initialize theme controls
+   --------------------------------------------------------- */
+
+function initializeThemeControls() {
+
+    const currentTheme =
+        getCurrentTheme();
+
+    NEXORA_STATE.currentTheme =
+        currentTheme;
+
+    applyTheme(currentTheme);
+
+    document
+        .querySelectorAll(
+            "[data-theme-select]"
+        )
+        .forEach(select => {
+
+            select.value =
+                currentTheme;
+
+            select.addEventListener(
+                "change",
+                event => {
+
+                    applyTheme(
+                        event.target.value
+                    );
+
+                }
+            );
+
+        });
+
+    document
+        .querySelectorAll(
+            "[data-theme]"
+        )
+        .forEach(button => {
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    const theme =
+                        button.dataset.theme;
+
+                    applyTheme(theme);
+
+                }
+            );
+
+        });
+
+}
+/* =========================================================
+   33. INITIALIZE LANGUAGE SYSTEM
+   ========================================================= */
+
+function initializeLanguageSystem() {
+
+    const currentLanguage =
+        getCurrentLanguage();
+
+    NEXORA_STATE.currentLanguage =
+        currentLanguage;
+
+    applyLanguageDirection(
+        currentLanguage
+    );
+
+    initializeLanguageButtons();
+
+    initializeSettingsLanguageSelectors();
+
+    updateAllLanguageControls(
+        currentLanguage
+    );
+
+    document
+        .querySelectorAll(
+            "[data-language-list]"
+        )
+        .forEach(container => {
+
+            buildSettingsLanguageList(
+                container
+            );
+
+        });
+
+}
+
+
+/* =========================================================
+   34. INITIALIZE NEXORA
+   ========================================================= */
+
+function initializeNexora() {
+
+    if (
+        NEXORA_STATE.initialized
+    ) {
+        return;
+    }
+
+    NEXORA_STATE.initialized = true;
+
+    initializeLanguageSystem();
+
+    initializeMobileSidebar();
+
+    initializeNotifications();
+
+    initializeThemeControls();
+
+    loadGoogleTranslateScript();
+
+}
+
+
+/* =========================================================
+   35. DOM READY
+   ========================================================= */
+
+if (
+    document.readyState === "loading"
+) {
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        initializeNexora
+    );
+
+} else {
+
+    initializeNexora();
+
+}
