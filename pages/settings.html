@@ -1,1078 +1,844 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
 
-    <meta charset="UTF-8">
+```
+<meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
-    <title>NEXORA — Settings</title>
+<title>NEXORA — Settings</title>
 
-    <meta
-        name="description"
-        content="NEXORA store, notification, security and appearance settings."
-    >
+<meta
+    name="description"
+    content="Manage your NEXORA dashboard settings."
+>
 
-    <link
-        rel="stylesheet"
-        href="../css/style.css"
-    >
+<link
+    rel="stylesheet"
+    href="../css/style.css"
+>
+```
 
 </head>
 
-
 <body>
 
+```
+<!-- =====================================================
+     SIDEBAR
+     ===================================================== -->
 
-    <!-- =====================================================
-         SIDEBAR
-         ===================================================== -->
-
-    <aside class="sidebar">
-
-        <div class="logo">
-            NEXORA
-        </div>
+<aside class="sidebar">
 
 
-        <nav class="navigation">
+    <div class="logo">
+        NEXORA
+    </div>
 
 
-            <a
-                href="../index.html"
-                class="nav-link"
+    <nav class="navigation">
+
+
+        <a
+            href="../index.html"
+            class="nav-link"
+        >
+            <span>▦</span>
+            Dashboard
+        </a>
+
+
+        <a
+            href="analytics.html"
+            class="nav-link"
+        >
+            <span>◫</span>
+            Analytics
+        </a>
+
+
+        <a
+            href="products.html"
+            class="nav-link"
+        >
+            <span>□</span>
+            Products
+        </a>
+
+
+        <a
+            href="orders.html"
+            class="nav-link"
+        >
+            <span>◷</span>
+            Orders
+        </a>
+
+
+        <a
+            href="customers.html"
+            class="nav-link"
+        >
+            <span>♙</span>
+            Customers
+        </a>
+
+
+        <a
+            href="messages.html"
+            class="nav-link"
+        >
+            <span>✉</span>
+            Messages
+        </a>
+
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+
+        <a
+            href="settings.html"
+            class="nav-link active"
+        >
+            <span>⚙</span>
+            Settings
+        </a>
+
+
+        <a
+            href="profile.html"
+            class="nav-link"
+        >
+            <span>◉</span>
+            Profile
+        </a>
+
+
+    </div>
+
+
+</aside>
+
+
+
+<!-- =====================================================
+     MAIN CONTENT
+     ===================================================== -->
+
+<main class="main-content">
+
+
+    <!-- =================================================
+         TOPBAR
+         ================================================= -->
+
+    <header class="topbar">
+
+
+        <div class="header-left">
+
+
+            <button
+                class="menu-button"
+                id="menuButton"
+                type="button"
+                aria-label="Open menu"
             >
-
-                <span>▦</span>
-
-                Dashboard
-
-            </a>
-
-
-            <a
-                href="analytics.html"
-                class="nav-link"
-            >
-
-                <span>◫</span>
-
-                Analytics
-
-            </a>
-
-
-            <a
-                href="products.html"
-                class="nav-link"
-            >
-
-                <span>□</span>
-
-                Products
-
-            </a>
-
-
-            <a
-                href="orders.html"
-                class="nav-link"
-            >
-
-                <span>◷</span>
-
-                Orders
-
-            </a>
-
-
-            <a
-                href="customers.html"
-                class="nav-link"
-            >
-
-                <span>♙</span>
-
-                Customers
-
-            </a>
-
-
-            <a
-                href="messages.html"
-                class="nav-link"
-            >
-
-                <span>✉</span>
-
-                Messages
-
-            </a>
-
-
-        </nav>
-
-
-        <div class="sidebar-bottom">
-
-
-            <a
-                href="settings.html"
-                class="nav-link active"
-            >
-
-                <span>⚙</span>
-
-                Settings
-
-            </a>
-
-
-            <a
-                href="profile.html"
-                class="nav-link"
-            >
-
-                <span>◉</span>
-
-                Profile
-
-            </a>
-
-
-        </div>
-
-
-    </aside>
-
-
-
-    <!-- =====================================================
-         MAIN CONTENT
-         ===================================================== -->
-
-    <main class="main-content">
-
-
-        <!-- =================================================
-             TOPBAR
-             ================================================= -->
-
-        <header class="topbar">
-
-
-            <div class="header-left">
-
-
-                <button
-                    class="menu-button"
-                    id="menuButton"
-                    type="button"
-                    aria-label="Open menu"
-                >
-
-                    ☰
-
-                </button>
-
-
-                <div>
-
-                    <h1>
-                        Settings
-                    </h1>
-
-                    <p>
-                        Manage your store preferences and account settings.
-                    </p>
-
-                </div>
-
-
-            </div>
-
-
-
-            <div class="header-right">
-
-
-                <!-- LANGUAGE -->
-
-                <button
-                    class="icon-button language-button"
-                    id="languageButton"
-                    type="button"
-                    data-language-button
-                    aria-label="Language"
-                    title="Language"
-                >
-
-                    文
-
-                </button>
-
-
-                <!-- NOTIFICATIONS -->
-
-                <button
-                    class="icon-button"
-                    id="notificationButton"
-                    type="button"
-                    aria-label="Notifications"
-                >
-
-                    🔔
-
-                    <span class="notification-dot"></span>
-
-                </button>
-
-
-                <!-- USER -->
-
-                <div class="user-profile">
-
-
-                    <div class="avatar">
-                        A
-                    </div>
-
-
-                    <div class="user-info">
-
-
-                        <strong>
-                            Alex Morgan
-                        </strong>
-
-
-                        <span>
-                            Administrator
-                        </span>
-
-
-                    </div>
-
-
-                </div>
-
-
-            </div>
-
-
-        </header>
-
-
-
-        <!-- =================================================
-             SETTINGS CONTENT
-             ================================================= -->
-
-        <div class="settings-container">
-
-
-
-            <!-- =================================================
-                 STORE SETTINGS
-                 ================================================= -->
-
-            <section class="dashboard-card settings-card">
-
-
-                <div class="card-header">
-
-
-                    <div>
-
-                        <h2>
-                            Store Settings
-                        </h2>
-
-                        <p>
-                            Configure your store information.
-                        </p>
-
-                    </div>
-
-
-                </div>
-
-
-
-                <div class="settings-form">
-
-
-                    <div class="form-group">
-
-
-                        <label for="storeName">
-                            Store Name
-                        </label>
-
-
-                        <input
-                            type="text"
-                            id="storeName"
-                            value="NEXORA Store"
-                        >
-
-
-                    </div>
-
-
-
-                    <div class="form-group">
-
-
-                        <label for="storeEmail">
-                            Store Email
-                        </label>
-
-
-                        <input
-                            type="email"
-                            id="storeEmail"
-                            value="admin@nexora.com"
-                        >
-
-
-                    </div>
-
-
-
-                    <div class="form-group">
-
-
-                        <label for="currency">
-                            Currency
-                        </label>
-
-
-                        <select id="currency">
-
-
-                            <option value="USD">
-                                USD — US Dollar
-                            </option>
-
-
-                            <option value="EUR">
-                                EUR — Euro
-                            </option>
-
-
-                            <option value="GBP">
-                                GBP — British Pound
-                            </option>
-
-
-                        </select>
-
-
-                    </div>
-
-
-
-                    <div class="form-group">
-
-
-                        <label for="timezone">
-                            Timezone
-                        </label>
-
-
-                        <select id="timezone">
-
-
-                            <option>
-                                UTC+01:00 — Algeria
-                            </option>
-
-
-                            <option>
-                                UTC+00:00 — London
-                            </option>
-
-
-                            <option>
-                                UTC-05:00 — New York
-                            </option>
-
-
-                            <option>
-                                UTC+01:00 — Paris
-                            </option>
-
-
-                            <option>
-                                UTC+09:00 — Tokyo
-                            </option>
-
-
-                        </select>
-
-
-                    </div>
-
-
-                </div>
-
-
-            </section>
-
-
-
-            <!-- =================================================
-                 NOTIFICATIONS
-                 ================================================= -->
-
-            <section class="dashboard-card settings-card">
-
-
-                <div class="card-header">
-
-
-                    <div>
-
-                        <h2>
-                            Notifications
-                        </h2>
-
-                        <p>
-                            Choose how you receive updates.
-                        </p>
-
-                    </div>
-
-
-                </div>
-
-
-
-                <div class="settings-options">
-
-
-                    <div class="setting-row">
-
-
-                        <div class="setting-info">
-
-
-                            <strong>
-                                New Orders
-                            </strong>
-
-
-                            <span>
-                                Get notified when a new order is placed.
-                            </span>
-
-
-                        </div>
-
-
-                        <label class="switch">
-
-
-                            <input
-                                type="checkbox"
-                                checked
-                            >
-
-
-                            <span class="slider"></span>
-
-
-                        </label>
-
-
-                    </div>
-
-
-
-                    <div class="setting-row">
-
-
-                        <div class="setting-info">
-
-
-                            <strong>
-                                New Customers
-                            </strong>
-
-
-                            <span>
-                                Receive notifications when customers register.
-                            </span>
-
-
-                        </div>
-
-
-                        <label class="switch">
-
-
-                            <input
-                                type="checkbox"
-                                checked
-                            >
-
-
-                            <span class="slider"></span>
-
-
-                        </label>
-
-
-                    </div>
-
-
-
-                    <div class="setting-row">
-
-
-                        <div class="setting-info">
-
-
-                            <strong>
-                                Customer Messages
-                            </strong>
-
-
-                            <span>
-                                Get notified when a customer sends a message.
-                            </span>
-
-
-                        </div>
-
-
-                        <label class="switch">
-
-
-                            <input
-                                type="checkbox"
-                                checked
-                            >
-
-
-                            <span class="slider"></span>
-
-
-                        </label>
-
-
-                    </div>
-
-
-
-                    <div class="setting-row">
-
-
-                        <div class="setting-info">
-
-
-                            <strong>
-                                Weekly Reports
-                            </strong>
-
-
-                            <span>
-                                Receive a weekly summary of store performance.
-                            </span>
-
-
-                        </div>
-
-
-                        <label class="switch">
-
-
-                            <input
-                                type="checkbox"
-                            >
-
-
-                            <span class="slider"></span>
-
-
-                        </label>
-
-
-                    </div>
-
-
-                </div>
-
-
-            </section>
-
-
-
-            <!-- =================================================
-                 SECURITY
-                 ================================================= -->
-
-            <section class="dashboard-card settings-card">
-
-
-                <div class="card-header">
-
-
-                    <div>
-
-                        <h2>
-                            Security
-                        </h2>
-
-                        <p>
-                            Manage your account security preferences.
-                        </p>
-
-                    </div>
-
-
-                </div>
-
-
-
-                <div class="settings-options">
-
-
-                    <div class="setting-row">
-
-
-                        <div class="setting-info">
-
-
-                            <strong>
-                                Two-Factor Authentication
-                            </strong>
-
-
-                            <span>
-                                Add an extra layer of security to your account.
-                            </span>
-
-
-                        </div>
-
-
-                        <label class="switch">
-
-
-                            <input
-                                type="checkbox"
-                                checked
-                            >
-
-
-                            <span class="slider"></span>
-
-
-                        </label>
-
-
-                    </div>
-
-
-
-                    <div class="setting-row">
-
-
-                        <div class="setting-info">
-
-
-                            <strong>
-                                Login Alerts
-                            </strong>
-
-
-                            <span>
-                                Receive an alert when a new login is detected.
-                            </span>
-
-
-                        </div>
-
-
-                        <label class="switch">
-
-
-                            <input
-                                type="checkbox"
-                                checked
-                            >
-
-
-                            <span class="slider"></span>
-
-
-                        </label>
-
-
-                    </div>
-
-
-
-                    <div class="setting-row">
-
-
-                        <div class="setting-info">
-
-
-                            <strong>
-                                Session Protection
-                            </strong>
-
-
-                            <span>
-                                Automatically secure inactive sessions.
-                            </span>
-
-
-                        </div>
-
-
-                        <label class="switch">
-
-
-                            <input
-                                type="checkbox"
-                                checked
-                            >
-
-
-                            <span class="slider"></span>
-
-
-                        </label>
-
-
-                    </div>
-
-
-                </div>
-
-
-            </section>
-
-
-
-            <!-- =================================================
-                 APPEARANCE
-                 ================================================= -->
-
-            <section class="dashboard-card settings-card">
-
-
-                <div class="card-header">
-
-
-                    <div>
-
-                        <h2>
-                            Appearance
-                        </h2>
-
-                        <p>
-                            Customize the dashboard experience.
-                        </p>
-
-                    </div>
-
-
-                </div>
-
-
-
-                <div class="settings-form">
-
-
-                    <div class="form-group">
-
-
-                        <label for="theme">
-                            Theme
-                        </label>
-
-
-                        <select id="theme">
-
-
-                            <option value="system">
-                                System Default
-                            </option>
-
-
-                            <option value="light">
-                                Light
-                            </option>
-
-
-                            <option value="dark">
-                                Dark
-                            </option>
-
-
-                        </select>
-
-
-                    </div>
-
-
-
-                    <!-- =================================================
-                         LANGUAGE SELECTOR
-                         ================================================= -->
-
-
-                    <div class="form-group">
-
-
-                        <label for="languageSelect">
-                            Language
-                        </label>
-
-
-                        <select
-                            id="languageSelect"
-                            data-language-select
-                        >
-
-
-                            <option value="en">
-                                English
-                            </option>
-
-
-                            <option value="ar">
-                                العربية
-                            </option>
-
-
-                            <option value="fr">
-                                Français
-                            </option>
-
-
-                            <option value="es">
-                                Español
-                            </option>
-
-
-                            <option value="de">
-                                Deutsch
-                            </option>
-
-
-                            <option value="it">
-                                Italiano
-                            </option>
-
-
-                            <option value="pt">
-                                Português
-                            </option>
-
-
-                            <option value="ru">
-                                Русский
-                            </option>
-
-
-                            <option value="ja">
-                                日本語
-                            </option>
-
-
-                            <option value="ko">
-                                한국어
-                            </option>
-
-
-                            <option value="zh-CN">
-                                简体中文
-                            </option>
-
-
-                            <option value="tr">
-                                Türkçe
-                            </option>
-
-
-                            <option value="nl">
-                                Nederlands
-                            </option>
-
-
-                            <option value="pl">
-                                Polski
-                            </option>
-
-
-                            <option value="uk">
-                                Українська
-                            </option>
-
-
-                            <option value="sv">
-                                Svenska
-                            </option>
-
-
-                            <option value="el">
-                                Ελληνικά
-                            </option>
-
-
-                            <option value="he">
-                                עברית
-                            </option>
-
-
-                            <option value="hi">
-                                हिन्दी
-                            </option>
-
-
-                            <option value="id">
-                                Bahasa Indonesia
-                            </option>
-
-
-                            <option value="vi">
-                                Tiếng Việt
-                            </option>
-
-
-                        </select>
-
-
-                    </div>
-
-
-                </div>
-
-
-            </section>
-
-
-
-            <!-- =================================================
-                 SAVE BUTTONS
-                 ================================================= -->
-
-            <div class="settings-actions">
-
-
-                <button
-                    type="button"
-                    class="secondary-button"
-                    id="cancelSettings"
-                >
-
-                    Cancel
-
-                </button>
-
-
-                <button
-                    type="button"
-                    class="primary-button"
-                    id="saveSettings"
-                >
-
-                    Save Changes
-
-                </button>
-
-
-            </div>
-
-
-        </div>
-
-
-
-        <!-- =================================================
-             FOOTER
-             ================================================= -->
-
-        <footer class="footer">
-
-
-            <span>
-                © 2026 NEXORA. All rights reserved.
-            </span>
+                ☰
+            </button>
 
 
             <div>
 
+                <h1>
+                    Settings
+                </h1>
 
-                <a href="#">
-                    Documentation
+                <p>
+                    Manage your dashboard preferences.
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="header-right">
+
+
+            <!-- LANGUAGE -->
+
+            <button
+                class="icon-button language-button"
+                id="languageButton"
+                type="button"
+                data-language-button
+                aria-label="Language"
+                title="Language"
+            >
+                文
+            </button>
+
+
+
+            <!-- NOTIFICATIONS -->
+
+            <button
+                class="icon-button"
+                id="notificationButton"
+                type="button"
+                aria-label="Notifications"
+            >
+
+                🔔
+
+                <span class="notification-dot"></span>
+
+            </button>
+
+
+
+            <!-- USER PROFILE -->
+
+            <a
+                href="profile.html"
+                class="user-profile"
+                title="Open profile"
+            >
+
+
+                <div class="avatar">
+                    A
+                </div>
+
+
+                <div class="user-info">
+
+                    <strong>
+                        Alex Morgan
+                    </strong>
+
+                    <span>
+                        Administrator
+                    </span>
+
+                </div>
+
+
+            </a>
+
+
+        </div>
+
+
+    </header>
+
+
+
+    <!-- =================================================
+         SETTINGS GRID
+         ================================================= -->
+
+    <section class="settings-layout">
+
+
+
+        <!-- =============================================
+             APPEARANCE
+             ============================================= -->
+
+        <article class="dashboard-card settings-card">
+
+
+            <div class="card-header">
+
+                <div>
+
+                    <h2>
+                        Appearance
+                    </h2>
+
+                    <p>
+                        Customize how NEXORA looks.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="settings-content">
+
+
+                <div class="setting-row">
+
+
+                    <div class="setting-info">
+
+                        <strong>
+                            Theme
+                        </strong>
+
+                        <span>
+                            Choose your preferred appearance.
+                        </span>
+
+                    </div>
+
+
+                    <select
+                        data-theme-select
+                        aria-label="Theme"
+                    >
+
+                        <option value="system">
+                            System Default
+                        </option>
+
+                        <option value="light">
+                            Light Mode
+                        </option>
+
+                        <option value="dark">
+                            Dark Mode
+                        </option>
+
+                    </select>
+
+
+                </div>
+
+
+
+                <div class="theme-buttons">
+
+
+                    <button
+                        type="button"
+                        class="theme-option-button"
+                        data-theme="light"
+                    >
+
+                        ☀
+
+                        <span>
+                            Light
+                        </span>
+
+                    </button>
+
+
+
+                    <button
+                        type="button"
+                        class="theme-option-button"
+                        data-theme="dark"
+                    >
+
+                        ☾
+
+                        <span>
+                            Dark
+                        </span>
+
+                    </button>
+
+
+
+                    <button
+                        type="button"
+                        class="theme-option-button"
+                        data-theme="system"
+                    >
+
+                        ◉
+
+                        <span>
+                            System
+                        </span>
+
+                    </button>
+
+
+                </div>
+
+
+            </div>
+
+
+        </article>
+
+
+
+        <!-- =============================================
+             LANGUAGE
+             ============================================= -->
+
+        <article class="dashboard-card settings-card">
+
+
+            <div class="card-header">
+
+                <div>
+
+                    <h2>
+                        Language
+                    </h2>
+
+                    <p>
+                        Select your preferred dashboard language.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="settings-content">
+
+
+                <div class="setting-row">
+
+
+                    <div class="setting-info">
+
+                        <strong>
+                            Current Language
+                        </strong>
+
+                        <span>
+                            The selected language is saved automatically.
+                        </span>
+
+                    </div>
+
+
+                    <select
+                        data-language-select
+                        aria-label="Language"
+                    >
+
+                        <option value="en">
+                            English
+                        </option>
+
+                        <option value="ar">
+                            العربية
+                        </option>
+
+                        <option value="fr">
+                            Français
+                        </option>
+
+                        <option value="es">
+                            Español
+                        </option>
+
+                        <option value="de">
+                            Deutsch
+                        </option>
+
+                        <option value="it">
+                            Italiano
+                        </option>
+
+                        <option value="pt">
+                            Português
+                        </option>
+
+                        <option value="ru">
+                            Русский
+                        </option>
+
+                        <option value="ja">
+                            日本語
+                        </option>
+
+                        <option value="ko">
+                            한국어
+                        </option>
+
+                        <option value="zh-CN">
+                            简体中文
+                        </option>
+
+                        <option value="tr">
+                            Türkçe
+                        </option>
+
+                        <option value="nl">
+                            Nederlands
+                        </option>
+
+                        <option value="pl">
+                            Polski
+                        </option>
+
+                        <option value="uk">
+                            Українська
+                        </option>
+
+                        <option value="sv">
+                            Svenska
+                        </option>
+
+                        <option value="el">
+                            Ελληνικά
+                        </option>
+
+                        <option value="he">
+                            עברית
+                        </option>
+
+                        <option value="hi">
+                            हिन्दी
+                        </option>
+
+                        <option value="id">
+                            Bahasa Indonesia
+                        </option>
+
+                        <option value="vi">
+                            Tiếng Việt
+                        </option>
+
+                    </select>
+
+
+                </div>
+
+
+
+                <!-- هذا القسم يولده script.js تلقائياً -->
+
+                <div
+                    class="settings-language-list"
+                    data-language-list
+                ></div>
+
+
+            </div>
+
+
+        </article>
+
+
+
+        <!-- =============================================
+             ACCOUNT
+             ============================================= -->
+
+        <article class="dashboard-card settings-card">
+
+
+            <div class="card-header">
+
+                <div>
+
+                    <h2>
+                        Account
+                    </h2>
+
+                    <p>
+                        Manage your account preferences.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="settings-content">
+
+
+                <div class="setting-row">
+
+                    <div class="setting-info">
+
+                        <strong>
+                            Profile
+                        </strong>
+
+                        <span>
+                            Update your personal information.
+                        </span>
+
+                    </div>
+
+
+                    <a
+                        href="profile.html"
+                        class="settings-action-button"
+                    >
+                        Manage Profile
+                    </a>
+
+
+                </div>
+
+
+
+                <div class="setting-row">
+
+                    <div class="setting-info">
+
+                        <strong>
+                            Notifications
+                        </strong>
+
+                        <span>
+                            Manage notification preferences.
+                        </span>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="settings-action-button"
+                        id="settingsNotificationButton"
+                    >
+                        View Notifications
+                    </button>
+
+
+                </div>
+
+
+            </div>
+
+
+        </article>
+
+
+
+        <!-- =============================================
+             DASHBOARD
+             ============================================= -->
+
+        <article class="dashboard-card settings-card">
+
+
+            <div class="card-header">
+
+                <div>
+
+                    <h2>
+                        Dashboard
+                    </h2>
+
+                    <p>
+                        Quick access to your workspace.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="settings-content settings-links">
+
+
+                <a
+                    href="../index.html"
+                    class="settings-link"
+                >
+
+                    <span>
+                        ▦
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Dashboard
+                        </strong>
+
+                        <small>
+                            View your overview
+                        </small>
+
+                    </div>
+
                 </a>
 
 
-                <a href="#">
-                    Support
+
+                <a
+                    href="analytics.html"
+                    class="settings-link"
+                >
+
+                    <span>
+                        ◫
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Analytics
+                        </strong>
+
+                        <small>
+                            Explore your performance
+                        </small>
+
+                    </div>
+
+                </a>
+
+
+
+                <a
+                    href="orders.html"
+                    class="settings-link"
+                >
+
+                    <span>
+                        ◷
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Orders
+                        </strong>
+
+                        <small>
+                            Manage customer orders
+                        </small>
+
+                    </div>
+
                 </a>
 
 
             </div>
 
 
-        </footer>
+        </article>
 
 
-    </main>
+    </section>
 
 
 
-    <!-- =====================================================
-         NOTIFICATION PANEL
-         ===================================================== -->
+    <!-- =================================================
+         FOOTER
+         ================================================= -->
 
-    <div
-        class="notification-panel"
-        id="notificationPanel"
-    >
+    <footer class="footer">
 
 
-        <div class="notification-header">
+        <span>
+            © 2026 NEXORA. All rights reserved.
+        </span>
 
 
-            <h3>
-                Notifications
-            </h3>
+        <div>
 
+            <a href="../index.html">
+                Dashboard
+            </a>
 
-            <button
-                id="closeNotifications"
-                type="button"
-                aria-label="Close notifications"
-            >
-
-                ×
-
-            </button>
-
+            <a href="profile.html">
+                Profile
+            </a>
 
         </div>
 
 
-        <div class="notification-content">
+    </footer>
 
 
-            <p>
-                You have 3 new notifications.
-            </p>
+</main>
 
+
+
+<!-- =====================================================
+     NOTIFICATION PANEL
+     ===================================================== -->
+
+<div
+    class="notification-panel"
+    id="notificationPanel"
+>
+
+
+    <div class="notification-header">
+
+
+        <h3>
+            Notifications
+        </h3>
+
+
+        <button
+            id="closeNotifications"
+            type="button"
+            aria-label="Close notifications"
+        >
+            ×
+        </button>
+
+
+    </div>
+
+
+
+    <div class="notification-content">
+
+
+        <div class="notification-item">
+
+            <strong>
+                New order received
+            </strong>
+
+            <span>
+                Order #NX-10284 was successfully placed.
+            </span>
+
+        </div>
+
+
+        <div class="notification-item">
+
+            <strong>
+                Sales increased
+            </strong>
+
+            <span>
+                Your sales increased by 12.8% this month.
+            </span>
+
+        </div>
+
+
+        <div class="notification-item">
+
+            <strong>
+                New customer
+            </strong>
+
+            <span>
+                A new customer joined your store.
+            </span>
 
         </div>
 
@@ -1080,24 +846,140 @@
     </div>
 
 
-
-    <!-- =====================================================
-         GOOGLE TRANSLATE
-         ===================================================== -->
-
-    <div
-        id="google_translate_element"
-        style="display:none;"
-    ></div>
+</div>
 
 
 
-    <!-- =====================================================
-         NEXORA SCRIPT
-         ===================================================== -->
+<!-- =====================================================
+     NEXORA MASTER SCRIPT
+     ===================================================== -->
 
-    <script src="../js/script.js"></script>
+<script
+    src="../js/script.js"
+></script>
 
+
+
+<!-- =====================================================
+     SETTINGS EXTRA ACTIONS
+     ===================================================== -->
+
+<script>
+
+    document.addEventListener(
+
+        "DOMContentLoaded",
+
+        function () {
+
+
+            const notificationButton =
+
+                document.getElementById(
+
+                    "settingsNotificationButton"
+
+                );
+
+
+            const mainNotificationButton =
+
+                document.getElementById(
+
+                    "notificationButton"
+
+                );
+
+
+            if (
+
+                notificationButton &&
+
+                mainNotificationButton
+
+            ) {
+
+                notificationButton.addEventListener(
+
+                    "click",
+
+                    function () {
+
+                        mainNotificationButton.click();
+
+                    }
+
+                );
+
+            }
+
+
+            document
+
+                .querySelectorAll(
+
+                    ".theme-option-button"
+
+                )
+
+                .forEach(
+
+                    function (button) {
+
+
+                        button.addEventListener(
+
+                            "click",
+
+                            function () {
+
+
+                                document
+
+                                    .querySelectorAll(
+
+                                        ".theme-option-button"
+
+                                    )
+
+                                    .forEach(
+
+                                        function (item) {
+
+                                            item.classList.remove(
+
+                                                "active"
+
+                                            );
+
+                                        }
+
+                                    );
+
+
+                                button.classList.add(
+
+                                    "active"
+
+                                );
+
+
+                            }
+
+                        );
+
+
+                    }
+
+                );
+
+
+        }
+
+    );
+
+</script>
+```
 
 </body>
 
