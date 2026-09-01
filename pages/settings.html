@@ -191,7 +191,6 @@
             </button>
 
 
-
             <!-- NOTIFICATIONS -->
 
             <button
@@ -200,13 +199,10 @@
                 type="button"
                 aria-label="Notifications"
             >
-
                 🔔
 
                 <span class="notification-dot"></span>
-
             </button>
-
 
 
             <!-- USER PROFILE -->
@@ -216,7 +212,6 @@
                 class="user-profile"
                 title="Open profile"
             >
-
 
                 <div class="avatar">
                     A
@@ -235,7 +230,6 @@
 
                 </div>
 
-
             </a>
 
 
@@ -247,11 +241,10 @@
 
 
     <!-- =================================================
-         SETTINGS GRID
+         SETTINGS
          ================================================= -->
 
     <section class="settings-layout">
-
 
 
         <!-- =============================================
@@ -276,7 +269,6 @@
                 </div>
 
             </div>
-
 
 
             <div class="settings-content">
@@ -330,13 +322,8 @@
                         class="theme-option-button"
                         data-theme="light"
                     >
-
                         ☀
-
-                        <span>
-                            Light
-                        </span>
-
+                        <span>Light</span>
                     </button>
 
 
@@ -346,13 +333,8 @@
                         class="theme-option-button"
                         data-theme="dark"
                     >
-
                         ☾
-
-                        <span>
-                            Dark
-                        </span>
-
+                        <span>Dark</span>
                     </button>
 
 
@@ -362,13 +344,8 @@
                         class="theme-option-button"
                         data-theme="system"
                     >
-
                         ◉
-
-                        <span>
-                            System
-                        </span>
-
+                        <span>System</span>
                     </button>
 
 
@@ -384,6 +361,8 @@
 
         <!-- =============================================
              LANGUAGE
+             IMPORTANT:
+             SCRIPT.JS GENERATES ALL 21 LANGUAGES HERE
              ============================================= -->
 
         <article class="dashboard-card settings-card">
@@ -406,7 +385,6 @@
             </div>
 
 
-
             <div class="settings-content">
 
 
@@ -420,109 +398,25 @@
                         </strong>
 
                         <span>
-                            The selected language is saved automatically.
+                            Your language selection is saved automatically.
                         </span>
 
                     </div>
 
 
-                    <select
-                        data-language-select
-                        aria-label="Language"
+                    <strong
+                        class="current-language-display"
+                        data-current-language
                     >
-
-                        <option value="en">
-                            English
-                        </option>
-
-                        <option value="ar">
-                            العربية
-                        </option>
-
-                        <option value="fr">
-                            Français
-                        </option>
-
-                        <option value="es">
-                            Español
-                        </option>
-
-                        <option value="de">
-                            Deutsch
-                        </option>
-
-                        <option value="it">
-                            Italiano
-                        </option>
-
-                        <option value="pt">
-                            Português
-                        </option>
-
-                        <option value="ru">
-                            Русский
-                        </option>
-
-                        <option value="ja">
-                            日本語
-                        </option>
-
-                        <option value="ko">
-                            한국어
-                        </option>
-
-                        <option value="zh-CN">
-                            简体中文
-                        </option>
-
-                        <option value="tr">
-                            Türkçe
-                        </option>
-
-                        <option value="nl">
-                            Nederlands
-                        </option>
-
-                        <option value="pl">
-                            Polski
-                        </option>
-
-                        <option value="uk">
-                            Українська
-                        </option>
-
-                        <option value="sv">
-                            Svenska
-                        </option>
-
-                        <option value="el">
-                            Ελληνικά
-                        </option>
-
-                        <option value="he">
-                            עברית
-                        </option>
-
-                        <option value="hi">
-                            हिन्दी
-                        </option>
-
-                        <option value="id">
-                            Bahasa Indonesia
-                        </option>
-
-                        <option value="vi">
-                            Tiếng Việt
-                        </option>
-
-                    </select>
+                        English
+                    </strong>
 
 
                 </div>
 
 
 
-                <!-- هذا القسم يولده script.js تلقائياً -->
+                <!-- ALL 21 LANGUAGES ARE GENERATED BY SCRIPT.JS -->
 
                 <div
                     class="settings-language-list"
@@ -561,11 +455,11 @@
             </div>
 
 
-
             <div class="settings-content">
 
 
                 <div class="setting-row">
+
 
                     <div class="setting-info">
 
@@ -594,6 +488,7 @@
 
                 <div class="setting-row">
 
+
                     <div class="setting-info">
 
                         <strong>
@@ -601,7 +496,7 @@
                         </strong>
 
                         <span>
-                            Manage notification preferences.
+                            View your latest dashboard notifications.
                         </span>
 
                     </div>
@@ -627,7 +522,7 @@
 
 
         <!-- =============================================
-             DASHBOARD
+             QUICK ACCESS
              ============================================= -->
 
         <article class="dashboard-card settings-card">
@@ -638,17 +533,16 @@
                 <div>
 
                     <h2>
-                        Dashboard
+                        Quick Access
                     </h2>
 
                     <p>
-                        Quick access to your workspace.
+                        Navigate quickly through your workspace.
                     </p>
 
                 </div>
 
             </div>
-
 
 
             <div class="settings-content settings-links">
@@ -663,6 +557,7 @@
                         ▦
                     </span>
 
+
                     <div>
 
                         <strong>
@@ -670,7 +565,7 @@
                         </strong>
 
                         <small>
-                            View your overview
+                            View your dashboard overview
                         </small>
 
                     </div>
@@ -687,6 +582,7 @@
                     <span>
                         ◫
                     </span>
+
 
                     <div>
 
@@ -705,6 +601,32 @@
 
 
                 <a
+                    href="products.html"
+                    class="settings-link"
+                >
+
+                    <span>
+                        □
+                    </span>
+
+
+                    <div>
+
+                        <strong>
+                            Products
+                        </strong>
+
+                        <small>
+                            Manage your products
+                        </small>
+
+                    </div>
+
+                </a>
+
+
+
+                <a
                     href="orders.html"
                     class="settings-link"
                 >
@@ -712,6 +634,7 @@
                     <span>
                         ◷
                     </span>
+
 
                     <div>
 
@@ -756,6 +679,7 @@
                 Dashboard
             </a>
 
+
             <a href="profile.html">
                 Profile
             </a>
@@ -771,7 +695,7 @@
 
 
 <!-- =====================================================
-     NOTIFICATION PANEL
+     NOTIFICATIONS
      ===================================================== -->
 
 <div
@@ -817,6 +741,7 @@
         </div>
 
 
+
         <div class="notification-item">
 
             <strong>
@@ -828,6 +753,7 @@
             </span>
 
         </div>
+
 
 
         <div class="notification-item">
@@ -851,7 +777,7 @@
 
 
 <!-- =====================================================
-     NEXORA MASTER SCRIPT
+     MASTER JAVASCRIPT
      ===================================================== -->
 
 <script
@@ -861,10 +787,11 @@
 
 
 <!-- =====================================================
-     SETTINGS EXTRA ACTIONS
+     SETTINGS EXTRA FUNCTIONS
      ===================================================== -->
 
 <script>
+
 
     document.addEventListener(
 
@@ -873,39 +800,35 @@
         function () {
 
 
-            const notificationButton =
+            const settingsNotificationButton =
 
                 document.getElementById(
-
                     "settingsNotificationButton"
-
                 );
 
 
-            const mainNotificationButton =
+            const notificationButton =
 
                 document.getElementById(
-
                     "notificationButton"
-
                 );
 
 
             if (
 
-                notificationButton &&
+                settingsNotificationButton &&
 
-                mainNotificationButton
+                notificationButton
 
             ) {
 
-                notificationButton.addEventListener(
+                settingsNotificationButton.addEventListener(
 
                     "click",
 
                     function () {
 
-                        mainNotificationButton.click();
+                        notificationButton.click();
 
                     }
 
@@ -917,9 +840,7 @@
             document
 
                 .querySelectorAll(
-
                     ".theme-option-button"
-
                 )
 
                 .forEach(
@@ -937,9 +858,7 @@
                                 document
 
                                     .querySelectorAll(
-
                                         ".theme-option-button"
-
                                     )
 
                                     .forEach(
@@ -947,9 +866,7 @@
                                         function (item) {
 
                                             item.classList.remove(
-
                                                 "active"
-
                                             );
 
                                         }
@@ -958,9 +875,7 @@
 
 
                                 button.classList.add(
-
                                     "active"
-
                                 );
 
 
@@ -977,6 +892,7 @@
         }
 
     );
+
 
 </script>
 ```
