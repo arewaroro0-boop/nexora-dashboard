@@ -1,1548 +1,1612 @@
-document.addEventListener("DOMContentLoaded", () => {
+```javascript
+/* =========================================================
+   NEXORA — Professional Dashboard Controller
+   Version 2.0
+   ========================================================= */
 
-    /* =========================================
-       NEXORA — GLOBAL APPLICATION
-    ========================================= */
+(() => {
+    "use strict";
 
-    const body = document.body;
-    const sidebar = document.querySelector(".sidebar");
+    /* =========================================================
+       1. GLOBAL CONFIGURATION
+       ========================================================= */
 
-    let currentLanguage = localStorage.getItem("nexoraLanguage") || "en";
-    let currentTheme = localStorage.getItem("nexoraTheme") || "light";
+    const STORAGE = {
+        language: "nexora_language",
+        theme: "nexora_theme",
+        notifications: "nexora_notifications"
+    };
 
-
-    /* =========================================
-       TRANSLATIONS
-    ========================================= */
+    const LANGUAGES = {
+        en: { name: "English", flag: "🇬🇧", dir: "ltr" },
+        ar: { name: "العربية", flag: "🇸🇦", dir: "rtl" },
+        fr: { name: "Français", flag: "🇫🇷", dir: "ltr" },
+        es: { name: "Español", flag: "🇪🇸", dir: "ltr" },
+        de: { name: "Deutsch", flag: "🇩🇪", dir: "ltr" },
+        it: { name: "Italiano", flag: "🇮🇹", dir: "ltr" },
+        pt: { name: "Português", flag: "🇵🇹", dir: "ltr" },
+        ru: { name: "Русский", flag: "🇷🇺", dir: "ltr" },
+        zh: { name: "中文", flag: "🇨🇳", dir: "ltr" },
+        ja: { name: "日本語", flag: "🇯🇵", dir: "ltr" },
+        ko: { name: "한국어", flag: "🇰🇷", dir: "ltr" },
+        tr: { name: "Türkçe", flag: "🇹🇷", dir: "ltr" },
+        nl: { name: "Nederlands", flag: "🇳🇱", dir: "ltr" },
+        pl: { name: "Polski", flag: "🇵🇱", dir: "ltr" },
+        sv: { name: "Svenska", flag: "🇸🇪", dir: "ltr" },
+        hi: { name: "हिन्दी", flag: "🇮🇳", dir: "ltr" },
+        id: { name: "Bahasa Indonesia", flag: "🇮🇩", dir: "ltr" },
+        vi: { name: "Tiếng Việt", flag: "🇻🇳", dir: "ltr" },
+        th: { name: "ไทย", flag: "🇹🇭", dir: "ltr" },
+        el: { name: "Ελληνικά", flag: "🇬🇷", dir: "ltr" },
+        uk: { name: "Українська", flag: "🇺🇦", dir: "ltr" }
+    };
 
     const translations = {
 
         en: {
-
-            Dashboard: "Dashboard",
-            Analytics: "Analytics",
-            Products: "Products",
-            Orders: "Orders",
-            Customers: "Customers",
-            Messages: "Messages",
-            Settings: "Settings",
-            Profile: "Profile",
-            Administrator: "Administrator",
-
-            "Welcome back! Here's what's happening today.":
-                "Welcome back! Here's what's happening today.",
-
-            "Track your business performance and growth.":
-                "Track your business performance and growth.",
-
-            "Manage your products, inventory and pricing.":
-                "Manage your products, inventory and pricing.",
-
-            "Track and manage your customer orders.":
-                "Track and manage your customer orders.",
-
-            "Revenue": "Revenue",
-            "Total Revenue": "Total Revenue",
-            "Total Orders": "Total Orders",
-            "Customers": "Customers",
-            "Conversion Rate": "Conversion Rate",
-
-            "Revenue Overview":
-                "Revenue Overview",
-
-            "Your revenue performance over the last 7 months.":
-                "Your revenue performance over the last 7 months.",
-
-            "Recent Activity":
-                "Recent Activity",
-
-            "Latest activity from your store.":
-                "Latest activity from your store.",
-
-            "Recent Orders":
-                "Recent Orders",
-
-            "Track your latest customer orders.":
-                "Track your latest customer orders.",
-
-            "View all": "View all",
-            "View all orders →": "View all orders →",
-            "View products →": "View products →",
-
-            "Sales Performance":
-                "Sales Performance",
-
-            "Monthly revenue performance.":
-                "Monthly revenue performance.",
-
-            "Traffic Sources":
-                "Traffic Sources",
-
-            "Where your customers come from.":
-                "Where your customers come from.",
-
-            "Top Products":
-                "Top Products",
-
-            "Best performing products this month.":
-                "Best performing products this month.",
-
-            "Product Catalog":
-                "Product Catalog",
-
-            "Manage your products and inventory.":
-                "Manage your products and inventory.",
-
-            "+ Add Product":
-                "+ Add Product",
-
-            "Inventory Status":
-                "Inventory Status",
-
-            "Current inventory overview.":
-                "Current inventory overview.",
-
-            "Categories":
-                "Categories",
-
-            "Products by category.":
-                "Products by category.",
-
-            "Order Status":
-                "Order Status",
-
-            "Current order distribution.":
-                "Current order distribution.",
-
-            "Order Insights":
-                "Order Insights",
-
-            "Quick overview of sales activity.":
-                "Quick overview of sales activity.",
-
-            "Notifications":
-                "Notifications",
-
-            "You have 3 new notifications.":
-                "You have 3 new notifications.",
-
-            "Documentation":
-                "Documentation",
-
-            "Support":
-                "Support",
-
-            "Completed":
-                "Completed",
-
-            "Processing":
-                "Processing",
-
-            "Pending":
-                "Pending",
-
-            "In Stock":
-                "In Stock",
-
-            "Low Stock":
-                "Low Stock",
-
-            "Out of Stock":
-                "Out of Stock",
-
-            "Electronics":
-                "Electronics",
-
-            "Accessories":
-                "Accessories",
-
-            "Home & Lifestyle":
-                "Home & Lifestyle",
-
-            "Organic Search":
-                "Organic Search",
-
-            "Social Media":
-                "Social Media",
-
-            "Referral":
-                "Referral",
-
-            "Direct":
-                "Direct",
-
-            "Wireless Headphones":
-                "Wireless Headphones",
-
-            "Smart Watch Pro":
-                "Smart Watch Pro",
-
-            "Premium Backpack":
-                "Premium Backpack",
-
-            "Mechanical Keyboard":
-                "Mechanical Keyboard",
-
-            "USB-C Hub":
-                "USB-C Hub",
-
-            "All Orders":
-                "All Orders",
-
-            "Last 7 months":
-                "Last 7 months",
-
-            "Last 30 days":
-                "Last 30 days",
-
-            "Last 12 months":
-                "Last 12 months"
-
+            dashboard: "Dashboard",
+            analytics: "Analytics",
+            products: "Products",
+            orders: "Orders",
+            customers: "Customers",
+            messages: "Messages",
+            settings: "Settings",
+            profile: "Profile",
+            notifications: "Notifications",
+            close: "Close",
+            search: "Search",
+            save: "Save Changes",
+            cancel: "Cancel",
+            add: "Add",
+            edit: "Edit",
+            delete: "Delete",
+            viewAll: "View all",
+            allOrders: "All Orders",
+            completed: "Completed",
+            processing: "Processing",
+            pending: "Pending",
+            inStock: "In Stock",
+            lowStock: "Low Stock",
+            outOfStock: "Out of Stock",
+            totalRevenue: "Total Revenue",
+            totalOrders: "Total Orders",
+            customersCount: "Customers",
+            conversionRate: "Conversion Rate",
+            language: "Language",
+            theme: "Theme",
+            light: "Light",
+            dark: "Dark",
+            system: "System"
         },
 
         ar: {
+            dashboard: "لوحة التحكم",
+            analytics: "التحليلات",
+            products: "المنتجات",
+            orders: "الطلبات",
+            customers: "العملاء",
+            messages: "الرسائل",
+            settings: "الإعدادات",
+            profile: "الملف الشخصي",
+            notifications: "الإشعارات",
+            close: "إغلاق",
+            search: "بحث",
+            save: "حفظ التغييرات",
+            cancel: "إلغاء",
+            add: "إضافة",
+            edit: "تعديل",
+            delete: "حذف",
+            viewAll: "عرض الكل",
+            allOrders: "كل الطلبات",
+            completed: "مكتمل",
+            processing: "قيد المعالجة",
+            pending: "معلّق",
+            inStock: "متوفر",
+            lowStock: "مخزون منخفض",
+            outOfStock: "نفد المخزون",
+            totalRevenue: "إجمالي الإيرادات",
+            totalOrders: "إجمالي الطلبات",
+            customersCount: "العملاء",
+            conversionRate: "معدل التحويل",
+            language: "اللغة",
+            theme: "المظهر",
+            light: "فاتح",
+            dark: "داكن",
+            system: "النظام"
+        },
 
-            Dashboard: "لوحة التحكم",
-            Analytics: "التحليلات",
-            Products: "المنتجات",
-            Orders: "الطلبات",
-            Customers: "العملاء",
-            Messages: "الرسائل",
-            Settings: "الإعدادات",
-            Profile: "الملف الشخصي",
-            Administrator: "مسؤول",
+        fr: {
+            dashboard: "Tableau de bord",
+            analytics: "Analytique",
+            products: "Produits",
+            orders: "Commandes",
+            customers: "Clients",
+            messages: "Messages",
+            settings: "Paramètres",
+            profile: "Profil",
+            notifications: "Notifications",
+            close: "Fermer",
+            search: "Rechercher",
+            save: "Enregistrer",
+            cancel: "Annuler",
+            add: "Ajouter",
+            edit: "Modifier",
+            delete: "Supprimer",
+            viewAll: "Voir tout",
+            completed: "Terminée",
+            processing: "En traitement",
+            pending: "En attente",
+            inStock: "En stock",
+            lowStock: "Stock faible",
+            outOfStock: "Rupture de stock",
+            language: "Langue",
+            theme: "Thème",
+            light: "Clair",
+            dark: "Sombre",
+            system: "Système"
+        },
 
-            "Welcome back! Here's what's happening today.":
-                "مرحبًا بعودتك! إليك ما يحدث اليوم.",
+        es: {
+            dashboard: "Panel",
+            analytics: "Analítica",
+            products: "Productos",
+            orders: "Pedidos",
+            customers: "Clientes",
+            messages: "Mensajes",
+            settings: "Configuración",
+            profile: "Perfil",
+            notifications: "Notificaciones",
+            close: "Cerrar",
+            search: "Buscar",
+            save: "Guardar cambios",
+            cancel: "Cancelar",
+            add: "Añadir",
+            edit: "Editar",
+            delete: "Eliminar",
+            viewAll: "Ver todo",
+            completed: "Completado",
+            processing: "Procesando",
+            pending: "Pendiente",
+            inStock: "En stock",
+            lowStock: "Stock bajo",
+            outOfStock: "Agotado",
+            language: "Idioma",
+            theme: "Tema",
+            light: "Claro",
+            dark: "Oscuro",
+            system: "Sistema"
+        },
 
-            "Track your business performance and growth.":
-                "تابع أداء عملك ونموه.",
+        de: {
+            dashboard: "Dashboard",
+            analytics: "Analysen",
+            products: "Produkte",
+            orders: "Bestellungen",
+            customers: "Kunden",
+            messages: "Nachrichten",
+            settings: "Einstellungen",
+            profile: "Profil",
+            notifications: "Benachrichtigungen",
+            close: "Schließen",
+            search: "Suchen",
+            save: "Änderungen speichern",
+            cancel: "Abbrechen",
+            add: "Hinzufügen",
+            edit: "Bearbeiten",
+            delete: "Löschen",
+            viewAll: "Alle anzeigen",
+            completed: "Abgeschlossen",
+            processing: "In Bearbeitung",
+            pending: "Ausstehend",
+            inStock: "Auf Lager",
+            lowStock: "Niedriger Bestand",
+            outOfStock: "Nicht verfügbar",
+            language: "Sprache",
+            theme: "Design",
+            light: "Hell",
+            dark: "Dunkel",
+            system: "System"
+        },
 
-            "Manage your products, inventory and pricing.":
-                "إدارة منتجاتك ومخزونك وأسعارك.",
+        it: {
+            dashboard: "Dashboard",
+            analytics: "Analisi",
+            products: "Prodotti",
+            orders: "Ordini",
+            customers: "Clienti",
+            messages: "Messaggi",
+            settings: "Impostazioni",
+            profile: "Profilo",
+            notifications: "Notifiche",
+            close: "Chiudi",
+            search: "Cerca",
+            save: "Salva modifiche",
+            cancel: "Annulla",
+            add: "Aggiungi",
+            edit: "Modifica",
+            delete: "Elimina",
+            viewAll: "Visualizza tutto",
+            completed: "Completato",
+            processing: "In elaborazione",
+            pending: "In attesa",
+            inStock: "Disponibile",
+            lowStock: "Scorte basse",
+            outOfStock: "Esaurito",
+            language: "Lingua",
+            theme: "Tema",
+            light: "Chiaro",
+            dark: "Scuro",
+            system: "Sistema"
+        },
 
-            "Track and manage your customer orders.":
-                "تتبع وإدارة طلبات عملائك.",
+        pt: {
+            dashboard: "Painel",
+            analytics: "Análises",
+            products: "Produtos",
+            orders: "Pedidos",
+            customers: "Clientes",
+            messages: "Mensagens",
+            settings: "Configurações",
+            profile: "Perfil",
+            notifications: "Notificações",
+            close: "Fechar",
+            search: "Pesquisar",
+            save: "Salvar alterações",
+            cancel: "Cancelar",
+            add: "Adicionar",
+            edit: "Editar",
+            delete: "Excluir",
+            viewAll: "Ver tudo",
+            completed: "Concluído",
+            processing: "Processando",
+            pending: "Pendente",
+            inStock: "Em estoque",
+            lowStock: "Estoque baixo",
+            outOfStock: "Fora de estoque",
+            language: "Idioma",
+            theme: "Tema",
+            light: "Claro",
+            dark: "Escuro",
+            system: "Sistema"
+        },
 
-            "Revenue": "الإيرادات",
-            "Total Revenue": "إجمالي الإيرادات",
-            "Total Orders": "إجمالي الطلبات",
-            "Customers": "العملاء",
-            "Conversion Rate": "معدل التحويل",
+        ru: {
+            dashboard: "Панель управления",
+            analytics: "Аналитика",
+            products: "Товары",
+            orders: "Заказы",
+            customers: "Клиенты",
+            messages: "Сообщения",
+            settings: "Настройки",
+            profile: "Профиль",
+            notifications: "Уведомления",
+            close: "Закрыть",
+            search: "Поиск",
+            save: "Сохранить",
+            cancel: "Отмена",
+            add: "Добавить",
+            edit: "Изменить",
+            delete: "Удалить",
+            viewAll: "Показать все",
+            completed: "Завершено",
+            processing: "В обработке",
+            pending: "Ожидает",
+            inStock: "В наличии",
+            lowStock: "Мало товара",
+            outOfStock: "Нет в наличии",
+            language: "Язык",
+            theme: "Тема",
+            light: "Светлая",
+            dark: "Темная",
+            system: "Система"
+        },
 
-            "Revenue Overview":
-                "نظرة عامة على الإيرادات",
+        zh: {
+            dashboard: "仪表板",
+            analytics: "分析",
+            products: "产品",
+            orders: "订单",
+            customers: "客户",
+            messages: "消息",
+            settings: "设置",
+            profile: "个人资料",
+            notifications: "通知",
+            close: "关闭",
+            search: "搜索",
+            save: "保存更改",
+            cancel: "取消",
+            add: "添加",
+            edit: "编辑",
+            delete: "删除",
+            viewAll: "查看全部",
+            completed: "已完成",
+            processing: "处理中",
+            pending: "待处理",
+            inStock: "有库存",
+            lowStock: "库存不足",
+            outOfStock: "缺货",
+            language: "语言",
+            theme: "主题",
+            light: "浅色",
+            dark: "深色",
+            system: "系统"
+        },
 
-            "Your revenue performance over the last 7 months.":
-                "أداء إيراداتك خلال آخر 7 أشهر.",
+        ja: {
+            dashboard: "ダッシュボード",
+            analytics: "分析",
+            products: "商品",
+            orders: "注文",
+            customers: "顧客",
+            messages: "メッセージ",
+            settings: "設定",
+            profile: "プロフィール",
+            notifications: "通知",
+            close: "閉じる",
+            search: "検索",
+            save: "変更を保存",
+            cancel: "キャンセル",
+            add: "追加",
+            edit: "編集",
+            delete: "削除",
+            viewAll: "すべて表示",
+            completed: "完了",
+            processing: "処理中",
+            pending: "保留中",
+            inStock: "在庫あり",
+            lowStock: "在庫少",
+            outOfStock: "在庫切れ",
+            language: "言語",
+            theme: "テーマ",
+            light: "ライト",
+            dark: "ダーク",
+            system: "システム"
+        },
 
-            "Recent Activity":
-                "النشاط الأخير",
+        ko: {
+            dashboard: "대시보드",
+            analytics: "분석",
+            products: "제품",
+            orders: "주문",
+            customers: "고객",
+            messages: "메시지",
+            settings: "설정",
+            profile: "프로필",
+            notifications: "알림",
+            close: "닫기",
+            search: "검색",
+            save: "변경사항 저장",
+            cancel: "취소",
+            add: "추가",
+            edit: "수정",
+            delete: "삭제",
+            viewAll: "모두 보기",
+            completed: "완료",
+            processing: "처리 중",
+            pending: "대기 중",
+            inStock: "재고 있음",
+            lowStock: "재고 부족",
+            outOfStock: "품절",
+            language: "언어",
+            theme: "테마",
+            light: "라이트",
+            dark: "다크",
+            system: "시스템"
+        },
 
-            "Latest activity from your store.":
-                "آخر الأنشطة في متجرك.",
+        tr: {
+            dashboard: "Kontrol Paneli",
+            analytics: "Analiz",
+            products: "Ürünler",
+            orders: "Siparişler",
+            customers: "Müşteriler",
+            messages: "Mesajlar",
+            settings: "Ayarlar",
+            profile: "Profil",
+            notifications: "Bildirimler",
+            close: "Kapat",
+            search: "Ara",
+            save: "Değişiklikleri Kaydet",
+            cancel: "İptal",
+            add: "Ekle",
+            edit: "Düzenle",
+            delete: "Sil",
+            viewAll: "Tümünü Gör",
+            completed: "Tamamlandı",
+            processing: "İşleniyor",
+            pending: "Beklemede",
+            inStock: "Stokta",
+            lowStock: "Düşük Stok",
+            outOfStock: "Stok Yok",
+            language: "Dil",
+            theme: "Tema",
+            light: "Açık",
+            dark: "Koyu",
+            system: "Sistem"
+        },
 
-            "Recent Orders":
-                "الطلبات الأخيرة",
+        nl: {
+            dashboard: "Dashboard",
+            analytics: "Analyse",
+            products: "Producten",
+            orders: "Bestellingen",
+            customers: "Klanten",
+            messages: "Berichten",
+            settings: "Instellingen",
+            profile: "Profiel",
+            notifications: "Meldingen",
+            close: "Sluiten",
+            search: "Zoeken",
+            save: "Wijzigingen opslaan",
+            cancel: "Annuleren",
+            add: "Toevoegen",
+            edit: "Bewerken",
+            delete: "Verwijderen",
+            viewAll: "Alles bekijken",
+            completed: "Voltooid",
+            processing: "In behandeling",
+            pending: "In afwachting",
+            inStock: "Op voorraad",
+            lowStock: "Lage voorraad",
+            outOfStock: "Niet op voorraad",
+            language: "Taal",
+            theme: "Thema",
+            light: "Licht",
+            dark: "Donker",
+            system: "Systeem"
+        },
 
-            "Track your latest customer orders.":
-                "تتبع أحدث طلبات العملاء.",
+        pl: {
+            dashboard: "Panel",
+            analytics: "Analityka",
+            products: "Produkty",
+            orders: "Zamówienia",
+            customers: "Klienci",
+            messages: "Wiadomości",
+            settings: "Ustawienia",
+            profile: "Profil",
+            notifications: "Powiadomienia",
+            close: "Zamknij",
+            search: "Szukaj",
+            save: "Zapisz zmiany",
+            cancel: "Anuluj",
+            add: "Dodaj",
+            edit: "Edytuj",
+            delete: "Usuń",
+            viewAll: "Zobacz wszystko",
+            completed: "Ukończone",
+            processing: "W trakcie",
+            pending: "Oczekujące",
+            inStock: "Dostępne",
+            lowStock: "Niski stan",
+            outOfStock: "Brak w magazynie",
+            language: "Język",
+            theme: "Motyw",
+            light: "Jasny",
+            dark: "Ciemny",
+            system: "System"
+        },
 
-            "View all": "عرض الكل",
-            "View all orders →": "عرض جميع الطلبات →",
-            "View products →": "عرض المنتجات →",
+        sv: {
+            dashboard: "Instrumentpanel",
+            analytics: "Analys",
+            products: "Produkter",
+            orders: "Beställningar",
+            customers: "Kunder",
+            messages: "Meddelanden",
+            settings: "Inställningar",
+            profile: "Profil",
+            notifications: "Aviseringar",
+            close: "Stäng",
+            search: "Sök",
+            save: "Spara ändringar",
+            cancel: "Avbryt",
+            add: "Lägg till",
+            edit: "Redigera",
+            delete: "Ta bort",
+            viewAll: "Visa alla",
+            completed: "Slutförd",
+            processing: "Bearbetas",
+            pending: "Väntande",
+            inStock: "I lager",
+            lowStock: "Lågt lager",
+            outOfStock: "Slut i lager",
+            language: "Språk",
+            theme: "Tema",
+            light: "Ljust",
+            dark: "Mörkt",
+            system: "System"
+        },
 
-            "Sales Performance":
-                "أداء المبيعات",
+        hi: {
+            dashboard: "डैशबोर्ड",
+            analytics: "विश्लेषण",
+            products: "उत्पाद",
+            orders: "ऑर्डर",
+            customers: "ग्राहक",
+            messages: "संदेश",
+            settings: "सेटिंग्स",
+            profile: "प्रोफ़ाइल",
+            notifications: "सूचनाएं",
+            close: "बंद करें",
+            search: "खोजें",
+            save: "परिवर्तन सहेजें",
+            cancel: "रद्द करें",
+            add: "जोड़ें",
+            edit: "संपादित करें",
+            delete: "हटाएं",
+            viewAll: "सभी देखें",
+            completed: "पूर्ण",
+            processing: "प्रक्रिया में",
+            pending: "लंबित",
+            inStock: "स्टॉक में",
+            lowStock: "कम स्टॉक",
+            outOfStock: "स्टॉक खत्म",
+            language: "भाषा",
+            theme: "थीम",
+            light: "हल्का",
+            dark: "गहरा",
+            system: "सिस्टम"
+        },
 
-            "Monthly revenue performance.":
-                "أداء الإيرادات الشهري.",
+        id: {
+            dashboard: "Dasbor",
+            analytics: "Analitik",
+            products: "Produk",
+            orders: "Pesanan",
+            customers: "Pelanggan",
+            messages: "Pesan",
+            settings: "Pengaturan",
+            profile: "Profil",
+            notifications: "Notifikasi",
+            close: "Tutup",
+            search: "Cari",
+            save: "Simpan perubahan",
+            cancel: "Batal",
+            add: "Tambah",
+            edit: "Edit",
+            delete: "Hapus",
+            viewAll: "Lihat semua",
+            completed: "Selesai",
+            processing: "Diproses",
+            pending: "Tertunda",
+            inStock: "Tersedia",
+            lowStock: "Stok rendah",
+            outOfStock: "Stok habis",
+            language: "Bahasa",
+            theme: "Tema",
+            light: "Terang",
+            dark: "Gelap",
+            system: "Sistem"
+        },
 
-            "Traffic Sources":
-                "مصادر الزيارات",
+        vi: {
+            dashboard: "Bảng điều khiển",
+            analytics: "Phân tích",
+            products: "Sản phẩm",
+            orders: "Đơn hàng",
+            customers: "Khách hàng",
+            messages: "Tin nhắn",
+            settings: "Cài đặt",
+            profile: "Hồ sơ",
+            notifications: "Thông báo",
+            close: "Đóng",
+            search: "Tìm kiếm",
+            save: "Lưu thay đổi",
+            cancel: "Hủy",
+            add: "Thêm",
+            edit: "Chỉnh sửa",
+            delete: "Xóa",
+            viewAll: "Xem tất cả",
+            completed: "Hoàn thành",
+            processing: "Đang xử lý",
+            pending: "Đang chờ",
+            inStock: "Còn hàng",
+            lowStock: "Sắp hết hàng",
+            outOfStock: "Hết hàng",
+            language: "Ngôn ngữ",
+            theme: "Chủ đề",
+            light: "Sáng",
+            dark: "Tối",
+            system: "Hệ thống"
+        },
 
-            "Where your customers come from.":
-                "من أين يأتي عملاؤك.",
+        th: {
+            dashboard: "แดชบอร์ด",
+            analytics: "การวิเคราะห์",
+            products: "สินค้า",
+            orders: "คำสั่งซื้อ",
+            customers: "ลูกค้า",
+            messages: "ข้อความ",
+            settings: "การตั้งค่า",
+            profile: "โปรไฟล์",
+            notifications: "การแจ้งเตือน",
+            close: "ปิด",
+            search: "ค้นหา",
+            save: "บันทึกการเปลี่ยนแปลง",
+            cancel: "ยกเลิก",
+            add: "เพิ่ม",
+            edit: "แก้ไข",
+            delete: "ลบ",
+            viewAll: "ดูทั้งหมด",
+            completed: "เสร็จสมบูรณ์",
+            processing: "กำลังดำเนินการ",
+            pending: "รอดำเนินการ",
+            inStock: "มีสินค้า",
+            lowStock: "สินค้าใกล้หมด",
+            outOfStock: "สินค้าหมด",
+            language: "ภาษา",
+            theme: "ธีม",
+            light: "สว่าง",
+            dark: "มืด",
+            system: "ระบบ"
+        },
 
-            "Top Products":
-                "أفضل المنتجات",
+        el: {
+            dashboard: "Πίνακας ελέγχου",
+            analytics: "Αναλυτικά",
+            products: "Προϊόντα",
+            orders: "Παραγγελίες",
+            customers: "Πελάτες",
+            messages: "Μηνύματα",
+            settings: "Ρυθμίσεις",
+            profile: "Προφίλ",
+            notifications: "Ειδοποιήσεις",
+            close: "Κλείσιμο",
+            search: "Αναζήτηση",
+            save: "Αποθήκευση αλλαγών",
+            cancel: "Ακύρωση",
+            add: "Προσθήκη",
+            edit: "Επεξεργασία",
+            delete: "Διαγραφή",
+            viewAll: "Προβολή όλων",
+            completed: "Ολοκληρώθηκε",
+            processing: "Σε επεξεργασία",
+            pending: "Σε αναμονή",
+            inStock: "Σε απόθεμα",
+            lowStock: "Χαμηλό απόθεμα",
+            outOfStock: "Εξαντλημένο",
+            language: "Γλώσσα",
+            theme: "Θέμα",
+            light: "Φωτεινό",
+            dark: "Σκούρο",
+            system: "Σύστημα"
+        },
 
-            "Best performing products this month.":
-                "أفضل المنتجات أداءً هذا الشهر.",
-
-            "Product Catalog":
-                "كتالوج المنتجات",
-
-            "Manage your products and inventory.":
-                "إدارة المنتجات والمخزون.",
-
-            "+ Add Product":
-                "+ إضافة منتج",
-
-            "Inventory Status":
-                "حالة المخزون",
-
-            "Current inventory overview.":
-                "نظرة عامة على المخزون الحالي.",
-
-            "Categories":
-                "التصنيفات",
-
-            "Products by category.":
-                "المنتجات حسب التصنيف.",
-
-            "Order Status":
-                "حالة الطلبات",
-
-            "Current order distribution.":
-                "توزيع الطلبات الحالي.",
-
-            "Order Insights":
-                "إحصائيات الطلبات",
-
-            "Quick overview of sales activity.":
-                "نظرة سريعة على نشاط المبيعات.",
-
-            "Notifications":
-                "الإشعارات",
-
-            "You have 3 new notifications.":
-                "لديك 3 إشعارات جديدة.",
-
-            "Documentation":
-                "التوثيق",
-
-            "Support":
-                "الدعم",
-
-            "Completed":
-                "مكتمل",
-
-            "Processing":
-                "قيد المعالجة",
-
-            "Pending":
-                "معلّق",
-
-            "In Stock":
-                "متوفر",
-
-            "Low Stock":
-                "مخزون منخفض",
-
-            "Out of Stock":
-                "نفد المخزون",
-
-            "Electronics":
-                "إلكترونيات",
-
-            "Accessories":
-                "إكسسوارات",
-
-            "Home & Lifestyle":
-                "المنزل ونمط الحياة",
-
-            "Organic Search":
-                "البحث الطبيعي",
-
-            "Social Media":
-                "وسائل التواصل الاجتماعي",
-
-            "Referral":
-                "إحالات",
-
-            "Direct":
-                "زيارات مباشرة",
-
-            "Wireless Headphones":
-                "سماعات لاسلكية",
-
-            "Smart Watch Pro":
-                "ساعة ذكية Pro",
-
-            "Premium Backpack":
-                "حقيبة ظهر فاخرة",
-
-            "Mechanical Keyboard":
-                "لوحة مفاتيح ميكانيكية",
-
-            "USB-C Hub":
-                "موزع USB-C",
-
-            "All Orders":
-                "كل الطلبات",
-
-            "Last 7 months":
-                "آخر 7 أشهر",
-
-            "Last 30 days":
-                "آخر 30 يومًا",
-
-            "Last 12 months":
-                "آخر 12 شهرًا"
-
+        uk: {
+            dashboard: "Панель керування",
+            analytics: "Аналітика",
+            products: "Товари",
+            orders: "Замовлення",
+            customers: "Клієнти",
+            messages: "Повідомлення",
+            settings: "Налаштування",
+            profile: "Профіль",
+            notifications: "Сповіщення",
+            close: "Закрити",
+            search: "Пошук",
+            save: "Зберегти зміни",
+            cancel: "Скасувати",
+            add: "Додати",
+            edit: "Редагувати",
+            delete: "Видалити",
+            viewAll: "Переглянути все",
+            completed: "Завершено",
+            processing: "В обробці",
+            pending: "Очікує",
+            inStock: "У наявності",
+            lowStock: "Мало товару",
+            outOfStock: "Немає в наявності",
+            language: "Мова",
+            theme: "Тема",
+            light: "Світла",
+            dark: "Темна",
+            system: "Система"
         }
-
     };
 
+    /* =========================================================
+       2. HELPERS
+       ========================================================= */
 
-    /* =========================================
-       TRANSLATE PAGE
-    ========================================= */
+    const $ = (selector, parent = document) =>
+        parent.querySelector(selector);
 
-    function translatePage() {
+    const $$ = (selector, parent = document) =>
+        [...parent.querySelectorAll(selector)];
 
-        document.documentElement.lang = currentLanguage;
-
-        document.documentElement.dir =
-            currentLanguage === "ar" ? "rtl" : "ltr";
-
-
-        const dictionary =
-            translations[currentLanguage];
-
-
-        document.querySelectorAll(
-            "h1, h2, h3, p, span, strong, small, th, td, a, button, option, label"
-        ).forEach(element => {
-
-            if (
-                element.children.length === 0 &&
-                element.textContent.trim()
-            ) {
-
-                const original =
-                    element.dataset.originalText ||
-                    element.textContent.trim();
-
-                element.dataset.originalText = original;
-
-                if (dictionary[original]) {
-                    element.textContent =
-                        dictionary[original];
-                }
-
-            }
-
-        });
-
-
-        /*
-        Placeholders
-        */
-
-        document.querySelectorAll(
-            "input, textarea"
-        ).forEach(input => {
-
-            const original =
-                input.dataset.originalPlaceholder ||
-                input.placeholder;
-
-            if (original) {
-
-                input.dataset.originalPlaceholder =
-                    original;
-
-                if (dictionary[original]) {
-                    input.placeholder =
-                        dictionary[original];
-                }
-
-            }
-
-        });
-
-
-        /*
-        RTL layout
-        */
-
-        if (currentLanguage === "ar") {
-            body.classList.add("rtl");
-        } else {
-            body.classList.remove("rtl");
+    const safeStorageGet = (key, fallback = null) => {
+        try {
+            return localStorage.getItem(key) ?? fallback;
+        } catch {
+            return fallback;
         }
+    };
 
+    const safeStorageSet = (key, value) => {
+        try {
+            localStorage.setItem(key, value);
+        } catch {
+            /* Storage unavailable — silently continue */
+        }
+    };
+
+    const currentPage = () => {
+        const path = window.location.pathname.toLowerCase();
+
+        if (path.includes("/analytics")) return "analytics";
+        if (path.includes("/products")) return "products";
+        if (path.includes("/orders")) return "orders";
+        if (path.includes("/customers")) return "customers";
+        if (path.includes("/messages")) return "messages";
+        if (path.includes("/settings")) return "settings";
+        if (path.includes("/profile")) return "profile";
+
+        return "dashboard";
+    };
+
+    const getTranslation = (key, language) => {
+        return translations[language]?.[key]
+            || translations.en[key]
+            || key;
+    };
+
+    /* =========================================================
+       3. LANGUAGE SYSTEM
+       ========================================================= */
+
+    function getCurrentLanguage() {
+        const saved = safeStorageGet(STORAGE.language, "en");
+        return LANGUAGES[saved] ? saved : "en";
     }
 
+    function applyLanguage(language) {
 
-    /* =========================================
-       LANGUAGE SWITCHER
-    ========================================= */
-
-    function createLanguageButton() {
-
-        if (document.getElementById("languageButton")) {
-            return;
+        if (!LANGUAGES[language]) {
+            language = "en";
         }
 
+        const languageData = LANGUAGES[language];
 
-        const headerRight =
-            document.querySelector(".header-right");
+        document.documentElement.lang = language;
+        document.documentElement.dir = languageData.dir;
 
-        if (!headerRight) return;
-
-
-        const button =
-            document.createElement("button");
-
-        button.id = "languageButton";
-        button.className = "icon-button";
-        button.title = "Language";
-        button.innerHTML =
-            currentLanguage === "ar" ? "ع" : "EN";
-
-
-        button.addEventListener("click", () => {
-
-            currentLanguage =
-                currentLanguage === "en"
-                    ? "ar"
-                    : "en";
-
-
-            localStorage.setItem(
-                "nexoraLanguage",
-                currentLanguage
-            );
-
-
-            translatePage();
-
-            button.innerHTML =
-                currentLanguage === "ar"
-                    ? "ع"
-                    : "EN";
-
-        });
-
-
-        headerRight.insertBefore(
-            button,
-            headerRight.firstChild
+        document.body.classList.toggle(
+            "rtl",
+            languageData.dir === "rtl"
         );
 
-    }
+        $$("[data-i18n]").forEach(element => {
 
+            const key = element.dataset.i18n;
 
-    /* =========================================
-       THEME
-    ========================================= */
+            if (!key) return;
 
-    function applyTheme() {
-
-        if (currentTheme === "dark") {
-            body.classList.add("dark-mode");
-        } else {
-            body.classList.remove("dark-mode");
-        }
-
-    }
-
-
-    function createThemeButton() {
-
-        if (document.getElementById("themeButton")) {
-            return;
-        }
-
-
-        const headerRight =
-            document.querySelector(".header-right");
-
-        if (!headerRight) return;
-
-
-        const button =
-            document.createElement("button");
-
-        button.id = "themeButton";
-        button.className = "icon-button";
-        button.title = "Toggle theme";
-
-        button.innerHTML =
-            currentTheme === "dark"
-                ? "☀"
-                : "☾";
-
-
-        button.addEventListener("click", () => {
-
-            currentTheme =
-                currentTheme === "light"
-                    ? "dark"
-                    : "light";
-
-
-            localStorage.setItem(
-                "nexoraTheme",
-                currentTheme
-            );
-
-
-            applyTheme();
-
-            button.innerHTML =
-                currentTheme === "dark"
-                    ? "☀"
-                    : "☾";
-
+            element.textContent =
+                getTranslation(key, language);
         });
 
+        $$("[data-i18n-placeholder]").forEach(element => {
 
-        headerRight.insertBefore(
-            button,
-            headerRight.firstChild
-        );
+            const key = element.dataset.i18nPlaceholder;
 
+            element.placeholder =
+                getTranslation(key, language);
+        });
+
+        $$("[data-language-name]").forEach(element => {
+            element.textContent = languageData.name;
+        });
+
+        $$("[data-language-flag]").forEach(element => {
+            element.textContent = languageData.flag;
+        });
+
+        safeStorageSet(STORAGE.language, language);
+
+        updateLanguageControls(language);
     }
 
+    function updateLanguageControls(language) {
 
-    /* =========================================
-       MOBILE SIDEBAR
-    ========================================= */
+        $$("[data-language]").forEach(button => {
 
-    document.addEventListener("click", event => {
+            const active =
+                button.dataset.language === language;
 
-        const menu =
-            event.target.closest("#menuButton");
+            button.classList.toggle("active", active);
+            button.setAttribute("aria-selected", active);
+        });
 
-        if (menu && sidebar) {
+        const select = $("#languageSelect");
 
-            sidebar.classList.toggle("open");
+        if (select) {
+            select.value = language;
+        }
+    }
 
+    function createLanguageMenu() {
+
+        const select = $("#languageSelect");
+
+        if (select) {
+
+            select.innerHTML = "";
+
+            Object.entries(LANGUAGES).forEach(
+                ([code, language]) => {
+
+                    const option =
+                        document.createElement("option");
+
+                    option.value = code;
+                    option.textContent =
+                        `${language.flag} ${language.name}`;
+
+                    select.appendChild(option);
+                }
+            );
+
+            select.addEventListener("change", event => {
+                applyLanguage(event.target.value);
+            });
         }
 
-    });
+        $$("[data-language]").forEach(button => {
 
+            button.addEventListener("click", () => {
 
-    /* =========================================
-       NOTIFICATIONS
-    ========================================= */
+                const language =
+                    button.dataset.language;
 
-    document.addEventListener("click", event => {
+                applyLanguage(language);
+            });
+        });
 
-        const notificationButton =
-            event.target.closest(
-                "#notificationButton"
-            );
+        applyLanguage(getCurrentLanguage());
+    }
 
-        const closeButton =
-            event.target.closest(
-                "#closeNotifications"
-            );
+    /* =========================================================
+       4. SIDEBAR / MOBILE MENU
+       ========================================================= */
 
+    function initSidebar() {
 
-        const panel =
-            document.getElementById(
-                "notificationPanel"
-            );
+        const menuButton = $("#menuButton");
+        const sidebar = $(".sidebar");
 
+        if (!menuButton || !sidebar) return;
 
-        if (notificationButton && panel) {
+        menuButton.addEventListener("click", event => {
 
             event.stopPropagation();
 
-            panel.classList.toggle("show");
+            sidebar.classList.toggle("open");
 
-        }
-
-
-        if (closeButton && panel) {
-
-            panel.classList.remove("show");
-
-        }
-
-    });
-
-
-    document.addEventListener("click", event => {
-
-        const panel =
-            document.getElementById(
-                "notificationPanel"
+            menuButton.setAttribute(
+                "aria-expanded",
+                sidebar.classList.contains("open")
             );
+        });
 
+        document.addEventListener("click", event => {
 
-        const button =
-            document.getElementById(
-                "notificationButton"
-            );
-
-
-        if (
-            panel &&
-            panel.classList.contains("show") &&
-            !panel.contains(event.target) &&
-            !button?.contains(event.target)
-        ) {
-
-            panel.classList.remove("show");
-
-        }
-
-    });
-
-
-    /* =========================================
-       PAGE NAVIGATION — NO RELOAD
-    ========================================= */
-
-    async function loadPage(url, clickedLink = null) {
-
-        try {
-
-            const absoluteURL =
-                new URL(
-                    url,
-                    window.location.href
+            if (
+                window.innerWidth <= 760 &&
+                sidebar.classList.contains("open") &&
+                !sidebar.contains(event.target) &&
+                !menuButton.contains(event.target)
+            ) {
+                sidebar.classList.remove("open");
+                menuButton.setAttribute(
+                    "aria-expanded",
+                    "false"
                 );
-
-
-            const response =
-                await fetch(absoluteURL.href);
-
-
-            if (!response.ok) {
-                throw new Error("Page not found");
             }
+        });
 
+        $$(".nav-link", sidebar).forEach(link => {
 
-            const html =
-                await response.text();
+            link.addEventListener("click", () => {
 
-
-            const parser =
-                new DOMParser();
-
-
-            const newDocument =
-                parser.parseFromString(
-                    html,
-                    "text/html"
-                );
-
-
-            const newMain =
-                newDocument.querySelector(
-                    ".main-content"
-                );
-
-
-            const currentMain =
-                document.querySelector(
-                    ".main-content"
-                );
-
-
-            if (!newMain || !currentMain) {
-
-                window.location.href =
-                    absoluteURL.href;
-
-                return;
-
-            }
-
-
-            currentMain.innerHTML =
-                newMain.innerHTML;
-
-
-            /*
-            Update active navigation
-            */
-
-            document.querySelectorAll(
-                ".nav-link"
-            ).forEach(link => {
-
-                link.classList.remove(
-                    "active"
-                );
-
-            });
-
-
-            const targetPath =
-                absoluteURL.pathname;
-
-
-            document.querySelectorAll(
-                ".nav-link"
-            ).forEach(link => {
-
-                const linkURL =
-                    new URL(
-                        link.href,
-                        window.location.href
-                    );
-
-
-                if (
-                    linkURL.pathname ===
-                    targetPath
-                ) {
-
-                    link.classList.add(
-                        "active"
-                    );
-
+                if (window.innerWidth <= 760) {
+                    sidebar.classList.remove("open");
                 }
-
             });
-
-
-            /*
-            Browser history
-            */
-
-            history.pushState(
-                {},
-                "",
-                absoluteURL.href
-            );
-
-
-            /*
-            Update title
-            */
-
-            const newTitle =
-                newDocument.querySelector(
-                    "title"
-                );
-
-
-            if (newTitle) {
-                document.title =
-                    newTitle.textContent;
-            }
-
-
-            /*
-            Close mobile sidebar
-            */
-
-            if (sidebar) {
-                sidebar.classList.remove(
-                    "open"
-                );
-            }
-
-
-            /*
-            Recreate dynamic controls
-            */
-
-            createLanguageButton();
-            createThemeButton();
-
-            translatePage();
-            applyTheme();
-
-            setupDynamicButtons();
-
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-
-
-        } catch (error) {
-
-            console.error(
-                "Navigation error:",
-                error
-            );
-
-            window.location.href = url;
-
-        }
-
+        });
     }
 
+    /* =========================================================
+       5. ACTIVE NAVIGATION
+       ========================================================= */
 
-    /* =========================================
-       INTERNAL LINKS
-    ========================================= */
+    function updateActiveNavigation() {
 
-    function setupNavigation() {
+        const page = currentPage();
 
-        document.addEventListener(
-            "click",
-            event => {
+        $$(".nav-link").forEach(link => {
 
-                const link =
-                    event.target.closest(
-                        "a"
-                    );
+            const href =
+                link.getAttribute("href") || "";
 
+            link.classList.remove("active");
 
-                if (!link) return;
-
-
-                const href =
-                    link.getAttribute(
-                        "href"
-                    );
-
-
-                if (
-                    !href ||
+            if (
+                page === "dashboard" &&
+                (
                     href === "#" ||
-                    href.startsWith(
-                        "javascript:"
-                    ) ||
-                    href.startsWith(
-                        "mailto:"
-                    ) ||
-                    href.startsWith(
-                        "tel:"
-                    ) ||
-                    link.target === "_blank"
-                ) {
+                    href === "" ||
+                    href === "index.html"
+                )
+            ) {
+                link.classList.add("active");
+            }
 
-                    return;
+            if (
+                href.includes(`${page}.html`)
+            ) {
+                link.classList.add("active");
+            }
+        });
+    }
 
-                }
+    /* =========================================================
+       6. NOTIFICATIONS
+       ========================================================= */
 
+    function initNotifications() {
 
-                const url =
-                    new URL(
-                        href,
-                        window.location.href
-                    );
+        const button = $("#notificationButton");
+        const panel = $("#notificationPanel");
+        const close = $("#closeNotifications");
 
+        if (!button || !panel) return;
 
-                if (
-                    url.origin !==
-                    window.location.origin
-                ) {
+        const openPanel = () => {
 
-                    return;
+            panel.classList.add("show");
 
-                }
+            button.setAttribute(
+                "aria-expanded",
+                "true"
+            );
+        };
 
+        const closePanel = () => {
 
+            panel.classList.remove("show");
+
+            button.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+        };
+
+        button.addEventListener("click", event => {
+
+            event.stopPropagation();
+
+            if (panel.classList.contains("show")) {
+                closePanel();
+            } else {
+                openPanel();
+            }
+        });
+
+        if (close) {
+            close.addEventListener("click", closePanel);
+        }
+
+        document.addEventListener("click", event => {
+
+            if (
+                panel.classList.contains("show") &&
+                !panel.contains(event.target) &&
+                !button.contains(event.target)
+            ) {
+                closePanel();
+            }
+        });
+
+        document.addEventListener("keydown", event => {
+
+            if (event.key === "Escape") {
+                closePanel();
+            }
+        });
+    }
+
+    /* =========================================================
+       7. PROFILE BUTTON
+       ========================================================= */
+
+    function initProfile() {
+
+        const profile = $(".user-profile");
+
+        if (!profile) return;
+
+        profile.setAttribute("role", "button");
+        profile.setAttribute("tabindex", "0");
+
+        profile.addEventListener("click", () => {
+
+            const page =
+                currentPage() === "profile";
+
+            if (page) return;
+
+            navigateTo("profile.html");
+        });
+
+        profile.addEventListener("keydown", event => {
+
+            if (
+                event.key === "Enter" ||
+                event.key === " "
+            ) {
                 event.preventDefault();
-
-                loadPage(
-                    url.href,
-                    link
-                );
-
+                profile.click();
             }
-        );
-
+        });
     }
 
+    /* =========================================================
+       8. INTERNAL NAVIGATION
+       ========================================================= */
 
-    /* =========================================
-       PROFILE
-    ========================================= */
+    function navigateTo(target) {
 
-    function setupProfile() {
+        if (!target) return;
 
-        document.addEventListener(
-            "click",
-            event => {
+        const cleanTarget =
+            target.split("#")[0];
 
-                const profile =
-                    event.target.closest(
-                        ".user-profile"
-                    );
+        const targetPage =
+            cleanTarget
+                .split("/")
+                .pop()
+                .replace(".html", "")
+                .toLowerCase();
 
+        const validPages = [
+            "index",
+            "analytics",
+            "products",
+            "orders",
+            "customers",
+            "messages",
+            "settings",
+            "profile"
+        ];
 
-                if (!profile) return;
+        if (!validPages.includes(targetPage)) {
+            return;
+        }
 
-
-                const path =
-                    window.location.pathname;
-
-
-                const profileURL =
-                    path.includes("/pages/")
-                        ? "profile.html"
-                        : "pages/profile.html";
-
-
-                loadPage(profileURL);
-
-            }
-        );
-
+        window.location.href = target;
     }
 
+    function initNavigation() {
 
-    /* =========================================
-       STAT CARDS
-    ========================================= */
+        $$("a").forEach(link => {
 
-    function setupStatCards() {
+            const href =
+                link.getAttribute("href");
 
-        document.addEventListener(
-            "click",
-            event => {
+            if (!href) return;
 
-                const card =
-                    event.target.closest(
-                        ".stat-card"
-                    );
-
-
-                if (!card) return;
-
-
-                const label =
-                    card.querySelector(
-                        ".stat-label"
-                    );
-
-
-                if (!label) return;
-
-
-                const text =
-                    label.textContent
-                        .trim()
-                        .toLowerCase();
-
-
-                let page = null;
-
-
-                if (
-                    text.includes("revenue") ||
-                    text.includes("conversion")
-                ) {
-
-                    page = "analytics.html";
-
-                } else if (
-                    text.includes("order")
-                ) {
-
-                    page = "orders.html";
-
-                } else if (
-                    text.includes("customer")
-                ) {
-
-                    page = "customers.html";
-
-                } else if (
-                    text.includes("product") ||
-                    text.includes("inventory")
-                ) {
-
-                    page = "products.html";
-
-                }
-
-
-                if (!page) return;
-
-
-                const finalURL =
-                    window.location.pathname.includes(
-                        "/pages/"
-                    )
-                        ? page
-                        : `pages/${page}`;
-
-
-                loadPage(finalURL);
-
+            if (
+                href.startsWith("#") &&
+                href !== "#"
+            ) {
+                return;
             }
-        );
 
+            if (
+                href.includes("analytics.html") ||
+                href.includes("products.html") ||
+                href.includes("orders.html") ||
+                href.includes("customers.html") ||
+                href.includes("messages.html") ||
+                href.includes("settings.html") ||
+                href.includes("profile.html") ||
+                href === "../index.html" ||
+                href === "index.html"
+            ) {
+
+                link.addEventListener("click", event => {
+
+                    const destination =
+                        link.getAttribute("href");
+
+                    if (!destination) return;
+
+                    event.preventDefault();
+
+                    navigateTo(destination);
+                });
+            }
+        });
+
+        updateActiveNavigation();
     }
 
+    /* =========================================================
+       9. ORDER FILTER
+       ========================================================= */
 
-    /* =========================================
-       ORDER FILTER
-    ========================================= */
+    function initOrderFilter() {
 
-    function setupOrderFilter() {
+        const select =
+            $(".orders-card select");
 
-        document.addEventListener(
+        if (!select) return;
+
+        const table =
+            $(".orders-card table");
+
+        if (!table) return;
+
+        const rows =
+            $$("tbody tr", table);
+
+        select.addEventListener(
             "change",
-            event => {
+            () => {
 
-                const select =
-                    event.target;
-
-
-                if (
-                    !select.closest(
-                        ".orders-card"
-                    )
-                ) {
-                    return;
-                }
-
-
-                const value =
-                    select.value
-                        .trim()
-                        .toLowerCase();
-
-
-                const rows =
-                    document.querySelectorAll(
-                        ".orders-card tbody tr"
-                    );
-
+                const filter =
+                    select.value.toLowerCase();
 
                 rows.forEach(row => {
 
                     const status =
-                        row.querySelector(
-                            ".status"
-                        );
-
-
-                    if (
-                        value === "all orders" ||
-                        !value
-                    ) {
-
-                        row.style.display = "";
-
-                        return;
-
-                    }
-
+                        $(".status", row);
 
                     if (!status) return;
 
-
-                    const statusText =
+                    const value =
                         status.textContent
                             .trim()
                             .toLowerCase();
 
+                    const visible =
+                        filter === "all orders" ||
+                        value === filter;
 
                     row.style.display =
-                        statusText === value
-                            ? ""
-                            : "none";
-
+                        visible ? "" : "none";
                 });
-
             }
         );
-
     }
 
+    /* =========================================================
+       10. TABLE SEARCH
+       ========================================================= */
 
-    /* =========================================
-       REVENUE PERIOD
-    ========================================= */
+    function initTableSearch() {
 
-    function setupRevenuePeriod() {
+        const searchInputs =
+            $$("[data-table-search]");
 
-        document.addEventListener(
-            "change",
-            event => {
+        searchInputs.forEach(input => {
 
-                const select =
-                    event.target;
+            const selector =
+                input.dataset.tableSearch;
 
+            const table =
+                $(selector);
 
-                if (
-                    select.id !==
-                    "revenuePeriod"
-                ) {
-                    return;
+            if (!table) return;
+
+            const rows =
+                $$("tbody tr", table);
+
+            input.addEventListener(
+                "input",
+                () => {
+
+                    const query =
+                        input.value
+                            .trim()
+                            .toLowerCase();
+
+                    rows.forEach(row => {
+
+                        const text =
+                            row.textContent
+                                .toLowerCase();
+
+                        row.style.display =
+                            text.includes(query)
+                                ? ""
+                                : "none";
+                    });
                 }
-
-
-                const bars =
-                    document.querySelectorAll(
-                        ".chart .bar"
-                    );
-
-
-                const values = {
-
-                    "Last 7 months":
-                        [45, 58, 52, 70, 64, 82, 94],
-
-                    "Last 30 days":
-                        [35, 48, 42, 61, 55, 73, 88],
-
-                    "Last 12 months":
-                        [30, 38, 45, 50, 56, 63, 69]
-
-                };
-
-
-                const selected =
-                    values[select.value];
-
-
-                if (!selected) return;
-
-
-                bars.forEach(
-                    (bar, index) => {
-
-                        if (
-                            selected[index] !==
-                            undefined
-                        ) {
-
-                            bar.style.height =
-                                `${selected[index]}%`;
-
-                        }
-
-                    }
-                );
-
-            }
-        );
-
+            );
+        });
     }
 
+    /* =========================================================
+       11. DASHBOARD CARDS
+       ========================================================= */
 
-    /* =========================================
-       DYNAMIC BUTTONS
-    ========================================= */
+    function initStatCards() {
 
-    function setupDynamicButtons() {
+        $$(".stat-card").forEach(card => {
 
-        /*
-        Add Product
-        */
+            card.setAttribute(
+                "tabindex",
+                "0"
+            );
 
-        document.querySelectorAll(
-            ".view-all"
-        ).forEach(button => {
+            card.addEventListener(
+                "keydown",
+                event => {
 
-            if (
-                button.textContent
-                    .includes("Add Product")
-            ) {
+                    if (event.key === "Enter") {
+                        card.click();
+                    }
+                }
+            );
+        });
+    }
 
-                button.onclick = event => {
+    /* =========================================================
+       12. VIEW ALL BUTTONS
+       ========================================================= */
 
-                    event.preventDefault();
+    function initViewAllButtons() {
 
-                    showModal(
-                        "Add Product",
-                        `
-                        <div class="settings-form">
+        $$(".view-all").forEach(link => {
 
-                            <div class="form-group">
-                                <label>Product Name</label>
-                                <input type="text" placeholder="Product name">
-                            </div>
+            const text =
+                link.textContent.toLowerCase();
 
-                            <div class="form-group">
-                                <label>Category</label>
-                                <input type="text" placeholder="Category">
-                            </div>
+            let destination = null;
 
-                            <div class="form-group">
-                                <label>Price</label>
-                                <input type="number" placeholder="Price">
-                            </div>
-
-                            <button class="primary-button" id="saveProduct">
-                                Save Product
-                            </button>
-
-                        </div>
-                        `
-                    );
-
-                };
-
+            if (text.includes("order")) {
+                destination = "orders.html";
             }
 
-        });
+            if (text.includes("product")) {
+                destination = "products.html";
+            }
 
+            if (text.includes("customer")) {
+                destination = "customers.html";
+            }
 
-        /*
-        Documentation / Support
-        */
+            if (!destination) return;
 
-        document.querySelectorAll(
-            ".footer a"
-        ).forEach(link => {
-
-            link.onclick = event => {
+            link.addEventListener("click", event => {
 
                 event.preventDefault();
 
-                const title =
-                    link.textContent.trim();
+                navigateTo(destination);
+            });
+        });
+    }
 
+    /* =========================================================
+       13. CHART INTERACTION
+       ========================================================= */
 
-                showModal(
-                    title,
-                    `<p style="color:var(--muted);font-size:13px;">
-                        ${title} section is available in the NEXORA dashboard.
-                    </p>`
-                );
+    function initCharts() {
 
-            };
+        $$(".bar").forEach(bar => {
 
+            bar.addEventListener(
+                "mouseenter",
+                () => {
+                    bar.style.opacity = "0.75";
+                }
+            );
+
+            bar.addEventListener(
+                "mouseleave",
+                () => {
+                    bar.style.opacity = "1";
+                }
+            );
         });
 
+        const revenuePeriod =
+            $("#revenuePeriod");
+
+        if (revenuePeriod) {
+
+            revenuePeriod.addEventListener(
+                "change",
+                event => {
+
+                    document.dispatchEvent(
+                        new CustomEvent(
+                            "nexora:chart-period-change",
+                            {
+                                detail: {
+                                    period:
+                                        event.target.value
+                                }
+                            }
+                        )
+                    );
+                }
+            );
+        }
     }
 
+    /* =========================================================
+       14. THEME SYSTEM
+       ========================================================= */
 
-    /* =========================================
-       MODAL SYSTEM
-    ========================================= */
+    function initTheme() {
 
-    function showModal(title, content) {
+        const themeSelect =
+            $("#themeSelect");
 
-        const old =
-            document.getElementById(
-                "nexoraModal"
+        const savedTheme =
+            safeStorageGet(
+                STORAGE.theme,
+                "light"
             );
 
+        applyTheme(savedTheme);
 
-        if (old) old.remove();
+        if (!themeSelect) return;
 
+        themeSelect.value = savedTheme;
 
-        const modal =
-            document.createElement("div");
-
-
-        modal.id = "nexoraModal";
-
-
-        modal.innerHTML = `
-
-            <div class="nexora-modal-overlay">
-
-                <div class="nexora-modal">
-
-                    <div class="notification-header">
-
-                        <h3>${title}</h3>
-
-                        <button id="closeNexoraModal">
-                            ×
-                        </button>
-
-                    </div>
-
-                    <div class="notification-content">
-                        ${content}
-                    </div>
-
-                </div>
-
-            </div>
-
-        `;
-
-
-        document.body.appendChild(modal);
-
-
-        const close =
-            () => modal.remove();
-
-
-        modal.querySelector(
-            "#closeNexoraModal"
-        ).onclick = close;
-
-
-        modal.querySelector(
-            ".nexora-modal-overlay"
-        ).addEventListener(
-            "click",
+        themeSelect.addEventListener(
+            "change",
             event => {
-
-                if (
-                    event.target.classList.contains(
-                        "nexora-modal-overlay"
-                    )
-                ) {
-
-                    close();
-
-                }
-
+                applyTheme(event.target.value);
             }
         );
+    }
 
+    function applyTheme(theme) {
 
-        const save =
-            modal.querySelector(
-                "#saveProduct"
-            );
+        const root =
+            document.documentElement;
 
+        if (theme === "dark") {
 
-        if (save) {
+            root.dataset.theme = "dark";
 
-            save.onclick = () => {
+        } else if (theme === "light") {
 
-                alert(
-                    currentLanguage === "ar"
-                        ? "تم حفظ المنتج بنجاح!"
-                        : "Product saved successfully!"
+            root.dataset.theme = "light";
+
+        } else {
+
+            root.dataset.theme = "system";
+        }
+
+        safeStorageSet(
+            STORAGE.theme,
+            theme
+        );
+    }
+
+    /* =========================================================
+       15. SETTINGS SAVE
+       ========================================================= */
+
+    function initSettings() {
+
+        const form =
+            $(".settings-form");
+
+        if (!form) return;
+
+        form.addEventListener(
+            "submit",
+            event => {
+
+                event.preventDefault();
+
+                const data =
+                    new FormData(form);
+
+                data.forEach(
+                    (value, key) => {
+                        safeStorageSet(
+                            `nexora_setting_${key}`,
+                            value
+                        );
+                    }
                 );
 
-                close();
-
-            };
-
-        }
-
+                showToast(
+                    "Settings saved successfully."
+                );
+            }
+        );
     }
 
+    /* =========================================================
+       16. TOAST SYSTEM
+       ========================================================= */
 
-    /* =========================================
-       MODAL CSS
-    ========================================= */
+    function showToast(message) {
 
-    function addModalStyles() {
+        let toast =
+            $("#nexoraToast");
 
-        if (
-            document.getElementById(
-                "nexoraDynamicStyles"
-            )
-        ) {
-            return;
+        if (!toast) {
+
+            toast =
+                document.createElement("div");
+
+            toast.id = "nexoraToast";
+
+            Object.assign(
+                toast.style,
+                {
+                    position: "fixed",
+                    bottom: "24px",
+                    right: "24px",
+                    zIndex: "9999",
+                    padding: "13px 18px",
+                    borderRadius: "12px",
+                    background: "#111827",
+                    color: "#ffffff",
+                    fontSize: "13px",
+                    boxShadow:
+                        "0 15px 35px rgba(0,0,0,.18)",
+                    opacity: "0",
+                    transform:
+                        "translateY(10px)",
+                    transition:
+                        "all .25s ease"
+                }
+            );
+
+            document.body.appendChild(toast);
         }
 
+        toast.textContent = message;
 
-        const style =
-            document.createElement("style");
+        requestAnimationFrame(() => {
 
+            toast.style.opacity = "1";
+            toast.style.transform =
+                "translateY(0)";
+        });
 
-        style.id =
-            "nexoraDynamicStyles";
+        clearTimeout(
+            toast._timeout
+        );
 
+        toast._timeout =
+            setTimeout(() => {
 
-        style.textContent = `
+                toast.style.opacity = "0";
+                toast.style.transform =
+                    "translateY(10px)";
 
-            .nexora-modal-overlay {
-                position: fixed;
-                inset: 0;
-                background: rgba(0,0,0,.45);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                padding: 20px;
-                z-index: 9999;
-            }
-
-            .nexora-modal {
-                width: min(500px, 100%);
-                background: var(--surface);
-                border-radius: 16px;
-                box-shadow: 0 25px 70px rgba(0,0,0,.2);
-                padding: 20px;
-            }
-
-            body.dark-mode {
-                background: #0f172a;
-                color: #f8fafc;
-            }
-
-            body.dark-mode .dashboard-card,
-            body.dark-mode .stat-card,
-            body.dark-mode .icon-button,
-            body.dark-mode .menu-button,
-            body.dark-mode .nexora-modal {
-                background: #1e293b;
-                border-color: #334155;
-                color: #f8fafc;
-            }
-
-            body.dark-mode .card-header p,
-            body.dark-mode .stat-label,
-            body.dark-mode .activity-text span,
-            body.dark-mode .footer {
-                color: #94a3b8;
-            }
-
-            body.dark-mode th {
-                background: #172033;
-            }
-
-            body.dark-mode td {
-                border-color: #334155;
-            }
-
-            body.rtl .header-left,
-            body.rtl .header-right,
-            body.rtl .user-profile,
-            body.rtl .activity-item {
-                direction: rtl;
-            }
-
-            body.rtl .sidebar {
-                left: auto;
-                right: 0;
-            }
-
-            body.rtl .main-content {
-                margin-left: 0;
-                margin-right: var(--sidebar-width);
-            }
-
-            @media (max-width: 760px) {
-
-                body.rtl .sidebar {
-                    transform: translateX(100%);
-                }
-
-                body.rtl .sidebar.open {
-                    transform: translateX(0);
-                }
-
-                body.rtl .main-content {
-                    margin-right: 0;
-                }
-
-            }
-
-        `;
-
-
-        document.head.appendChild(style);
-
+            }, 2500);
     }
 
+    /* =========================================================
+       17. ACCESSIBILITY
+       ========================================================= */
 
-    /* =========================================
-       INITIALIZE
-    ========================================= */
+    function initAccessibility() {
 
-    addModalStyles();
+        $$("button").forEach(button => {
 
-    applyTheme();
+            if (!button.hasAttribute("type")) {
+                button.setAttribute(
+                    "type",
+                    "button"
+                );
+            }
+        });
 
-    createLanguageButton();
+        $$(".icon-button").forEach(button => {
 
-    createThemeButton();
+            if (!button.getAttribute(
+                "aria-label"
+            )) {
 
-    translatePage();
+                button.setAttribute(
+                    "aria-label",
+                    "Notifications"
+                );
+            }
+        });
+    }
 
-    setupNavigation();
+    /* =========================================================
+       18. GLOBAL RESIZE HANDLER
+       ========================================================= */
 
-    setupProfile();
+    function initResizeHandler() {
 
-    setupStatCards();
+        let timeout;
 
-    setupOrderFilter();
+        window.addEventListener(
+            "resize",
+            () => {
 
-    setupRevenuePeriod();
+                clearTimeout(timeout);
 
-    setupDynamicButtons();
+                timeout =
+                    setTimeout(() => {
 
-});
+                        const sidebar =
+                            $(".sidebar");
+
+                        if (
+                            sidebar &&
+                            window.innerWidth > 760
+                        ) {
+                            sidebar.classList.remove(
+                                "open"
+                            );
+                        }
+
+                    }, 150);
+            }
+        );
+    }
+
+    /* =========================================================
+       19. INITIALIZATION
+       ========================================================= */
+
+    function init() {
+
+        createLanguageMenu();
+
+        initSidebar();
+
+        initNavigation();
+
+        initNotifications();
+
+        initProfile();
+
+        initOrderFilter();
+
+        initTableSearch();
+
+        initStatCards();
+
+        initViewAllButtons();
+
+        initCharts();
+
+        initTheme();
+
+        initSettings();
+
+        initAccessibility();
+
+        initResizeHandler();
+
+        console.log(
+            "NEXORA Dashboard initialized successfully."
+        );
+    }
+
+    /* =========================================================
+       20. START
+       ========================================================= */
+
+    if (
+        document.readyState === "loading"
+    ) {
+        document.addEventListener(
+            "DOMContentLoaded",
+            init
+        );
+    } else {
+        init();
+    }
+
+})();
+```
