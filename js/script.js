@@ -1,16 +1,20 @@
 /* =========================================================
    NEXORA — MASTER SCRIPT.JS
-   VERSION 1.0
+   VERSION 2.0
    =========================================================
-   • 8 Languages
-   • Complete Translation Dictionary
-   • Automatic DOM Translation
-   • RTL / LTR Support
+   • 21 Languages
+   • Google Translate Integration
+   • Manual Language Selector
+   • "文" Language Button
+   • Settings Language Synchronization
    • LocalStorage Language Memory
-   • Translation Fallback
-   • Translation Statistics
-   • Missing Translation Detector
-   • Dynamic Content Support
+   • RTL / LTR Support
+   • Automatic Page Translation
+   • Dynamic Content Translation
+   • Mobile Sidebar
+   • Notifications Panel
+   • Theme System
+   • Cross-Page Language Persistence
    ========================================================= */
 
 
@@ -22,16 +26,32 @@ const NEXORA = {
 
     name: "NEXORA",
 
-    version: "1.0.0",
+    version: "2.0.0",
 
     defaults: {
+
         language: "en",
+
         theme: "system"
+
     },
 
     storage: {
+
         language: "nexora_language",
+
         theme: "nexora_theme"
+
+    },
+
+    translation: {
+
+        provider: "google",
+
+        googleElementId: "google_translate_element",
+
+        cookieName: "googtrans"
+
     }
 
 };
@@ -45,6 +65,7 @@ const LANGUAGES = [
 
     {
         code: "en",
+        googleCode: "en",
         name: "English",
         nativeName: "English",
         direction: "ltr"
@@ -52,6 +73,7 @@ const LANGUAGES = [
 
     {
         code: "ar",
+        googleCode: "ar",
         name: "Arabic",
         nativeName: "العربية",
         direction: "rtl"
@@ -59,6 +81,7 @@ const LANGUAGES = [
 
     {
         code: "fr",
+        googleCode: "fr",
         name: "French",
         nativeName: "Français",
         direction: "ltr"
@@ -66,6 +89,7 @@ const LANGUAGES = [
 
     {
         code: "es",
+        googleCode: "es",
         name: "Spanish",
         nativeName: "Español",
         direction: "ltr"
@@ -73,6 +97,7 @@ const LANGUAGES = [
 
     {
         code: "de",
+        googleCode: "de",
         name: "German",
         nativeName: "Deutsch",
         direction: "ltr"
@@ -80,22 +105,129 @@ const LANGUAGES = [
 
     {
         code: "it",
+        googleCode: "it",
         name: "Italian",
         nativeName: "Italiano",
         direction: "ltr"
     },
 
     {
+        code: "pt",
+        googleCode: "pt",
+        name: "Portuguese",
+        nativeName: "Português",
+        direction: "ltr"
+    },
+
+    {
+        code: "ru",
+        googleCode: "ru",
+        name: "Russian",
+        nativeName: "Русский",
+        direction: "ltr"
+    },
+
+    {
+        code: "ja",
+        googleCode: "ja",
+        name: "Japanese",
+        nativeName: "日本語",
+        direction: "ltr"
+    },
+
+    {
+        code: "ko",
+        googleCode: "ko",
+        name: "Korean",
+        nativeName: "한국어",
+        direction: "ltr"
+    },
+
+    {
+        code: "zh-CN",
+        googleCode: "zh-CN",
+        name: "Chinese",
+        nativeName: "简体中文",
+        direction: "ltr"
+    },
+
+    {
         code: "tr",
+        googleCode: "tr",
         name: "Turkish",
         nativeName: "Türkçe",
         direction: "ltr"
     },
 
     {
-        code: "ja",
-        name: "Japanese",
-        nativeName: "日本語",
+        code: "nl",
+        googleCode: "nl",
+        name: "Dutch",
+        nativeName: "Nederlands",
+        direction: "ltr"
+    },
+
+    {
+        code: "pl",
+        googleCode: "pl",
+        name: "Polish",
+        nativeName: "Polski",
+        direction: "ltr"
+    },
+
+    {
+        code: "uk",
+        googleCode: "uk",
+        name: "Ukrainian",
+        nativeName: "Українська",
+        direction: "ltr"
+    },
+
+    {
+        code: "sv",
+        googleCode: "sv",
+        name: "Swedish",
+        nativeName: "Svenska",
+        direction: "ltr"
+    },
+
+    {
+        code: "el",
+        googleCode: "el",
+        name: "Greek",
+        nativeName: "Ελληνικά",
+        direction: "ltr"
+    },
+
+    {
+        code: "he",
+        googleCode: "iw",
+        name: "Hebrew",
+        nativeName: "עברית",
+        direction: "rtl"
+    },
+
+    {
+        code: "hi",
+        googleCode: "hi",
+        name: "Hindi",
+        nativeName: "हिन्दी",
+        direction: "ltr"
+    },
+
+    {
+        code: "id",
+        googleCode: "id",
+        name: "Indonesian",
+        nativeName: "Bahasa Indonesia",
+        direction: "ltr"
+    },
+
+    {
+        code: "vi",
+        googleCode: "vi",
+        name: "Vietnamese",
+        nativeName: "Tiếng Việt",
         direction: "ltr"
     }
 
@@ -103,494 +235,1420 @@ const LANGUAGES = [
 
 
 /* =========================================================
-   03. LANGUAGE HELPERS
+   03. GLOBAL STATE
+   ========================================================= */
+
+const NEXORA_STATE = {
+
+    initialized: false,
+
+    languageMenuOpen: false,
+
+    notificationOpen: false,
+
+    sidebarOpen: false,
+
+    currentLanguage: "en",
+
+    currentTheme: "system",
+
+    googleReady: false
+
+};
+
+
+/* =========================================================
+   04. LANGUAGE HELPERS
    ========================================================= */
 
 function isLanguageSupported(languageCode) {
 
     return LANGUAGES.some(
-        language => language.code === languageCode
+
+        language =>
+
+            language.code === languageCode
+
     );
 
 }
 
 
+/* ---------------------------------------------------------
+   Get language object
+   --------------------------------------------------------- */
+
 function getLanguage(languageCode) {
 
     return LANGUAGES.find(
-        language => language.code === languageCode
+
+        language =>
+
+            language.code === languageCode
+
     ) || LANGUAGES[0];
 
 }
 
 
+/* ---------------------------------------------------------
+   Get current language
+   --------------------------------------------------------- */
+
 function getCurrentLanguage() {
 
     const savedLanguage =
+
         localStorage.getItem(
+
             NEXORA.storage.language
+
         );
 
+
     if (
+
         savedLanguage &&
+
         isLanguageSupported(savedLanguage)
+
     ) {
 
         return savedLanguage;
 
     }
 
+
     return NEXORA.defaults.language;
 
 }
 
 
+/* ---------------------------------------------------------
+   Get current language object
+   --------------------------------------------------------- */
+
 function getCurrentLanguageObject() {
 
     return getLanguage(
+
         getCurrentLanguage()
+
     );
 
 }
 
 
 /* =========================================================
-   04. MASTER TRANSLATION DICTIONARY
+   05. LANGUAGE STORAGE
    ========================================================= */
 
-const TRANSLATIONS = {
+function saveLanguage(languageCode) {
+
+    if (
+
+        !isLanguageSupported(languageCode)
+
+    ) {
+
+        languageCode =
+
+            NEXORA.defaults.language;
+
+    }
 
 
-    /* =====================================================
-       ENGLISH
-       ===================================================== */
+    localStorage.setItem(
 
-    en: {
+        NEXORA.storage.language,
 
-        "Dashboard": "Dashboard",
-        "Welcome back! Here's what's happening today.": "Welcome back! Here's what's happening today.",
-        "Analytics": "Analytics",
-        "Products": "Products",
-        "Orders": "Orders",
-        "Customers": "Customers",
-        "Messages": "Messages",
-        "Settings": "Settings",
-        "Profile": "Profile",
-        "Administrator": "Administrator",
+        languageCode
 
-        "Total Revenue": "Total Revenue",
-        "Total Orders": "Total Orders",
-        "Conversion Rate": "Conversion Rate",
-        "Revenue Overview": "Revenue Overview",
-        "Your revenue performance over the last 7 months.": "Your revenue performance over the last 7 months.",
-        "Last 7 months": "Last 7 months",
-        "Last 30 days": "Last 30 days",
-        "Last 12 months": "Last 12 months",
-
-        "Recent Activity": "Recent Activity",
-        "Latest activity from your store.": "Latest activity from your store.",
-        "View all": "View all",
-        "New order received": "New order received",
-        "New customer registered": "New customer registered",
-        "Payment received": "Payment received",
-        "Product stock updated": "Product stock updated",
-        "Order completed": "Order completed",
-
-        "Recent Orders": "Recent Orders",
-        "Track your latest customer orders.": "Track your latest customer orders.",
-        "View all orders →": "View all orders →",
-        "Order": "Order",
-        "Order ID": "Order ID",
-        "Customer": "Customer",
-        "Product": "Product",
-        "Date": "Date",
-        "Amount": "Amount",
-        "Total": "Total",
-        "Status": "Status",
-        "All Orders": "All Orders",
-        "Completed": "Completed",
-        "Processing": "Processing",
-        "Pending": "Pending",
-        "Order Revenue": "Order Revenue",
-        "Orders in progress": "Orders in progress",
-        "Order Status": "Order Status",
-        "Current order distribution.": "Current order distribution.",
-        "Order Insights": "Order Insights",
-        "Quick overview of sales activity.": "Quick overview of sales activity.",
-        "Average Order Value": "Average Order Value",
-        "Average amount per order": "Average amount per order",
-        "Growth": "Growth",
-        "Compared with last month": "Compared with last month",
-        "Visitors who placed an order": "Visitors who placed an order",
-
-        "Product Catalog": "Product Catalog",
-        "Manage your products and inventory.": "Manage your products and inventory.",
-        "Manage your products, inventory and pricing.": "Manage your products, inventory and pricing.",
-        "+ Add Product": "+ Add Product",
-        "Category": "Category",
-        "Price": "Price",
-        "Stock": "Stock",
-        "Inventory Status": "Inventory Status",
-        "Current inventory overview.": "Current inventory overview.",
-        "In Stock": "In Stock",
-        "Low Stock": "Low Stock",
-        "Out of Stock": "Out of Stock",
-        "Total Products": "Total Products",
-        "Products with healthy inventory": "Products with healthy inventory",
-        "Products that need restocking": "Products that need restocking",
-        "Products currently unavailable": "Products currently unavailable",
-        "Categories": "Categories",
-        "Products by category.": "Products by category.",
-        "124 products": "124 products",
-        "76 products": "76 products",
-        "48 products": "48 products",
-
-        "Wireless Headphones": "Wireless Headphones",
-        "Smart Watch Pro": "Smart Watch Pro",
-        "Premium Backpack": "Premium Backpack",
-        "Mechanical Keyboard": "Mechanical Keyboard",
-        "USB-C Hub": "USB-C Hub",
-
-        "Electronics": "Electronics",
-        "Accessories": "Accessories",
-        "Home & Lifestyle": "Home & Lifestyle",
-
-        "Manage your customers and their activity.": "Manage your customers and their activity.",
-        "Total Customers": "Total Customers",
-        "New Customers": "New Customers",
-        "Active Customers": "Active Customers",
-        "Average Spend": "Average Spend",
-        "Customer Directory": "Customer Directory",
-        "View and manage your customers.": "View and manage your customers.",
-        "+ Add Customer": "+ Add Customer",
-        "Email": "Email",
-        "Total Spent": "Total Spent",
-        "Joined": "Joined",
-        "Active": "Active",
-        "Inactive": "Inactive",
-
-        "Customer Activity": "Customer Activity",
-        "Recent customer engagement.": "Recent customer engagement.",
-        "New customer": "New customer",
-        "joined your store": "joined your store",
-        "New purchase": "New purchase",
-        "placed an order": "placed an order",
-        "Customer verified": "Customer verified",
-        "verified his email": "verified his email",
-        "Returning customer": "Returning customer",
-        "made another purchase": "made another purchase",
-
-        "Customer Insights": "Customer Insights",
-        "Important customer statistics.": "Important customer statistics.",
-        "Returning Customers": "Returning Customers",
-        "Customers who purchased before": "Customers who purchased before",
-        "Average Customer Value": "Average Customer Value",
-        "Average lifetime spending": "Average lifetime spending",
-        "Average Orders": "Average Orders",
-        "Orders per customer": "Orders per customer",
-
-        "Stay connected with your customers and support team.": "Stay connected with your customers and support team.",
-        "Total Messages": "Total Messages",
-        "Unread": "Unread",
-        "Resolved": "Resolved",
-        "Avg. Response": "Avg. Response",
-        "Customer Conversations": "Customer Conversations",
-        "Recent messages from your customers.": "Recent messages from your customers.",
-        "All Messages": "All Messages",
-        "Support Overview": "Support Overview",
-        "Current customer support activity.": "Current customer support activity.",
-        "Open Conversations": "Open Conversations",
-        "Customers waiting for a response": "Customers waiting for a response",
-        "Resolved Today": "Resolved Today",
-        "Conversations successfully resolved": "Conversations successfully resolved",
-        "Response Rate": "Response Rate",
-        "Messages answered within 24 hours": "Messages answered within 24 hours",
-        "Quick Support": "Quick Support",
-        "Useful support information.": "Useful support information.",
-        "Fastest Response": "Fastest Response",
-        "Best response time today": "Best response time today",
-        "Customer Satisfaction": "Customer Satisfaction",
-        "Average support rating": "Average support rating",
-        "Messages Today": "Messages Today",
-        "Total conversations today": "Total conversations today",
-
-        "Hi! I wanted to ask about my recent order...": "Hi! I wanted to ask about my recent order...",
-        "Is the Smart Watch Pro available in black?": "Is the Smart Watch Pro available in black?",
-        "Thank you for the quick delivery!": "Thank you for the quick delivery!",
-        "Can I change the delivery address?": "Can I change the delivery address?",
-        "I received my package. Everything looks perfect.": "I received my package. Everything looks perfect.",
-        "Could you help me with a refund request?": "Could you help me with a refund request?",
-
-        "Manage your store preferences and account settings.": "Manage your store preferences and account settings.",
-        "Store Settings": "Store Settings",
-        "Configure your store information.": "Configure your store information.",
-        "Store Name": "Store Name",
-        "Store Email": "Store Email",
-        "Currency": "Currency",
-        "USD — US Dollar": "USD — US Dollar",
-        "EUR — Euro": "EUR — Euro",
-        "GBP — British Pound": "GBP — British Pound",
-        "Timezone": "Timezone",
-
-        "Notifications": "Notifications",
-        "Choose how you receive updates.": "Choose how you receive updates.",
-        "New Orders": "New Orders",
-        "Get notified when a new order is placed.": "Get notified when a new order is placed.",
-        "New Customers": "New Customers",
-        "Receive notifications when customers register.": "Receive notifications when customers register.",
-        "Customer Messages": "Customer Messages",
-        "Get notified when a customer sends a message.": "Get notified when a customer sends a message.",
-        "Weekly Reports": "Weekly Reports",
-        "Receive a weekly summary of store performance.": "Receive a weekly summary of store performance.",
-
-        "Security": "Security",
-        "Manage your account security preferences.": "Manage your account security preferences.",
-        "Two-Factor Authentication": "Two-Factor Authentication",
-        "Add an extra layer of security to your account.": "Add an extra layer of security to your account.",
-        "Login Alerts": "Login Alerts",
-        "Receive an alert when a new login is detected.": "Receive an alert when a new login is detected.",
-        "Session Protection": "Session Protection",
-        "Automatically secure inactive sessions.": "Automatically secure inactive sessions.",
-
-        "Appearance": "Appearance",
-        "Customize the dashboard experience.": "Customize the dashboard experience.",
-        "Theme": "Theme",
-        "Light": "Light",
-        "Dark": "Dark",
-        "System Default": "System Default",
-        "Language": "Language",
-
-        "English": "English",
-        "French": "French",
-        "Spanish": "Spanish",
-        "German": "German",
-        "Italian": "Italian",
-        "Turkish": "Turkish",
-        "Japanese": "Japanese",
-
-        "Personal Information": "Personal Information",
-        "Update your personal account information.": "Update your personal account information.",
-        "First Name": "First Name",
-        "Last Name": "Last Name",
-        "Email Address": "Email Address",
-        "Phone Number": "Phone Number",
-        "Role": "Role",
-        "Account Status": "Account Status",
-        "Your current account information.": "Your current account information.",
-        "Account Verified": "Account Verified",
-        "Your account is fully verified.": "Your account is fully verified.",
-        "Member Since": "Member Since",
-        "January 2026": "January 2026",
-        "Active and secure": "Active and secure",
-        "Password": "Password",
-        "Last changed 30 days ago.": "Last changed 30 days ago.",
-        "Change": "Change",
-        "Login Notifications": "Login Notifications",
-        "Get notified about new account logins.": "Get notified about new account logins.",
-        "Account Activity": "Account Activity",
-        "Recent activity on your account.": "Recent activity on your account.",
-        "Successful Login": "Successful Login",
-        "Today at 08:42 AM": "Today at 08:42 AM",
-        "Settings Updated": "Settings Updated",
-        "Yesterday at 04:18 PM": "Yesterday at 04:18 PM",
-        "Password Updated": "Password Updated",
-        "30 days ago": "30 days ago",
-
-        "Cancel": "Cancel",
-        "Save Changes": "Save Changes",
-        "Documentation": "Documentation",
-        "Support": "Support",
-
-        "this month": "this month",
-        "from last month": "from last month",
-        "of orders": "of orders",
-        "of customers": "of customers",
-        "available": "available",
-        "Needs attention": "Needs attention",
-        "resolution rate": "resolution rate",
-        "faster": "faster",
-
-        "Jan": "Jan",
-        "Feb": "Feb",
-        "Mar": "Mar",
-        "Apr": "Apr",
-        "May": "May",
-        "Jun": "Jun",
-        "Jul": "Jul"
-
-    },
+    );
 
 
-    /* =====================================================
-       ARABIC
-       ===================================================== */
+    NEXORA_STATE.currentLanguage =
 
-    ar: {
+        languageCode;
 
-        "Dashboard": "لوحة التحكم",
-        "Welcome back! Here's what's happening today.": "مرحباً بعودتك! إليك ما يحدث اليوم.",
-        "Analytics": "التحليلات",
-        "Products": "المنتجات",
-        "Orders": "الطلبات",
-        "Customers": "العملاء",
-        "Messages": "الرسائل",
-        "Settings": "الإعدادات",
-        "Profile": "الملف الشخصي",
-        "Administrator": "مسؤول",
+}
 
-        "Total Revenue": "إجمالي الإيرادات",
-        "Total Orders": "إجمالي الطلبات",
-        "Conversion Rate": "معدل التحويل",
-        "Revenue Overview": "نظرة عامة على الإيرادات",
-        "Your revenue performance over the last 7 months.": "أداء إيراداتك خلال آخر 7 أشهر.",
-        "Last 7 months": "آخر 7 أشهر",
-        "Last 30 days": "آخر 30 يوماً",
-        "Last 12 months": "آخر 12 شهراً",
 
-        "Recent Activity": "النشاط الأخير",
-        "Latest activity from your store.": "أحدث نشاط في متجرك.",
-        "View all": "عرض الكل",
-        "New order received": "تم استلام طلب جديد",
-        "New customer registered": "تم تسجيل عميل جديد",
-        "Payment received": "تم استلام دفعة",
-        "Product stock updated": "تم تحديث مخزون المنتج",
-        "Order completed": "اكتمل الطلب",
+/* ---------------------------------------------------------
+   Remove saved language
+   --------------------------------------------------------- */
 
-        "Recent Orders": "أحدث الطلبات",
-        "Track your latest customer orders.": "تتبّع أحدث طلبات عملائك.",
-        "View all orders →": "عرض جميع الطلبات →",
-        "Order": "الطلب",
-        "Order ID": "معرّف الطلب",
-        "Customer": "العميل",
-        "Product": "المنتج",
-        "Date": "التاريخ",
-        "Amount": "المبلغ",
-        "Total": "الإجمالي",
-        "Status": "الحالة",
-        "All Orders": "كل الطلبات",
-        "Completed": "مكتملة",
-        "Processing": "قيد المعالجة",
-        "Pending": "معلّقة",
-        "Order Revenue": "إيرادات الطلبات",
-        "Orders in progress": "طلبات قيد التنفيذ",
-        "Order Status": "حالة الطلب",
-        "Current order distribution.": "توزيع الطلبات الحالي.",
-        "Order Insights": "إحصاءات الطلبات",
-        "Quick overview of sales activity.": "نظرة سريعة على نشاط المبيعات.",
-        "Average Order Value": "متوسط قيمة الطلب",
-        "Average amount per order": "متوسط المبلغ لكل طلب",
-        "Growth": "النمو",
-        "Compared with last month": "مقارنة بالشهر الماضي",
-        "Visitors who placed an order": "الزوار الذين أجروا طلباً",
+function clearSavedLanguage() {
 
-        "Product Catalog": "كتالوج المنتجات",
-        "Manage your products and inventory.": "إدارة منتجاتك ومخزونك.",
-        "Manage your products, inventory and pricing.": "إدارة منتجاتك ومخزونك وأسعارك.",
-        "+ Add Product": "+ إضافة منتج",
-        "Category": "الفئة",
-        "Price": "السعر",
-        "Stock": "المخزون",
-        "Inventory Status": "حالة المخزون",
-        "Current inventory overview.": "نظرة عامة على المخزون الحالي.",
-        "In Stock": "متوفر في المخزون",
-        "Low Stock": "مخزون منخفض",
-        "Out of Stock": "نفد المخزون",
-        "Total Products": "إجمالي المنتجات",
-        "Products with healthy inventory": "منتجات ذات مخزون جيد",
-        "Products that need restocking": "منتجات تحتاج إلى إعادة تخزين",
-        "Products currently unavailable": "منتجات غير متوفرة حالياً",
-        "Categories": "الفئات",
-        "Products by category.": "المنتجات حسب الفئة.",
-        "124 products": "124 منتجاً",
-        "76 products": "76 منتجاً",
-        "48 products": "48 منتجاً",
+    localStorage.removeItem(
 
-        "Wireless Headphones": "سماعات لاسلكية",
-        "Smart Watch Pro": "ساعة Smart Watch Pro",
-        "Premium Backpack": "حقيبة ظهر فاخرة",
-        "Mechanical Keyboard": "لوحة مفاتيح ميكانيكية",
-        "USB-C Hub": "موزّع USB-C",
+        NEXORA.storage.language
 
-        "Electronics": "الإلكترونيات",
-        "Accessories": "الإكسسوارات",
-        "Home & Lifestyle": "المنزل ونمط الحياة",
+    );
 
-        "Manage your customers and their activity.": "إدارة عملائك ونشاطهم.",
-        "Total Customers": "إجمالي العملاء",
-        "New Customers": "عملاء جدد",
-        "Active Customers": "العملاء النشطون",
-        "Average Spend": "متوسط الإنفاق",
-        "Customer Directory": "دليل العملاء",
-        "View and manage your customers.": "عرض العملاء وإدارتهم.",
-        "+ Add Customer": "+ إضافة عميل",
-        "Email": "البريد الإلكتروني",
-        "Total Spent": "إجمالي الإنفاق",
-        "Joined": "تاريخ الانضمام",
-        "Active": "نشط",
-        "Inactive": "غير نشط",
+}
 
-        "Customer Activity": "نشاط العملاء",
-        "Recent customer engagement.": "أحدث تفاعل مع العملاء.",
-        "New customer": "عميل جديد",
-        "joined your store": "انضم إلى متجرك",
-        "New purchase": "عملية شراء جديدة",
-        "placed an order": "أجرى طلباً",
-        "Customer verified": "تم التحقق من العميل",
-        "verified his email": "تحقق من بريده الإلكتروني",
-        "Returning customer": "عميل عائد",
-        "made another purchase": "أجرى عملية شراء أخرى",
 
-        "Customer Insights": "إحصاءات العملاء",
-        "Important customer statistics.": "إحصاءات مهمة عن العملاء.",
-        "Returning Customers": "العملاء العائدون",
-        "Customers who purchased before": "العملاء الذين اشتروا سابقاً",
-        "Average Customer Value": "متوسط قيمة العميل",
-        "Average lifetime spending": "متوسط الإنفاق طوال فترة العميل",
-        "Average Orders": "متوسط الطلبات",
-        "Orders per customer": "الطلبات لكل عميل",
+/* =========================================================
+   06. RTL / LTR SYSTEM
+   ========================================================= */
 
-        "Stay connected with your customers and support team.": "ابقَ على تواصل مع عملائك وفريق الدعم.",
-        "Total Messages": "إجمالي الرسائل",
-        "Unread": "غير مقروءة",
-        "Resolved": "تم حلها",
-        "Avg. Response": "متوسط الاستجابة",
-        "Customer Conversations": "محادثات العملاء",
-        "Recent messages from your customers.": "أحدث رسائل عملائك.",
-        "All Messages": "كل الرسائل",
-        "Support Overview": "نظرة عامة على الدعم",
-        "Current customer support activity.": "نشاط دعم العملاء الحالي.",
-        "Open Conversations": "المحادثات المفتوحة",
-        "Customers waiting for a response": "عملاء ينتظرون الرد",
-        "Resolved Today": "تم حلها اليوم",
-        "Conversations successfully resolved": "المحادثات التي تم حلها بنجاح",
-        "Response Rate": "معدل الرد",
-        "Messages answered within 24 hours": "الرسائل التي تم الرد عليها خلال 24 ساعة",
-        "Quick Support": "الدعم السريع",
-        "Useful support information.": "معلومات مفيدة للدعم.",
-        "Fastest Response": "أسرع استجابة",
-        "Best response time today": "أفضل وقت استجابة اليوم",
-        "Customer Satisfaction": "رضا العملاء",
-        "Average support rating": "متوسط تقييم الدعم",
-        "Messages Today": "رسائل اليوم",
-        "Total conversations today": "إجمالي المحادثات اليوم",
+function applyLanguageDirection(languageCode) {
 
-        "Hi! I wanted to ask about my recent order...": "مرحباً! أردت أن أسأل عن طلبي الأخير...",
-        "Is the Smart Watch Pro available in black?": "هل ساعة Smart Watch Pro متوفرة باللون الأسود؟",
-        "Thank you for the quick delivery!": "شكراً على التوصيل السريع!",
-        "Can I change the delivery address?": "هل يمكنني تغيير عنوان التوصيل؟",
-        "I received my package. Everything looks perfect.": "استلمت طردي. كل شيء يبدو رائعاً.",
-        "Could you help me with a refund request?": "هل يمكنك مساعدتي في طلب استرداد المبلغ؟",
+    const language =
 
-        "Manage your store preferences and account settings.": "إدارة تفضيلات متجرك وإعدادات حسابك.",
-        "Store Settings": "إعدادات المتجر",
-        "Configure your store information.": "تهيئة معلومات متجرك.",
-        "Store Name": "اسم المتجر",
-        "Store Email": "بريد المتجر",
-        "Currency": "العملة",
-        "USD — US Dollar": "USD — الدولار الأمريكي",
-        "EUR — Euro": "EUR — اليورو",
-        "GBP — British Pound": "GBP — الجنيه الإسترليني",
-        "Timezone": "المنطقة الزمنية",
+        getLanguage(languageCode);
 
-        "Notifications": "الإشعارات",
-        "Choose how you receive updates.": "اختر طريقة تل
+
+    document.documentElement.lang =
+
+        language.code;
+
+
+    document.documentElement.dir =
+
+        language.direction;
+
+
+    document.body.setAttribute(
+
+        "data-language",
+
+        language.code
+
+    );
+
+
+    document.body.setAttribute(
+
+        "dir",
+
+        language.direction
+
+    );
+
+
+    if (
+
+        language.direction === "rtl"
+
+    ) {
+
+        document.body.classList.add(
+
+            "rtl"
+
+        );
+
+        document.body.classList.remove(
+
+            "ltr"
+
+        );
+
+    } else {
+
+        document.body.classList.add(
+
+            "ltr"
+
+        );
+
+        document.body.classList.remove(
+
+            "rtl"
+
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   07. LANGUAGE MENU CREATION
+   ========================================================= */
+
+function createLanguageMenu() {
+
+    const existingMenu =
+
+        document.getElementById(
+
+            "nexoraLanguageMenu"
+
+        );
+
+
+    if (existingMenu) {
+
+        existingMenu.remove();
+
+    }
+
+
+    const menu =
+
+        document.createElement(
+
+            "div"
+
+        );
+
+
+    menu.id =
+
+        "nexoraLanguageMenu";
+
+
+    menu.className =
+
+        "nexora-language-menu";
+
+
+    menu.setAttribute(
+
+        "role",
+
+        "menu"
+
+    );
+
+
+    LANGUAGES.forEach(
+
+        language => {
+
+            const button =
+
+                document.createElement(
+
+                    "button"
+
+                );
+
+
+            button.type = "button";
+
+
+            button.className =
+
+                "nexora-language-option";
+
+
+            button.dataset.language =
+
+                language.code;
+
+
+            button.setAttribute(
+
+                "role",
+
+                "menuitem"
+
+            );
+
+
+            button.innerHTML = `
+
+                <span class="language-native">
+
+                    ${escapeHTML(language.nativeName)}
+
+                </span>
+
+                <span class="language-name">
+
+                    ${escapeHTML(language.name)}
+
+                </span>
+
+            `;
+
+
+            button.addEventListener(
+
+                "click",
+
+                () => {
+
+                    selectLanguage(
+
+                        language.code
+
+                    );
+
+                }
+
+            );
+
+
+            menu.appendChild(button);
+
+        }
+
+    );
+
+
+    document.body.appendChild(menu);
+
+
+    positionLanguageMenu(menu);
+
+
+    updateLanguageMenuState();
+
+}
+
+
+/* =========================================================
+   08. LANGUAGE BUTTON DETECTION
+   ========================================================= */
+
+function findLanguageButtons() {
+
+    const buttons = [];
+
+
+    const selectors = [
+
+        "#languageButton",
+
+        "#languageToggle",
+
+        ".language-button",
+
+        ".language-toggle",
+
+        "[data-language-button]",
+
+        "[data-language-selector]"
+
+    ];
+
+
+    selectors.forEach(
+
+        selector => {
+
+            document
+
+                .querySelectorAll(selector)
+
+                .forEach(button => {
+
+                    if (
+
+                        !buttons.includes(button)
+
+                    ) {
+
+                        buttons.push(button);
+
+                    }
+
+                });
+
+        }
+
+    );
+
+
+    return buttons;
+
+}
+
+
+/* =========================================================
+   09. CREATE DEFAULT 文 BUTTON
+   ========================================================= */
+
+function createDefaultLanguageButton() {
+
+    const existingButtons =
+
+        findLanguageButtons();
+
+
+    if (
+
+        existingButtons.length > 0
+
+    ) {
+
+        return existingButtons[0];
+
+    }
+
+
+    const topbar =
+
+        document.querySelector(
+
+            ".header-right"
+
+        );
+
+
+    if (!topbar) {
+
+        return null;
+
+    }
+
+
+    const button =
+
+        document.createElement(
+
+            "button"
+
+        );
+
+
+    button.type = "button";
+
+
+    button.id =
+
+        "languageButton";
+
+
+    button.className =
+
+        "icon-button language-button";
+
+
+    button.setAttribute(
+
+        "aria-label",
+
+        "Language"
+
+    );
+
+
+    button.setAttribute(
+
+        "title",
+
+        "Language"
+
+    );
+
+
+    button.textContent = "文";
+
+
+    topbar.insertBefore(
+
+        button,
+
+        topbar.firstChild
+
+    );
+
+
+    return button;
+
+}
+
+
+/* =========================================================
+   10. LANGUAGE MENU TOGGLE
+   ========================================================= */
+
+function toggleLanguageMenu() {
+
+    const menu =
+
+        document.getElementById(
+
+            "nexoraLanguageMenu"
+
+        );
+
+
+    if (!menu) {
+
+        return;
+
+    }
+
+
+    NEXORA_STATE.languageMenuOpen =
+
+        !NEXORA_STATE.languageMenuOpen;
+
+
+    if (
+
+        NEXORA_STATE.languageMenuOpen
+
+    ) {
+
+        menu.classList.add("open");
+
+    } else {
+
+        menu.classList.remove("open");
+
+    }
+
+}
+
+
+/* =========================================================
+   11. CLOSE LANGUAGE MENU
+   ========================================================= */
+
+function closeLanguageMenu() {
+
+    const menu =
+
+        document.getElementById(
+
+            "nexoraLanguageMenu"
+
+        );
+
+
+    if (!menu) {
+
+        return;
+
+    }
+
+
+    menu.classList.remove("open");
+
+
+    NEXORA_STATE.languageMenuOpen =
+
+        false;
+
+}
+
+
+/* =========================================================
+   12. POSITION LANGUAGE MENU
+   ========================================================= */
+
+function positionLanguageMenu(menu) {
+
+    if (!menu) {
+
+        return;
+
+    }
+
+
+    menu.style.position = "fixed";
+
+
+    menu.style.zIndex = "99999";
+
+}
+
+
+/* =========================================================
+   13. UPDATE LANGUAGE MENU
+   ========================================================= */
+
+function updateLanguageMenuState() {
+
+    const currentLanguage =
+
+        getCurrentLanguage();
+
+
+    document
+
+        .querySelectorAll(
+
+            ".nexora-language-option"
+
+        )
+
+        .forEach(
+
+            option => {
+
+                const isCurrent =
+
+                    option.dataset.language ===
+
+                    currentLanguage;
+
+
+                option.classList.toggle(
+
+                    "active",
+
+                    isCurrent
+
+                );
+
+                option.setAttribute(
+
+                    "aria-selected",
+
+                    String(isCurrent)
+
+                );
+
+            }
+
+        );
+
+}
+
+
+/* =========================================================
+   14. GOOGLE TRANSLATE COOKIE
+   ========================================================= */
+
+function setGoogleTranslateCookie(
+
+    languageCode
+
+) {
+
+    const language =
+
+        getLanguage(languageCode);
+
+
+    const targetLanguage =
+
+        language.googleCode;
+
+
+    const cookieValue =
+
+        `/en/${targetLanguage}`;
+
+
+    document.cookie =
+
+        `googtrans=${cookieValue};path=/`;
+
+
+    document.cookie =
+
+        `googtrans=${cookieValue};path=/;domain=${location.hostname}`;
+
+}
+
+
+/* =========================================================
+   15. CLEAR GOOGLE TRANSLATE COOKIE
+   ========================================================= */
+
+function clearGoogleTranslateCookie() {
+
+    document.cookie =
+
+        "googtrans=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;";
+
+
+    document.cookie =
+
+        `googtrans=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;domain=${location.hostname};`;
+
+}
+
+
+/* =========================================================
+   16. SELECT LANGUAGE
+   ========================================================= */
+
+function selectLanguage(languageCode) {
+
+    if (
+
+        !isLanguageSupported(languageCode)
+
+    ) {
+
+        return;
+
+    }
+
+
+    saveLanguage(languageCode);
+
+
+    applyLanguageDirection(
+
+        languageCode
+
+    );
+
+
+    updateLanguageMenuState();
+
+
+    updateAllLanguageControls(
+
+        languageCode
+
+    );
+
+
+    closeLanguageMenu();
+
+
+    if (
+
+        languageCode === "en"
+
+    ) {
+
+        clearGoogleTranslateCookie();
+
+        reloadForLanguage();
+
+        return;
+
+    }
+
+
+    setGoogleTranslateCookie(
+
+        languageCode
+
+    );
+
+
+    triggerGoogleTranslation(
+
+        languageCode
+
+    );
+
+}
+
+
+/* =========================================================
+   17. RELOAD FOR LANGUAGE
+   ========================================================= */
+
+function reloadForLanguage() {
+
+    const currentUrl =
+
+        window.location.href;
+
+
+    const cleanUrl =
+
+        currentUrl.split("#")[0];
+
+
+    window.location.href =
+
+        cleanUrl;
+
+}
+
+
+/* =========================================================
+   18. GOOGLE TRANSLATE TRIGGER
+   ========================================================= */
+
+function triggerGoogleTranslation(
+
+    languageCode
+
+) {
+
+    const select =
+
+        document.querySelector(
+
+            ".goog-te-combo"
+
+        );
+
+
+    if (!select) {
+
+        /*
+         * Google Translate has not loaded yet.
+         * The cookie is already saved.
+         * Reloading allows Google Translate
+         * to read the selected language.
+         */
+
+        reloadForLanguage();
+
+        return;
+
+    }
+
+
+    const language =
+
+        getLanguage(languageCode);
+
+
+    const googleCode =
+
+        language.googleCode;
+
+
+    select.value =
+
+        googleCode;
+
+
+    select.dispatchEvent(
+
+        new Event(
+
+            "change"
+
+        )
+
+    );
+
+}
+
+
+/* =========================================================
+   19. GOOGLE TRANSLATE INITIALIZATION
+   ========================================================= */
+
+function initializeGoogleTranslate() {
+
+    if (
+
+        typeof window.google ===
+
+        "undefined"
+
+    ) {
+
+        return;
+
+    }
+
+
+    if (
+
+        !google.translate ||
+
+        !google.translate.TranslateElement
+
+    ) {
+
+        return;
+
+    }
+
+
+    try {
+
+        new google.translate.TranslateElement(
+
+            {
+
+                pageLanguage: "en",
+
+                includedLanguages:
+
+                    LANGUAGES
+
+                        .map(
+
+                            language =>
+
+                                language.googleCode
+
+                        )
+
+                        .join(","),
+
+                autoDisplay: false,
+
+                multilanguagePage: true
+
+            },
+
+            NEXORA.translation
+
+                .googleElementId
+
+        );
+
+
+        NEXORA_STATE.googleReady =
+
+            true;
+
+
+        setTimeout(
+
+            () => {
+
+                const language =
+
+                    getCurrentLanguage();
+
+
+                if (
+
+                    language !== "en"
+
+                ) {
+
+                    triggerGoogleTranslation(
+
+                        language
+
+                    );
+
+                }
+
+            },
+
+            700
+
+        );
+
+    }
+
+    catch (error) {
+
+        console.warn(
+
+            "NEXORA Google Translate initialization failed:",
+
+            error
+
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   20. GOOGLE CALLBACK
+   ========================================================= */
+
+window.googleTranslateElementInit =
+
+    function () {
+
+        initializeGoogleTranslate();
+
+    };
+
+
+/* =========================================================
+   21. GOOGLE TRANSLATE LOADER
+   ========================================================= */
+
+function loadGoogleTranslateScript() {
+
+    if (
+
+        document.getElementById(
+
+            "nexora-google-translate-script"
+
+        )
+
+    ) {
+
+        return;
+
+    }
+
+
+    const container =
+
+        document.createElement(
+
+            "div"
+
+        );
+
+
+    container.id =
+
+        NEXORA.translation
+
+            .googleElementId;
+
+
+    container.style.display =
+
+        "none";
+
+
+    document.body.appendChild(
+
+        container
+
+    );
+
+
+    const script =
+
+        document.createElement(
+
+            "script"
+
+        );
+
+
+    script.id =
+
+        "nexora-google-translate-script";
+
+
+    script.src =
+
+        "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+
+
+    script.async = true;
+
+
+    document.head.appendChild(
+
+        script
+
+    );
+
+}
+
+
+/* =========================================================
+   22. LANGUAGE CONTROLS SYNC
+   ========================================================= */
+
+function updateAllLanguageControls(
+
+    languageCode
+
+) {
+
+    const language =
+
+        getLanguage(languageCode);
+
+
+    document
+
+        .querySelectorAll(
+
+            "[data-current-language]"
+
+        )
+
+        .forEach(
+
+            element => {
+
+                element.textContent =
+
+                    language.nativeName;
+
+            }
+
+        );
+
+
+    document
+
+        .querySelectorAll(
+
+            "[data-current-language-name]"
+
+        )
+
+        .forEach(
+
+            element => {
+
+                element.textContent =
+
+                    language.name;
+
+            }
+
+        );
+
+
+    document
+
+        .querySelectorAll(
+
+            "select[data-language-select]"
+
+        )
+
+        .forEach(
+
+            select => {
+
+                if (
+
+                    select.value !==
+
+                    languageCode
+
+                ) {
+
+                    select.value =
+
+                        languageCode;
+
+                }
+
+            }
+
+        );
+
+
+    document
+
+        .querySelectorAll(
+
+            ".settings-language-option"
+
+        )
+
+        .forEach(
+
+            option => {
+
+                option.classList.toggle(
+
+                    "active",
+
+                    option.dataset.language ===
+
+                    languageCode
+
+                );
+
+            }
+
+        );
+
+}
+
+
+/* =========================================================
+   23. SETTINGS LANGUAGE SELECTORS
+   ========================================================= */
+
+function initializeSettingsLanguageSelectors() {
+
+    document
+
+        .querySelectorAll(
+
+            "select[data-language-select]"
+
+        )
+
+        .forEach(
+
+            select => {
+
+                const current =
+
+                    getCurrentLanguage();
+
+
+                if (
+
+                    isLanguageSupported(current)
+
+                ) {
+
+                    select.value =
+
+                        current;
+
+                }
+
+
+                select.addEventListener(
+
+                    "change",
+
+                    event => {
+
+                        const code =
+
+                            event.target.value;
+
+
+                        if (
+
+                            isLanguageSupported(code)
+
+                        ) {
+
+                            selectLanguage(code);
+
+                        }
+
+                    }
+
+                );
+
+            }
+
+        );
+
+
+    document
+
+        .querySelectorAll(
+
+            "[data-select-language]"
+
+        )
+
+        .forEach(
+
+            element => {
+
+                element.addEventListener(
+
+                    "click",
+
+                    () => {
+
+                        const code =
+
+                            element.dataset
+
+                                .selectLanguage;
+
+
+                        selectLanguage(code);
+
+                    }
+
+                );
+
+            }
+
+        );
+
+}
+
+
+/* =========================================================
+   24. LANGUAGE BUTTON EVENTS
+   ========================================================= */
+
+function initializeLanguageButtons() {
+
+    let buttons =
+
+        findLanguageButtons();
+
+
+    if (
+
+        buttons.length === 0
+
+    ) {
+
+        const defaultButton =
+
+            createDefaultLanguageButton();
+
+
+        if (defaultButton) {
+
+            buttons = [
+
+                defaultButton
+
+            ];
+
+        }
+
+    }
+
+
+    buttons.forEach(
+
+        button => {
+
+            if (
+
+                button.dataset
+
+                    .nexoraLanguageReady ===
+
+                "true"
+
+            ) {
+
+                return;
+
+            }
+
+
+            button.dataset
+
+                .nexoraLanguageReady =
+
+                "true";
+
+
+            button.addEventListener(
+
+                "click",
+
+                event => {
+
+                    event.stopPropagation();
+
+                    toggleLanguageMenu();
+
+                }
+
+            );
+
+        }
+
+    );
+
+
+    createLanguageMenu();
+
+}
+
+
+/* =========================================================
+   25. SETTINGS LANGUAGE LIST GENERATOR
+   ========================================================= */
+
+function buildSettingsLanguageList(
+
+    container
+
+) {
+
+    if (!container) {
+
+        return;
+
+    }
+
+
+    container.inner
