@@ -1,903 +1,996 @@
+```html
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
 
-```
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-<title>NEXORA — Products</title>
+    <title>NEXORA — Products</title>
 
-<meta
-    name="description"
-    content="NEXORA product catalog and inventory management dashboard."
->
+    <meta
+        name="description"
+        content="NEXORA product catalog and inventory management dashboard."
+    >
 
-<link
-    rel="stylesheet"
-    href="../css/style.css"
->
-```
+    <meta
+        name="author"
+        content="NEXORA"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
 
 </head>
 
+
 <body>
 
-```
-<!-- =====================================================
-     SIDEBAR
-     ===================================================== -->
+    <!-- =====================================================
+         SIDEBAR
+         ===================================================== -->
 
-<aside class="sidebar">
+    <aside
+        class="sidebar"
+        aria-label="Main navigation"
+    >
 
-    <div class="logo">
-        NEXORA
-    </div>
-
-
-    <nav class="navigation">
-
-        <a
-            href="../index.html"
-            class="nav-link"
-        >
-            <span>▦</span>
-            Dashboard
-        </a>
-
-
-        <a
-            href="analytics.html"
-            class="nav-link"
-        >
-            <span>◫</span>
-            Analytics
-        </a>
-
-
-        <a
-            href="products.html"
-            class="nav-link active"
-        >
-            <span>□</span>
-            Products
-        </a>
-
-
-        <a
-            href="orders.html"
-            class="nav-link"
-        >
-            <span>◷</span>
-            Orders
-        </a>
-
-
-        <a
-            href="customers.html"
-            class="nav-link"
-        >
-            <span>♙</span>
-            Customers
-        </a>
-
-
-        <a
-            href="messages.html"
-            class="nav-link"
-        >
-            <span>✉</span>
-            Messages
-        </a>
-
-    </nav>
-
-
-    <div class="sidebar-bottom">
-
-        <a
-            href="settings.html"
-            class="nav-link"
-        >
-            <span>⚙</span>
-            Settings
-        </a>
-
-
-        <a
-            href="profile.html"
-            class="nav-link"
-        >
-            <span>◉</span>
-            Profile
-        </a>
-
-    </div>
-
-</aside>
-
-
-
-<!-- =====================================================
-     MAIN CONTENT
-     ===================================================== -->
-
-<main class="main-content">
-
-
-    <!-- =================================================
-         TOPBAR
-         ================================================= -->
-
-    <header class="topbar">
-
-
-        <div class="header-left">
-
-            <button
-                class="menu-button"
-                id="menuButton"
-                type="button"
-                aria-label="Open menu"
-            >
-                ☰
-            </button>
-
-
-            <div>
-
-                <h1>
-                    Products
-                </h1>
-
-                <p>
-                    Manage your products, inventory and pricing.
-                </p>
-
-            </div>
-
+        <div class="logo">
+            NEXORA
         </div>
 
 
+        <nav class="navigation">
 
-        <div class="header-right">
-
-
-            <!-- LANGUAGE -->
-
-            <button
-                class="icon-button language-button"
-                id="languageButton"
-                type="button"
-                data-language-button
-                aria-label="Language"
-                title="Language"
+            <a
+                href="../index.html"
+                class="nav-link"
             >
-                文
-            </button>
+                <span aria-hidden="true">▦</span>
+                <span>Dashboard</span>
+            </a>
 
 
-            <!-- NOTIFICATIONS -->
-
-            <button
-                class="icon-button"
-                id="notificationButton"
-                type="button"
-                aria-label="Notifications"
+            <a
+                href="analytics.html"
+                class="nav-link"
             >
-
-                🔔
-
-                <span class="notification-dot"></span>
-
-            </button>
+                <span aria-hidden="true">◫</span>
+                <span>Analytics</span>
+            </a>
 
 
-            <!-- USER -->
+            <a
+                href="products.html"
+                class="nav-link active"
+                aria-current="page"
+            >
+                <span aria-hidden="true">□</span>
+                <span>Products</span>
+            </a>
 
-            <div class="user-profile">
 
-                <div class="avatar">
-                    A
+            <a
+                href="orders.html"
+                class="nav-link"
+            >
+                <span aria-hidden="true">◷</span>
+                <span>Orders</span>
+            </a>
+
+
+            <a
+                href="customers.html"
+                class="nav-link"
+            >
+                <span aria-hidden="true">♙</span>
+                <span>Customers</span>
+            </a>
+
+
+            <a
+                href="messages.html"
+                class="nav-link"
+            >
+                <span aria-hidden="true">✉</span>
+                <span>Messages</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <a
+                href="settings.html"
+                class="nav-link"
+            >
+                <span aria-hidden="true">⚙</span>
+                <span>Settings</span>
+            </a>
+
+
+            <a
+                href="profile.html"
+                class="nav-link"
+            >
+                <span aria-hidden="true">◉</span>
+                <span>Profile</span>
+            </a>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+         ===================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =================================================
+             TOPBAR
+             ================================================= -->
+
+        <header class="topbar">
+
+
+            <div class="header-left">
+
+                <button
+                    class="menu-button"
+                    id="menuButton"
+                    type="button"
+                    aria-label="Open navigation menu"
+                    aria-controls="main-navigation"
+                    aria-expanded="false"
+                >
+                    ☰
+                </button>
+
+
+                <div>
+
+                    <h1>
+                        Products
+                    </h1>
+
+                    <p>
+                        Manage your products, inventory and pricing.
+                    </p>
+
                 </div>
 
+            </div>
 
-                <div class="user-info">
 
-                    <strong>
-                        Alex Morgan
-                    </strong>
 
-                    <span>
-                        Administrator
+            <div class="header-right">
+
+
+                <!-- LANGUAGE -->
+
+                <button
+                    class="icon-button language-button"
+                    id="languageButton"
+                    type="button"
+                    data-language-button
+                    aria-label="Change language"
+                    title="Change language"
+                    aria-haspopup="menu"
+                    aria-expanded="false"
+                >
+                    文
+                </button>
+
+
+                <!-- NOTIFICATIONS -->
+
+                <button
+                    class="icon-button"
+                    id="notificationButton"
+                    type="button"
+                    aria-label="Open notifications"
+                    aria-controls="notificationPanel"
+                    aria-expanded="false"
+                >
+
+                    <span aria-hidden="true">
+                        🔔
                     </span>
 
-                </div>
+                    <span
+                        class="notification-dot"
+                        aria-hidden="true"
+                    ></span>
 
-            </div>
+                </button>
 
-        </div>
 
-    </header>
+                <!-- USER PROFILE -->
 
+                <div class="user-profile">
 
-
-    <!-- =================================================
-         PRODUCT STATISTICS
-         ================================================= -->
-
-    <section class="stats-grid">
-
-
-        <article class="stat-card">
-
-            <div class="stat-icon">
-                □
-            </div>
-
-
-            <div class="stat-content">
-
-                <span class="stat-label">
-                    Total Products
-                </span>
-
-                <strong class="stat-value">
-                    124
-                </strong>
-
-                <small class="positive">
-                    ↑ 8.4%
-                </small>
-
-            </div>
-
-        </article>
-
-
-
-        <article class="stat-card">
-
-            <div class="stat-icon">
-                ✓
-            </div>
-
-
-            <div class="stat-content">
-
-                <span class="stat-label">
-                    In Stock
-                </span>
-
-                <strong class="stat-value">
-                    98
-                </strong>
-
-                <small class="positive">
-                    79.0%
-                </small>
-
-            </div>
-
-        </article>
-
-
-
-        <article class="stat-card">
-
-            <div class="stat-icon">
-                !
-            </div>
-
-
-            <div class="stat-content">
-
-                <span class="stat-label">
-                    Low Stock
-                </span>
-
-                <strong class="stat-value">
-                    18
-                </strong>
-
-                <small>
-                    14.5%
-                </small>
-
-            </div>
-
-        </article>
-
-
-
-        <article class="stat-card">
-
-            <div class="stat-icon">
-                ×
-            </div>
-
-
-            <div class="stat-content">
-
-                <span class="stat-label">
-                    Out of Stock
-                </span>
-
-                <strong class="stat-value">
-                    8
-                </strong>
-
-                <small>
-                    6.5%
-                </small>
-
-            </div>
-
-        </article>
-
-    </section>
-
-
-
-    <!-- =================================================
-         PRODUCT CATALOG
-         ================================================= -->
-
-    <section class="dashboard-card orders-card">
-
-
-        <div class="card-header">
-
-
-            <div>
-
-                <h2>
-                    Product Catalog
-                </h2>
-
-                <p>
-                    Manage your products and inventory.
-                </p>
-
-            </div>
-
-
-            <button
-                class="primary-button"
-                type="button"
-            >
-                + Add Product
-            </button>
-
-        </div>
-
-
-
-        <div class="table-wrapper">
-
-
-            <table>
-
-
-                <thead>
-
-                    <tr>
-
-                        <th>
-                            Product
-                        </th>
-
-                        <th>
-                            Category
-                        </th>
-
-                        <th>
-                            Price
-                        </th>
-
-                        <th>
-                            Stock
-                        </th>
-
-                        <th>
-                            Status
-                        </th>
-
-                    </tr>
-
-                </thead>
-
-
-
-                <tbody>
-
-
-                    <tr>
-
-                        <td>
-
-                            <strong>
-                                Wireless Headphones
-                            </strong>
-
-                        </td>
-
-                        <td>
-                            Electronics
-                        </td>
-
-                        <td>
-                            $249
-                        </td>
-
-                        <td>
-                            482
-                        </td>
-
-                        <td>
-
-                            <span class="status-badge completed">
-                                In Stock
-                            </span>
-
-                        </td>
-
-                    </tr>
-
-
-
-                    <tr>
-
-                        <td>
-
-                            <strong>
-                                Smart Watch Pro
-                            </strong>
-
-                        </td>
-
-                        <td>
-                            Electronics
-                        </td>
-
-                        <td>
-                            $329
-                        </td>
-
-                        <td>
-                            376
-                        </td>
-
-                        <td>
-
-                            <span class="status-badge completed">
-                                In Stock
-                            </span>
-
-                        </td>
-
-                    </tr>
-
-
-
-                    <tr>
-
-                        <td>
-
-                            <strong>
-                                Premium Backpack
-                            </strong>
-
-                        </td>
-
-                        <td>
-                            Accessories
-                        </td>
-
-                        <td>
-                            $189
-                        </td>
-
-                        <td>
-                            291
-                        </td>
-
-                        <td>
-
-                            <span class="status-badge completed">
-                                In Stock
-                            </span>
-
-                        </td>
-
-                    </tr>
-
-
-
-                    <tr>
-
-                        <td>
-
-                            <strong>
-                                Mechanical Keyboard
-                            </strong>
-
-                        </td>
-
-                        <td>
-                            Electronics
-                        </td>
-
-                        <td>
-                            $159
-                        </td>
-
-                        <td>
-                            247
-                        </td>
-
-                        <td>
-
-                            <span class="status-badge processing">
-                                Low Stock
-                            </span>
-
-                        </td>
-
-                    </tr>
-
-
-
-                    <tr>
-
-                        <td>
-
-                            <strong>
-                                USB-C Hub
-                            </strong>
-
-                        </td>
-
-                        <td>
-                            Electronics
-                        </td>
-
-                        <td>
-                            $79
-                        </td>
-
-                        <td>
-                            0
-                        </td>
-
-                        <td>
-
-                            <span class="status-badge pending">
-                                Out of Stock
-                            </span>
-
-                        </td>
-
-                    </tr>
-
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =================================================
-         INVENTORY + CATEGORIES
-         ================================================= -->
-
-    <section class="dashboard-grid">
-
-
-        <!-- INVENTORY STATUS -->
-
-        <article class="dashboard-card">
-
-
-            <div class="card-header">
-
-                <div>
-
-                    <h2>
-                        Inventory Status
-                    </h2>
-
-                    <p>
-                        Current inventory overview.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-
-            <div class="activity-list">
-
-
-                <div class="activity-item">
-
-                    <div class="activity-icon">
-                        ✓
-                    </div>
-
-                    <div class="activity-text">
-
-                        <strong>
-                            In Stock
-                        </strong>
-
-                        <span>
-                            Products with healthy inventory
-                        </span>
-
-                    </div>
-
-                    <strong>
-                        98
-                    </strong>
-
-                </div>
-
-
-
-                <div class="activity-item">
-
-                    <div class="activity-icon">
-                        !
-                    </div>
-
-                    <div class="activity-text">
-
-                        <strong>
-                            Low Stock
-                        </strong>
-
-                        <span>
-                            Products that need restocking
-                        </span>
-
-                    </div>
-
-                    <strong>
-                        18
-                    </strong>
-
-                </div>
-
-
-
-                <div class="activity-item">
-
-                    <div class="activity-icon">
-                        ×
-                    </div>
-
-                    <div class="activity-text">
-
-                        <strong>
-                            Out of Stock
-                        </strong>
-
-                        <span>
-                            Products currently unavailable
-                        </span>
-
-                    </div>
-
-                    <strong>
-                        8
-                    </strong>
-
-                </div>
-
-            </div>
-
-        </article>
-
-
-
-        <!-- CATEGORIES -->
-
-        <article class="dashboard-card">
-
-
-            <div class="card-header">
-
-                <div>
-
-                    <h2>
-                        Categories
-                    </h2>
-
-                    <p>
-                        Products by category.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-
-            <div class="activity-list">
-
-
-                <div class="activity-item">
-
-                    <div class="activity-icon">
-                        E
-                    </div>
-
-                    <div class="activity-text">
-
-                        <strong>
-                            Electronics
-                        </strong>
-
-                        <span>
-                            124 products
-                        </span>
-
-                    </div>
-
-                    <strong>
-                        48%
-                    </strong>
-
-                </div>
-
-
-
-                <div class="activity-item">
-
-                    <div class="activity-icon">
+                    <div
+                        class="avatar"
+                        aria-hidden="true"
+                    >
                         A
                     </div>
 
-                    <div class="activity-text">
+
+                    <div class="user-info">
 
                         <strong>
-                            Accessories
+                            Alex Morgan
                         </strong>
 
                         <span>
-                            76 products
+                            Administrator
                         </span>
 
                     </div>
-
-                    <strong>
-                        31%
-                    </strong>
-
-                </div>
-
-
-
-                <div class="activity-item">
-
-                    <div class="activity-icon">
-                        H
-                    </div>
-
-                    <div class="activity-text">
-
-                        <strong>
-                            Home & Lifestyle
-                        </strong>
-
-                        <span>
-                            48 products
-                        </span>
-
-                    </div>
-
-                    <strong>
-                        21%
-                    </strong>
 
                 </div>
 
             </div>
 
-        </article>
-
-    </section>
+        </header>
 
 
 
-    <!-- =================================================
-         FOOTER
-         ================================================= -->
+        <!-- =================================================
+             PRODUCT STATISTICS
+             ================================================= -->
 
-    <footer class="footer">
+        <section
+            class="stats-grid"
+            aria-label="Product inventory overview"
+        >
 
-        <span>
-            © 2026 NEXORA. All rights reserved.
-        </span>
+
+            <!-- TOTAL PRODUCTS -->
+
+            <article class="stat-card">
+
+                <div
+                    class="stat-icon"
+                    aria-hidden="true"
+                >
+                    □
+                </div>
 
 
-        <div>
+                <div class="stat-content">
 
-            <a href="#">
-                Documentation
-            </a>
+                    <span class="stat-label">
+                        Total Products
+                    </span>
 
-            <a href="#">
-                Support
-            </a>
+                    <strong class="stat-value">
+                        124
+                    </strong>
+
+                    <small class="positive">
+                        ↑ 8.4%
+                    </small>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- IN STOCK -->
+
+            <article class="stat-card">
+
+                <div
+                    class="stat-icon"
+                    aria-hidden="true"
+                >
+                    ✓
+                </div>
+
+
+                <div class="stat-content">
+
+                    <span class="stat-label">
+                        In Stock
+                    </span>
+
+                    <strong class="stat-value">
+                        98
+                    </strong>
+
+                    <small class="positive">
+                        79.0%
+                    </small>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- LOW STOCK -->
+
+            <article class="stat-card">
+
+                <div
+                    class="stat-icon"
+                    aria-hidden="true"
+                >
+                    !
+                </div>
+
+
+                <div class="stat-content">
+
+                    <span class="stat-label">
+                        Low Stock
+                    </span>
+
+                    <strong class="stat-value">
+                        18
+                    </strong>
+
+                    <small>
+                        14.5%
+                    </small>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- OUT OF STOCK -->
+
+            <article class="stat-card">
+
+                <div
+                    class="stat-icon"
+                    aria-hidden="true"
+                >
+                    ×
+                </div>
+
+
+                <div class="stat-content">
+
+                    <span class="stat-label">
+                        Out of Stock
+                    </span>
+
+                    <strong class="stat-value">
+                        8
+                    </strong>
+
+                    <small>
+                        6.5%
+                    </small>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+
+        <!-- =================================================
+             PRODUCT CATALOG
+             ================================================= -->
+
+        <section
+            class="dashboard-card orders-card"
+            aria-labelledby="productCatalogTitle"
+        >
+
+
+            <div class="card-header">
+
+
+                <div>
+
+                    <h2 id="productCatalogTitle">
+                        Product Catalog
+                    </h2>
+
+                    <p>
+                        Manage your products and inventory.
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="primary-button"
+                    type="button"
+                    aria-label="Add a new product"
+                >
+                    + Add Product
+                </button>
+
+            </div>
+
+
+
+            <div class="table-wrapper">
+
+
+                <table>
+
+                    <caption class="sr-only">
+                        Product catalog with pricing, stock and availability status
+                    </caption>
+
+
+                    <thead>
+
+                        <tr>
+
+                            <th scope="col">
+                                Product
+                            </th>
+
+                            <th scope="col">
+                                Category
+                            </th>
+
+                            <th scope="col">
+                                Price
+                            </th>
+
+                            <th scope="col">
+                                Stock
+                            </th>
+
+                            <th scope="col">
+                                Status
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+
+                    <tbody>
+
+
+                        <!-- WIRELESS HEADPHONES -->
+
+                        <tr>
+
+                            <td>
+                                <strong>
+                                    Wireless Headphones
+                                </strong>
+                            </td>
+
+                            <td>
+                                Electronics
+                            </td>
+
+                            <td>
+                                $249
+                            </td>
+
+                            <td>
+                                482
+                            </td>
+
+                            <td>
+
+                                <span class="status-badge completed">
+                                    In Stock
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+
+
+                        <!-- SMART WATCH -->
+
+                        <tr>
+
+                            <td>
+                                <strong>
+                                    Smart Watch Pro
+                                </strong>
+                            </td>
+
+                            <td>
+                                Electronics
+                            </td>
+
+                            <td>
+                                $329
+                            </td>
+
+                            <td>
+                                376
+                            </td>
+
+                            <td>
+
+                                <span class="status-badge completed">
+                                    In Stock
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+
+
+                        <!-- PREMIUM BACKPACK -->
+
+                        <tr>
+
+                            <td>
+                                <strong>
+                                    Premium Backpack
+                                </strong>
+                            </td>
+
+                            <td>
+                                Accessories
+                            </td>
+
+                            <td>
+                                $189
+                            </td>
+
+                            <td>
+                                291
+                            </td>
+
+                            <td>
+
+                                <span class="status-badge completed">
+                                    In Stock
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+
+
+                        <!-- MECHANICAL KEYBOARD -->
+
+                        <tr>
+
+                            <td>
+                                <strong>
+                                    Mechanical Keyboard
+                                </strong>
+                            </td>
+
+                            <td>
+                                Electronics
+                            </td>
+
+                            <td>
+                                $159
+                            </td>
+
+                            <td>
+                                247
+                            </td>
+
+                            <td>
+
+                                <span class="status-badge processing">
+                                    Low Stock
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+
+
+                        <!-- USB-C HUB -->
+
+                        <tr>
+
+                            <td>
+                                <strong>
+                                    USB-C Hub
+                                </strong>
+                            </td>
+
+                            <td>
+                                Electronics
+                            </td>
+
+                            <td>
+                                $79
+                            </td>
+
+                            <td>
+                                0
+                            </td>
+
+                            <td>
+
+                                <span class="status-badge pending">
+                                    Out of Stock
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             INVENTORY + CATEGORIES
+             ================================================= -->
+
+        <section
+            class="dashboard-grid"
+            aria-label="Inventory and category overview"
+        >
+
+
+            <!-- =================================================
+                 INVENTORY STATUS
+                 ================================================= -->
+
+            <article class="dashboard-card">
+
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h2>
+                            Inventory Status
+                        </h2>
+
+                        <p>
+                            Current inventory overview.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="activity-list">
+
+
+                    <!-- IN STOCK -->
+
+                    <div class="activity-item">
+
+                        <div
+                            class="activity-icon"
+                            aria-hidden="true"
+                        >
+                            ✓
+                        </div>
+
+                        <div class="activity-text">
+
+                            <strong>
+                                In Stock
+                            </strong>
+
+                            <span>
+                                Products with healthy inventory
+                            </span>
+
+                        </div>
+
+                        <strong>
+                            98
+                        </strong>
+
+                    </div>
+
+
+
+                    <!-- LOW STOCK -->
+
+                    <div class="activity-item">
+
+                        <div
+                            class="activity-icon"
+                            aria-hidden="true"
+                        >
+                            !
+                        </div>
+
+                        <div class="activity-text">
+
+                            <strong>
+                                Low Stock
+                            </strong>
+
+                            <span>
+                                Products that need restocking
+                            </span>
+
+                        </div>
+
+                        <strong>
+                            18
+                        </strong>
+
+                    </div>
+
+
+
+                    <!-- OUT OF STOCK -->
+
+                    <div class="activity-item">
+
+                        <div
+                            class="activity-icon"
+                            aria-hidden="true"
+                        >
+                            ×
+                        </div>
+
+                        <div class="activity-text">
+
+                            <strong>
+                                Out of Stock
+                            </strong>
+
+                            <span>
+                                Products currently unavailable
+                            </span>
+
+                        </div>
+
+                        <strong>
+                            8
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 CATEGORIES
+                 ================================================= -->
+
+            <article class="dashboard-card">
+
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h2>
+                            Categories
+                        </h2>
+
+                        <p>
+                            Products by category.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="activity-list">
+
+
+                    <!-- ELECTRONICS -->
+
+                    <div class="activity-item">
+
+                        <div
+                            class="activity-icon"
+                            aria-hidden="true"
+                        >
+                            E
+                        </div>
+
+                        <div class="activity-text">
+
+                            <strong>
+                                Electronics
+                            </strong>
+
+                            <span>
+                                60 products
+                            </span>
+
+                        </div>
+
+                        <strong>
+                            48%
+                        </strong>
+
+                    </div>
+
+
+
+                    <!-- ACCESSORIES -->
+
+                    <div class="activity-item">
+
+                        <div
+                            class="activity-icon"
+                            aria-hidden="true"
+                        >
+                            A
+                        </div>
+
+                        <div class="activity-text">
+
+                            <strong>
+                                Accessories
+                            </strong>
+
+                            <span>
+                                39 products
+                            </span>
+
+                        </div>
+
+                        <strong>
+                            31%
+                        </strong>
+
+                    </div>
+
+
+
+                    <!-- HOME & LIFESTYLE -->
+
+                    <div class="activity-item">
+
+                        <div
+                            class="activity-icon"
+                            aria-hidden="true"
+                        >
+                            H
+                        </div>
+
+                        <div class="activity-text">
+
+                            <strong>
+                                Home &amp; Lifestyle
+                            </strong>
+
+                            <span>
+                                25 products
+                            </span>
+
+                        </div>
+
+                        <strong>
+                            21%
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+
+        <!-- =================================================
+             FOOTER
+             ================================================= -->
+
+        <footer class="footer">
+
+            <span>
+                © 2026 NEXORA. All rights reserved.
+            </span>
+
+
+            <div>
+
+                <a href="#">
+                    Documentation
+                </a>
+
+                <a href="#">
+                    Support
+                </a>
+
+            </div>
+
+        </footer>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         NOTIFICATION PANEL
+         ===================================================== -->
+
+    <div
+        class="notification-panel"
+        id="notificationPanel"
+        role="dialog"
+        aria-labelledby="notificationTitle"
+        aria-hidden="true"
+    >
+
+        <div class="notification-header">
+
+            <h3 id="notificationTitle">
+                Notifications
+            </h3>
+
+
+            <button
+                id="closeNotifications"
+                type="button"
+                aria-label="Close notifications"
+            >
+                ×
+            </button>
 
         </div>
 
-    </footer>
 
+        <div class="notification-content">
 
-</main>
+            <p>
+                You have 3 new notifications.
+            </p>
 
-
-
-<!-- =====================================================
-     NOTIFICATION PANEL
-     ===================================================== -->
-
-<div
-    class="notification-panel"
-    id="notificationPanel"
->
-
-    <div class="notification-header">
-
-        <h3>
-            Notifications
-        </h3>
-
-
-        <button
-            id="closeNotifications"
-            type="button"
-            aria-label="Close notifications"
-        >
-            ×
-        </button>
+        </div>
 
     </div>
 
 
-    <div class="notification-content">
 
-        <p>
-            You have 3 new notifications.
-        </p>
+    <!-- =====================================================
+         NEXORA MASTER SCRIPT
+         ===================================================== -->
 
-    </div>
+    <script src="../js/script.js"></script>
 
-</div>
-
-
-
-<!-- =====================================================
-     NEXORA MASTER SCRIPT
-     ===================================================== -->
-
-<script src="../js/script.js"></script>
-```
 
 </body>
 
 </html>
+```
