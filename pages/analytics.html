@@ -15,7 +15,12 @@
 
     <meta
         name="description"
-        content="NEXORA analytics dashboard with revenue, orders, customers and performance insights."
+        content="NEXORA analytics dashboard with revenue, orders, customers, traffic sources and performance insights."
+    >
+
+    <meta
+        name="author"
+        content="NEXORA"
     >
 
     <link
@@ -29,10 +34,25 @@
 <body>
 
     <!-- =====================================================
+         SKIP LINK
+         ===================================================== -->
+
+    <a
+        class="skip-link"
+        href="#main-content"
+    >
+        Skip to main content
+    </a>
+
+
+    <!-- =====================================================
          SIDEBAR
          ===================================================== -->
 
-    <aside class="sidebar">
+    <aside
+        class="sidebar"
+        aria-label="Main navigation"
+    >
 
         <div class="logo">
             NEXORA
@@ -45,17 +65,18 @@
                 href="../index.html"
                 class="nav-link"
             >
-                <span>▦</span>
-                Dashboard
+                <span aria-hidden="true">▦</span>
+                <span>Dashboard</span>
             </a>
 
 
             <a
                 href="analytics.html"
                 class="nav-link active"
+                aria-current="page"
             >
-                <span>◫</span>
-                Analytics
+                <span aria-hidden="true">◫</span>
+                <span>Analytics</span>
             </a>
 
 
@@ -63,8 +84,8 @@
                 href="products.html"
                 class="nav-link"
             >
-                <span>□</span>
-                Products
+                <span aria-hidden="true">□</span>
+                <span>Products</span>
             </a>
 
 
@@ -72,8 +93,8 @@
                 href="orders.html"
                 class="nav-link"
             >
-                <span>◷</span>
-                Orders
+                <span aria-hidden="true">◷</span>
+                <span>Orders</span>
             </a>
 
 
@@ -81,8 +102,8 @@
                 href="customers.html"
                 class="nav-link"
             >
-                <span>♙</span>
-                Customers
+                <span aria-hidden="true">♙</span>
+                <span>Customers</span>
             </a>
 
 
@@ -90,8 +111,8 @@
                 href="messages.html"
                 class="nav-link"
             >
-                <span>✉</span>
-                Messages
+                <span aria-hidden="true">✉</span>
+                <span>Messages</span>
             </a>
 
         </nav>
@@ -103,8 +124,8 @@
                 href="settings.html"
                 class="nav-link"
             >
-                <span>⚙</span>
-                Settings
+                <span aria-hidden="true">⚙</span>
+                <span>Settings</span>
             </a>
 
 
@@ -112,8 +133,8 @@
                 href="profile.html"
                 class="nav-link"
             >
-                <span>◉</span>
-                Profile
+                <span aria-hidden="true">◉</span>
+                <span>Profile</span>
             </a>
 
         </div>
@@ -126,7 +147,10 @@
          MAIN CONTENT
          ===================================================== -->
 
-    <main class="main-content">
+    <main
+        class="main-content"
+        id="main-content"
+    >
 
 
         <!-- =================================================
@@ -142,7 +166,9 @@
                     class="menu-button"
                     id="menuButton"
                     type="button"
-                    aria-label="Open menu"
+                    aria-label="Open navigation menu"
+                    aria-controls="main-navigation"
+                    aria-expanded="false"
                 >
                     ☰
                 </button>
@@ -167,15 +193,17 @@
             <div class="header-right">
 
 
-                <!-- LANGUAGE BUTTON -->
+                <!-- LANGUAGE -->
 
                 <button
                     class="icon-button language-button"
                     id="languageButton"
                     type="button"
                     data-language-button
-                    aria-label="Language"
-                    title="Language"
+                    aria-label="Change language"
+                    title="Change language"
+                    aria-haspopup="menu"
+                    aria-expanded="false"
                 >
                     文
                 </button>
@@ -187,21 +215,31 @@
                     class="icon-button"
                     id="notificationButton"
                     type="button"
-                    aria-label="Notifications"
+                    aria-label="Open notifications"
+                    aria-controls="notificationPanel"
+                    aria-expanded="false"
                 >
 
-                    🔔
+                    <span aria-hidden="true">
+                        🔔
+                    </span>
 
-                    <span class="notification-dot"></span>
+                    <span
+                        class="notification-dot"
+                        aria-hidden="true"
+                    ></span>
 
                 </button>
 
 
-                <!-- USER -->
+                <!-- USER PROFILE -->
 
                 <div class="user-profile">
 
-                    <div class="avatar">
+                    <div
+                        class="avatar"
+                        aria-hidden="true"
+                    >
                         A
                     </div>
 
@@ -230,12 +268,20 @@
              STATISTICS
              ================================================= -->
 
-        <section class="stats-grid">
+        <section
+            class="stats-grid"
+            aria-label="Analytics overview"
+        >
 
+
+            <!-- REVENUE -->
 
             <article class="stat-card">
 
-                <div class="stat-icon">
+                <div
+                    class="stat-icon"
+                    aria-hidden="true"
+                >
                     $
                 </div>
 
@@ -260,9 +306,14 @@
 
 
 
+            <!-- ORDERS -->
+
             <article class="stat-card">
 
-                <div class="stat-icon">
+                <div
+                    class="stat-icon"
+                    aria-hidden="true"
+                >
                     ◷
                 </div>
 
@@ -287,9 +338,14 @@
 
 
 
+            <!-- CUSTOMERS -->
+
             <article class="stat-card">
 
-                <div class="stat-icon">
+                <div
+                    class="stat-icon"
+                    aria-hidden="true"
+                >
                     ♙
                 </div>
 
@@ -314,9 +370,14 @@
 
 
 
+            <!-- CONVERSION -->
+
             <article class="stat-card">
 
-                <div class="stat-icon">
+                <div
+                    class="stat-icon"
+                    aria-hidden="true"
+                >
                     ↗
                 </div>
 
@@ -347,10 +408,15 @@
              ANALYTICS GRID
              ================================================= -->
 
-        <section class="dashboard-grid">
+        <section
+            class="dashboard-grid"
+            aria-label="Performance analytics"
+        >
 
 
-            <!-- SALES PERFORMANCE -->
+            <!-- =================================================
+                 SALES PERFORMANCE
+                 ================================================= -->
 
             <article class="dashboard-card revenue-card">
 
@@ -371,19 +437,28 @@
                     </div>
 
 
+                    <label
+                        class="sr-only"
+                        for="analyticsYear"
+                    >
+                        Select year
+                    </label>
+
+
                     <select
-                        aria-label="Year"
+                        id="analyticsYear"
+                        aria-label="Select analytics year"
                     >
 
-                        <option>
+                        <option value="2026" selected>
                             2026
                         </option>
 
-                        <option>
+                        <option value="2025">
                             2025
                         </option>
 
-                        <option>
+                        <option value="2024">
                             2024
                         </option>
 
@@ -396,38 +471,88 @@
                 <div class="chart-container">
 
 
-                    <div class="chart-y-axis">
+                    <!-- Y AXIS -->
 
-                        <span>$60K</span>
-                        <span>$50K</span>
-                        <span>$40K</span>
-                        <span>$30K</span>
-                        <span>$20K</span>
-                        <span>$0</span>
+                    <div
+                        class="chart-y-axis"
+                        aria-hidden="true"
+                    >
+
+                        <span>
+                            $60K
+                        </span>
+
+                        <span>
+                            $50K
+                        </span>
+
+                        <span>
+                            $40K
+                        </span>
+
+                        <span>
+                            $30K
+                        </span>
+
+                        <span>
+                            $20K
+                        </span>
+
+                        <span>
+                            $0
+                        </span>
 
                     </div>
 
 
 
-                    <div class="chart">
+                    <!-- CHART -->
+
+                    <div
+                        class="chart"
+                        role="img"
+                        aria-label="Monthly revenue chart from January to July 2026, with July showing the highest performance."
+                    >
 
 
-                        <div class="grid-line"></div>
-                        <div class="grid-line"></div>
-                        <div class="grid-line"></div>
-                        <div class="grid-line"></div>
-                        <div class="grid-line"></div>
+                        <div
+                            class="grid-line"
+                            aria-hidden="true"
+                        ></div>
+
+                        <div
+                            class="grid-line"
+                            aria-hidden="true"
+                        ></div>
+
+                        <div
+                            class="grid-line"
+                            aria-hidden="true"
+                        ></div>
+
+                        <div
+                            class="grid-line"
+                            aria-hidden="true"
+                        ></div>
+
+                        <div
+                            class="grid-line"
+                            aria-hidden="true"
+                        ></div>
 
 
 
                         <div class="chart-bars">
 
 
+                            <!-- JANUARY -->
+
                             <div class="bar-group">
 
                                 <div
                                     class="bar"
-                                    style="height:42%;"
+                                    style="height: 42%;"
+                                    title="January: 42%"
                                 ></div>
 
                                 <span>
@@ -438,11 +563,14 @@
 
 
 
+                            <!-- FEBRUARY -->
+
                             <div class="bar-group">
 
                                 <div
                                     class="bar"
-                                    style="height:55%;"
+                                    style="height: 55%;"
+                                    title="February: 55%"
                                 ></div>
 
                                 <span>
@@ -453,11 +581,14 @@
 
 
 
+                            <!-- MARCH -->
+
                             <div class="bar-group">
 
                                 <div
                                     class="bar"
-                                    style="height:49%;"
+                                    style="height: 49%;"
+                                    title="March: 49%"
                                 ></div>
 
                                 <span>
@@ -468,11 +599,14 @@
 
 
 
+                            <!-- APRIL -->
+
                             <div class="bar-group">
 
                                 <div
                                     class="bar"
-                                    style="height:68%;"
+                                    style="height: 68%;"
+                                    title="April: 68%"
                                 ></div>
 
                                 <span>
@@ -483,11 +617,14 @@
 
 
 
+                            <!-- MAY -->
+
                             <div class="bar-group">
 
                                 <div
                                     class="bar"
-                                    style="height:61%;"
+                                    style="height: 61%;"
+                                    title="May: 61%"
                                 ></div>
 
                                 <span>
@@ -498,11 +635,14 @@
 
 
 
+                            <!-- JUNE -->
+
                             <div class="bar-group">
 
                                 <div
                                     class="bar"
-                                    style="height:79%;"
+                                    style="height: 79%;"
+                                    title="June: 79%"
                                 ></div>
 
                                 <span>
@@ -513,11 +653,14 @@
 
 
 
+                            <!-- JULY -->
+
                             <div class="bar-group">
 
                                 <div
                                     class="bar"
-                                    style="height:91%;"
+                                    style="height: 91%;"
+                                    title="July: 91%"
                                 ></div>
 
                                 <span>
@@ -536,7 +679,9 @@
 
 
 
-            <!-- TRAFFIC SOURCES -->
+            <!-- =================================================
+                 TRAFFIC SOURCES
+                 ================================================= -->
 
             <article class="dashboard-card">
 
@@ -562,9 +707,14 @@
                 <div class="activity-list">
 
 
+                    <!-- ORGANIC SEARCH -->
+
                     <div class="activity-item">
 
-                        <div class="activity-icon">
+                        <div
+                            class="activity-icon"
+                            aria-hidden="true"
+                        >
                             W
                         </div>
 
@@ -588,9 +738,14 @@
 
 
 
+                    <!-- SOCIAL MEDIA -->
+
                     <div class="activity-item">
 
-                        <div class="activity-icon">
+                        <div
+                            class="activity-icon"
+                            aria-hidden="true"
+                        >
                             S
                         </div>
 
@@ -614,9 +769,14 @@
 
 
 
+                    <!-- REFERRAL -->
+
                     <div class="activity-item">
 
-                        <div class="activity-icon">
+                        <div
+                            class="activity-icon"
+                            aria-hidden="true"
+                        >
                             R
                         </div>
 
@@ -640,9 +800,14 @@
 
 
 
+                    <!-- DIRECT -->
+
                     <div class="activity-item">
 
-                        <div class="activity-icon">
+                        <div
+                            class="activity-icon"
+                            aria-hidden="true"
+                        >
                             D
                         </div>
 
@@ -676,7 +841,10 @@
              TOP PRODUCTS
              ================================================= -->
 
-        <section class="dashboard-card orders-card">
+        <section
+            class="dashboard-card orders-card"
+            aria-labelledby="topProductsTitle"
+        >
 
 
             <div class="card-header">
@@ -684,7 +852,7 @@
 
                 <div>
 
-                    <h2>
+                    <h2 id="topProductsTitle">
                         Top Products
                     </h2>
 
@@ -711,28 +879,32 @@
 
                 <table>
 
+                    <caption class="sr-only">
+                        Best performing products and their sales performance
+                    </caption>
+
 
                     <thead>
 
                         <tr>
 
-                            <th>
+                            <th scope="col">
                                 Product
                             </th>
 
-                            <th>
+                            <th scope="col">
                                 Category
                             </th>
 
-                            <th>
+                            <th scope="col">
                                 Sales
                             </th>
 
-                            <th>
+                            <th scope="col">
                                 Revenue
                             </th>
 
-                            <th>
+                            <th scope="col">
                                 Growth
                             </th>
 
@@ -744,6 +916,8 @@
 
                     <tbody>
 
+
+                        <!-- PRODUCT 1 -->
 
                         <tr>
 
@@ -779,6 +953,8 @@
 
 
 
+                        <!-- PRODUCT 2 -->
+
                         <tr>
 
                             <td>
@@ -813,6 +989,8 @@
 
 
 
+                        <!-- PRODUCT 3 -->
+
                         <tr>
 
                             <td>
@@ -846,6 +1024,8 @@
                         </tr>
 
 
+
+                        <!-- PRODUCT 4 -->
 
                         <tr>
 
@@ -904,11 +1084,11 @@
 
             <div>
 
-                <a href="#">
+                <a href="../index.html">
                     Documentation
                 </a>
 
-                <a href="#">
+                <a href="settings.html">
                     Support
                 </a>
 
@@ -928,12 +1108,15 @@
     <div
         class="notification-panel"
         id="notificationPanel"
+        role="dialog"
+        aria-labelledby="notificationTitle"
+        aria-hidden="true"
     >
 
 
         <div class="notification-header">
 
-            <h3>
+            <h3 id="notificationTitle">
                 Notifications
             </h3>
 
@@ -962,7 +1145,7 @@
 
 
     <!-- =====================================================
-         GOOGLE TRANSLATE / NEXORA SCRIPT
+         NEXORA JAVASCRIPT
          ===================================================== -->
 
     <script src="../js/script.js"></script>
