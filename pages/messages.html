@@ -1,68 +1,128 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>NEXORA — Messages</title>
 
-    <meta name="description" content="NEXORA messaging dashboard for managing customer conversations and support messages.">
+    <meta
+        name="description"
+        content="NEXORA messaging dashboard for managing customer conversations and support messages."
+    >
 
-    <link rel="stylesheet" href="../css/style.css">
+    <meta
+        name="author"
+        content="NEXORA"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
 </head>
+
 
 <body>
 
-    <aside class="sidebar">
+    <!-- =====================================================
+         SIDEBAR
+         ===================================================== -->
+
+    <aside
+        class="sidebar"
+        id="mainSidebar"
+        aria-label="Main navigation"
+    >
 
         <div class="logo">
             NEXORA
         </div>
 
+
         <nav class="navigation">
 
-            <a href="../index.html" class="nav-link">
-                <span>▦</span>
+            <a
+                href="../index.html"
+                class="nav-link"
+            >
+                <span aria-hidden="true">▦</span>
                 Dashboard
             </a>
 
-            <a href="analytics.html" class="nav-link">
-                <span>◫</span>
+
+            <a
+                href="analytics.html"
+                class="nav-link"
+            >
+                <span aria-hidden="true">◫</span>
                 Analytics
             </a>
 
-            <a href="products.html" class="nav-link">
-                <span>□</span>
+
+            <a
+                href="products.html"
+                class="nav-link"
+            >
+                <span aria-hidden="true">□</span>
                 Products
             </a>
 
-            <a href="orders.html" class="nav-link">
-                <span>◷</span>
+
+            <a
+                href="orders.html"
+                class="nav-link"
+            >
+                <span aria-hidden="true">◷</span>
                 Orders
             </a>
 
-            <a href="customers.html" class="nav-link">
-                <span>♙</span>
+
+            <a
+                href="customers.html"
+                class="nav-link"
+            >
+                <span aria-hidden="true">♙</span>
                 Customers
             </a>
 
-            <a href="messages.html" class="nav-link active">
-                <span>✉</span>
+
+            <a
+                href="messages.html"
+                class="nav-link active"
+                aria-current="page"
+            >
+                <span aria-hidden="true">✉</span>
                 Messages
             </a>
 
         </nav>
 
+
         <div class="sidebar-bottom">
 
-            <a href="settings.html" class="nav-link">
-                <span>⚙</span>
+            <a
+                href="settings.html"
+                class="nav-link"
+            >
+                <span aria-hidden="true">⚙</span>
                 Settings
             </a>
 
-            <a href="profile.html" class="nav-link">
-                <span>◉</span>
+
+            <a
+                href="profile.html"
+                class="nav-link"
+            >
+                <span aria-hidden="true">◉</span>
                 Profile
             </a>
 
@@ -71,289 +131,645 @@
     </aside>
 
 
+
+    <!-- =====================================================
+         MAIN CONTENT
+         ===================================================== -->
+
     <main class="main-content">
+
+
+        <!-- =================================================
+             TOPBAR
+             ================================================= -->
 
         <header class="topbar">
 
+
             <div class="header-left">
 
-                <button class="menu-button" id="menuButton">
+                <button
+                    class="menu-button"
+                    id="menuButton"
+                    type="button"
+                    aria-label="Open menu"
+                    aria-controls="mainSidebar"
+                    aria-expanded="false"
+                >
                     ☰
                 </button>
 
+
                 <div>
-                    <h1>Messages</h1>
-                    <p>Stay connected with your customers and support team.</p>
+
+                    <h1>
+                        Messages
+                    </h1>
+
+                    <p>
+                        Stay connected with your customers and support team.
+                    </p>
+
                 </div>
 
             </div>
 
 
+
             <div class="header-right">
 
-                <button class="icon-button" id="notificationButton">
-                    🔔
-                    <span class="notification-dot"></span>
+
+                <!-- LANGUAGE -->
+
+                <button
+                    class="icon-button language-button"
+                    id="languageButton"
+                    type="button"
+                    data-language-button
+                    aria-label="Language"
+                    title="Language"
+                    aria-haspopup="menu"
+                    aria-expanded="false"
+                >
+                    文
                 </button>
 
-                <div class="user-profile">
 
-                    <div class="avatar">
+                <!-- NOTIFICATIONS -->
+
+                <button
+                    class="icon-button"
+                    id="notificationButton"
+                    type="button"
+                    aria-label="Notifications"
+                    aria-controls="notificationPanel"
+                    aria-expanded="false"
+                >
+
+                    🔔
+
+                    <span
+                        class="notification-dot"
+                        aria-hidden="true"
+                    ></span>
+
+                </button>
+
+
+                <!-- USER -->
+
+                <a
+                    href="profile.html"
+                    class="user-profile"
+                    aria-label="Open profile"
+                >
+
+                    <div
+                        class="avatar"
+                        aria-hidden="true"
+                    >
                         A
                     </div>
 
+
                     <div class="user-info">
-                        <strong>Alex Morgan</strong>
-                        <span>Administrator</span>
+
+                        <strong>
+                            Alex Morgan
+                        </strong>
+
+                        <span>
+                            Administrator
+                        </span>
+
                     </div>
 
-                </div>
+                </a>
 
             </div>
 
         </header>
 
 
-        <section class="stats-grid">
+
+        <!-- =================================================
+             MESSAGE STATISTICS
+             ================================================= -->
+
+        <section
+            class="stats-grid"
+            aria-label="Message statistics"
+        >
+
 
             <article class="stat-card">
 
-                <div class="stat-icon">
+                <div
+                    class="stat-icon"
+                    aria-hidden="true"
+                >
                     ✉
                 </div>
 
+
                 <div class="stat-content">
-                    <span class="stat-label">Total Messages</span>
-                    <strong class="stat-value">486</strong>
-                    <small class="positive">↑ 14.2% this month</small>
+
+                    <span class="stat-label">
+                        Total Messages
+                    </span>
+
+                    <strong class="stat-value">
+                        486
+                    </strong>
+
+                    <small class="positive">
+                        ↑ 14.2% this month
+                    </small>
+
                 </div>
 
             </article>
 
 
+
             <article class="stat-card">
 
-                <div class="stat-icon">
+                <div
+                    class="stat-icon"
+                    aria-hidden="true"
+                >
                     ●
                 </div>
 
+
                 <div class="stat-content">
-                    <span class="stat-label">Unread</span>
-                    <strong class="stat-value">18</strong>
-                    <small>Requires your attention</small>
+
+                    <span class="stat-label">
+                        Unread
+                    </span>
+
+                    <strong class="stat-value">
+                        18
+                    </strong>
+
+                    <small>
+                        Requires your attention
+                    </small>
+
                 </div>
 
             </article>
 
 
+
             <article class="stat-card">
 
-                <div class="stat-icon">
+                <div
+                    class="stat-icon"
+                    aria-hidden="true"
+                >
                     ✓
                 </div>
 
+
                 <div class="stat-content">
-                    <span class="stat-label">Resolved</span>
-                    <strong class="stat-value">392</strong>
-                    <small class="positive">80.7% resolution rate</small>
+
+                    <span class="stat-label">
+                        Resolved
+                    </span>
+
+                    <strong class="stat-value">
+                        392
+                    </strong>
+
+                    <small class="positive">
+                        80.7% resolution rate
+                    </small>
+
                 </div>
 
             </article>
 
 
+
             <article class="stat-card">
 
-                <div class="stat-icon">
+                <div
+                    class="stat-icon"
+                    aria-hidden="true"
+                >
                     ◷
                 </div>
 
+
                 <div class="stat-content">
-                    <span class="stat-label">Avg. Response</span>
-                    <strong class="stat-value">12m</strong>
-                    <small class="positive">↓ 18% faster</small>
+
+                    <span class="stat-label">
+                        Avg. Response
+                    </span>
+
+                    <strong class="stat-value">
+                        12m
+                    </strong>
+
+                    <small class="positive">
+                        ↓ 18% faster
+                    </small>
+
                 </div>
 
             </article>
 
         </section>
-              <section class="dashboard-card">
+
+
+
+        <!-- =================================================
+             CUSTOMER CONVERSATIONS
+             ================================================= -->
+
+        <section class="dashboard-card">
+
 
             <div class="card-header">
 
+
                 <div>
-                    <h2>Customer Conversations</h2>
-                    <p>Recent messages from your customers.</p>
+
+                    <h2>
+                        Customer Conversations
+                    </h2>
+
+                    <p>
+                        Recent messages from your customers.
+                    </p>
+
                 </div>
 
-                <select>
-                    <option>All Messages</option>
-                    <option>Unread</option>
-                    <option>Resolved</option>
-                </select>
+
+                <div>
+
+                    <label
+                        for="messageFilter"
+                        class="sr-only"
+                    >
+                        Filter messages
+                    </label>
+
+                    <select id="messageFilter">
+
+                        <option>
+                            All Messages
+                        </option>
+
+                        <option>
+                            Unread
+                        </option>
+
+                        <option>
+                            Resolved
+                        </option>
+
+                    </select>
+
+                </div>
 
             </div>
+
 
 
             <div class="activity-list">
 
+
                 <div class="activity-item">
 
-                    <div class="activity-icon">
+                    <div
+                        class="activity-icon"
+                        aria-hidden="true"
+                    >
                         EM
                     </div>
 
+
                     <div class="activity-text">
-                        <strong>Emily Johnson</strong>
-                        <span>Hi! I wanted to ask about my recent order...</span>
+
+                        <strong>
+                            Emily Johnson
+                        </strong>
+
+                        <span>
+                            Hi! I wanted to ask about my recent order...
+                        </span>
+
                     </div>
 
-                    <time>2m</time>
+
+                    <time
+                        datetime="2026-09-02T19:08"
+                        title="2 minutes ago"
+                    >
+                        2m
+                    </time>
 
                 </div>
 
 
+
                 <div class="activity-item">
 
-                    <div class="activity-icon">
+                    <div
+                        class="activity-icon"
+                        aria-hidden="true"
+                    >
                         DS
                     </div>
 
+
                     <div class="activity-text">
-                        <strong>Daniel Smith</strong>
-                        <span>Is the Smart Watch Pro available in black?</span>
+
+                        <strong>
+                            Daniel Smith
+                        </strong>
+
+                        <span>
+                            Is the Smart Watch Pro available in black?
+                        </span>
+
                     </div>
 
-                    <time>18m</time>
+
+                    <time
+                        datetime="2026-09-02T18:52"
+                        title="18 minutes ago"
+                    >
+                        18m
+                    </time>
 
                 </div>
 
 
+
                 <div class="activity-item">
 
-                    <div class="activity-icon">
+                    <div
+                        class="activity-icon"
+                        aria-hidden="true"
+                    >
                         OB
                     </div>
 
+
                     <div class="activity-text">
-                        <strong>Olivia Brown</strong>
-                        <span>Thank you for the quick delivery!</span>
+
+                        <strong>
+                            Olivia Brown
+                        </strong>
+
+                        <span>
+                            Thank you for the quick delivery!
+                        </span>
+
                     </div>
 
-                    <time>42m</time>
+
+                    <time
+                        datetime="2026-09-02T18:28"
+                        title="42 minutes ago"
+                    >
+                        42m
+                    </time>
 
                 </div>
 
 
+
                 <div class="activity-item">
 
-                    <div class="activity-icon">
+                    <div
+                        class="activity-icon"
+                        aria-hidden="true"
+                    >
                         JW
                     </div>
 
+
                     <div class="activity-text">
-                        <strong>James Wilson</strong>
-                        <span>Can I change the delivery address?</span>
+
+                        <strong>
+                            James Wilson
+                        </strong>
+
+                        <span>
+                            Can I change the delivery address?
+                        </span>
+
                     </div>
 
-                    <time>1h</time>
+
+                    <time
+                        datetime="2026-09-02T18:10"
+                        title="1 hour ago"
+                    >
+                        1h
+                    </time>
 
                 </div>
 
 
+
                 <div class="activity-item">
 
-                    <div class="activity-icon">
+                    <div
+                        class="activity-icon"
+                        aria-hidden="true"
+                    >
                         SD
                     </div>
 
+
                     <div class="activity-text">
-                        <strong>Sophia Davis</strong>
-                        <span>I received my package. Everything looks perfect.</span>
+
+                        <strong>
+                            Sophia Davis
+                        </strong>
+
+                        <span>
+                            I received my package. Everything looks perfect.
+                        </span>
+
                     </div>
 
-                    <time>2h</time>
+
+                    <time
+                        datetime="2026-09-02T17:10"
+                        title="2 hours ago"
+                    >
+                        2h
+                    </time>
 
                 </div>
 
 
+
                 <div class="activity-item">
 
-                    <div class="activity-icon">
+                    <div
+                        class="activity-icon"
+                        aria-hidden="true"
+                    >
                         MM
                     </div>
 
+
                     <div class="activity-text">
-                        <strong>Michael Miller</strong>
-                        <span>Could you help me with a refund request?</span>
+
+                        <strong>
+                            Michael Miller
+                        </strong>
+
+                        <span>
+                            Could you help me with a refund request?
+                        </span>
+
                     </div>
 
-                    <time>3h</time>
+
+                    <time
+                        datetime="2026-09-02T16:10"
+                        title="3 hours ago"
+                    >
+                        3h
+                    </time>
 
                 </div>
 
             </div>
 
         </section>
-              <section class="dashboard-grid">
+
+
+
+        <!-- =================================================
+             SUPPORT OVERVIEW + QUICK SUPPORT
+             ================================================= -->
+
+        <section class="dashboard-grid">
+
+
+            <!-- SUPPORT OVERVIEW -->
 
             <article class="dashboard-card">
+
 
                 <div class="card-header">
 
                     <div>
-                        <h2>Support Overview</h2>
-                        <p>Current customer support activity.</p>
+
+                        <h2>
+                            Support Overview
+                        </h2>
+
+                        <p>
+                            Current customer support activity.
+                        </p>
+
                     </div>
 
                 </div>
 
 
+
                 <div class="activity-list">
+
 
                     <div class="activity-item">
 
-                        <div class="activity-icon">
+                        <div
+                            class="activity-icon"
+                            aria-hidden="true"
+                        >
                             ●
                         </div>
 
+
                         <div class="activity-text">
-                            <strong>Open Conversations</strong>
-                            <span>Customers waiting for a response</span>
+
+                            <strong>
+                                Open Conversations
+                            </strong>
+
+                            <span>
+                                Customers waiting for a response
+                            </span>
+
                         </div>
 
-                        <strong>18</strong>
+
+                        <strong>
+                            18
+                        </strong>
 
                     </div>
 
 
+
                     <div class="activity-item">
 
-                        <div class="activity-icon">
+                        <div
+                            class="activity-icon"
+                            aria-hidden="true"
+                        >
                             ✓
                         </div>
 
+
                         <div class="activity-text">
-                            <strong>Resolved Today</strong>
-                            <span>Conversations successfully resolved</span>
+
+                            <strong>
+                                Resolved Today
+                            </strong>
+
+                            <span>
+                                Conversations successfully resolved
+                            </span>
+
                         </div>
 
-                        <strong>42</strong>
+
+                        <strong>
+                            42
+                        </strong>
 
                     </div>
 
 
+
                     <div class="activity-item">
 
-                        <div class="activity-icon">
+                        <div
+                            class="activity-icon"
+                            aria-hidden="true"
+                        >
                             ↗
                         </div>
 
+
                         <div class="activity-text">
-                            <strong>Response Rate</strong>
-                            <span>Messages answered within 24 hours</span>
+
+                            <strong>
+                                Response Rate
+                            </strong>
+
+                            <span>
+                                Messages answered within 24 hours
+                            </span>
+
                         </div>
 
-                        <strong>94%</strong>
+
+                        <strong>
+                            94%
+                        </strong>
 
                     </div>
 
@@ -362,64 +778,121 @@
             </article>
 
 
+
+            <!-- QUICK SUPPORT -->
+
             <article class="dashboard-card">
+
 
                 <div class="card-header">
 
                     <div>
-                        <h2>Quick Support</h2>
-                        <p>Useful support information.</p>
+
+                        <h2>
+                            Quick Support
+                        </h2>
+
+                        <p>
+                            Useful support information.
+                        </p>
+
                     </div>
 
                 </div>
 
 
+
                 <div class="activity-list">
+
 
                     <div class="activity-item">
 
-                        <div class="activity-icon">
+                        <div
+                            class="activity-icon"
+                            aria-hidden="true"
+                        >
                             ⚡
                         </div>
 
+
                         <div class="activity-text">
-                            <strong>Fastest Response</strong>
-                            <span>Best response time today</span>
+
+                            <strong>
+                                Fastest Response
+                            </strong>
+
+                            <span>
+                                Best response time today
+                            </span>
+
                         </div>
 
-                        <strong>4m</strong>
+
+                        <strong>
+                            4m
+                        </strong>
 
                     </div>
 
 
+
                     <div class="activity-item">
 
-                        <div class="activity-icon">
+                        <div
+                            class="activity-icon"
+                            aria-hidden="true"
+                        >
                             ★
                         </div>
 
+
                         <div class="activity-text">
-                            <strong>Customer Satisfaction</strong>
-                            <span>Average support rating</span>
+
+                            <strong>
+                                Customer Satisfaction
+                            </strong>
+
+                            <span>
+                                Average support rating
+                            </span>
+
                         </div>
 
-                        <strong>4.9/5</strong>
+
+                        <strong>
+                            4.9/5
+                        </strong>
 
                     </div>
 
 
+
                     <div class="activity-item">
 
-                        <div class="activity-icon">
+                        <div
+                            class="activity-icon"
+                            aria-hidden="true"
+                        >
                             ✉
                         </div>
 
+
                         <div class="activity-text">
-                            <strong>Messages Today</strong>
-                            <span>Total conversations today</span>
+
+                            <strong>
+                                Messages Today
+                            </strong>
+
+                            <span>
+                                Total conversations today
+                            </span>
+
                         </div>
 
-                        <strong>86</strong>
+
+                        <strong>
+                            86
+                        </strong>
 
                     </div>
 
@@ -428,15 +901,30 @@
             </article>
 
         </section>
-              <footer class="footer">
+
+
+
+        <!-- =================================================
+             FOOTER
+             ================================================= -->
+
+        <footer class="footer">
 
             <span>
                 © 2026 NEXORA. All rights reserved.
             </span>
 
+
             <div>
-                <a href="#">Documentation</a>
-                <a href="#">Support</a>
+
+                <a href="#">
+                    Documentation
+                </a>
+
+                <a href="#">
+                    Support
+                </a>
+
             </div>
 
         </footer>
@@ -444,7 +932,57 @@
     </main>
 
 
+
+    <!-- =====================================================
+         NOTIFICATION PANEL
+         ===================================================== -->
+
+    <div
+        class="notification-panel"
+        id="notificationPanel"
+        role="dialog"
+        aria-label="Notifications"
+        aria-hidden="true"
+    >
+
+        <div class="notification-header">
+
+            <h3>
+                Notifications
+            </h3>
+
+
+            <button
+                id="closeNotifications"
+                type="button"
+                aria-label="Close notifications"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="notification-content">
+
+            <p>
+                You have 3 new notifications.
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         NEXORA MASTER SCRIPT
+         ===================================================== -->
+
     <script src="../js/script.js"></script>
 
+
 </body>
+
 </html>
+```
