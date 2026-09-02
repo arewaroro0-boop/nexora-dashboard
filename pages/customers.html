@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,6 +18,11 @@
         content="NEXORA customer management dashboard."
     >
 
+    <meta
+        name="author"
+        content="NEXORA"
+    >
+
     <link
         rel="stylesheet"
         href="../css/style.css"
@@ -31,7 +37,10 @@
          SIDEBAR
          ===================================================== -->
 
-    <aside class="sidebar">
+    <aside
+        class="sidebar"
+        aria-label="Main navigation"
+    >
 
         <div class="logo">
             NEXORA
@@ -44,7 +53,7 @@
                 href="../index.html"
                 class="nav-link"
             >
-                <span>▦</span>
+                <span aria-hidden="true">▦</span>
                 Dashboard
             </a>
 
@@ -53,7 +62,7 @@
                 href="analytics.html"
                 class="nav-link"
             >
-                <span>◫</span>
+                <span aria-hidden="true">◫</span>
                 Analytics
             </a>
 
@@ -62,7 +71,7 @@
                 href="products.html"
                 class="nav-link"
             >
-                <span>□</span>
+                <span aria-hidden="true">□</span>
                 Products
             </a>
 
@@ -71,7 +80,7 @@
                 href="orders.html"
                 class="nav-link"
             >
-                <span>◷</span>
+                <span aria-hidden="true">◷</span>
                 Orders
             </a>
 
@@ -79,8 +88,9 @@
             <a
                 href="customers.html"
                 class="nav-link active"
+                aria-current="page"
             >
-                <span>♙</span>
+                <span aria-hidden="true">♙</span>
                 Customers
             </a>
 
@@ -89,7 +99,7 @@
                 href="messages.html"
                 class="nav-link"
             >
-                <span>✉</span>
+                <span aria-hidden="true">✉</span>
                 Messages
             </a>
 
@@ -102,7 +112,7 @@
                 href="settings.html"
                 class="nav-link"
             >
-                <span>⚙</span>
+                <span aria-hidden="true">⚙</span>
                 Settings
             </a>
 
@@ -111,7 +121,7 @@
                 href="profile.html"
                 class="nav-link"
             >
-                <span>◉</span>
+                <span aria-hidden="true">◉</span>
                 Profile
             </a>
 
@@ -142,6 +152,8 @@
                     id="menuButton"
                     type="button"
                     aria-label="Open menu"
+                    aria-controls="mainSidebar"
+                    aria-expanded="false"
                 >
                     ☰
                 </button>
@@ -175,6 +187,8 @@
                     data-language-button
                     aria-label="Language"
                     title="Language"
+                    aria-haspopup="menu"
+                    aria-expanded="false"
                 >
                     文
                 </button>
@@ -187,20 +201,32 @@
                     id="notificationButton"
                     type="button"
                     aria-label="Notifications"
+                    aria-controls="notificationPanel"
+                    aria-expanded="false"
                 >
 
                     🔔
 
-                    <span class="notification-dot"></span>
+                    <span
+                        class="notification-dot"
+                        aria-hidden="true"
+                    ></span>
 
                 </button>
 
 
                 <!-- USER -->
 
-                <div class="user-profile">
+                <a
+                    href="profile.html"
+                    class="user-profile"
+                    aria-label="Open profile"
+                >
 
-                    <div class="avatar">
+                    <div
+                        class="avatar"
+                        aria-hidden="true"
+                    >
                         A
                     </div>
 
@@ -217,7 +243,7 @@
 
                     </div>
 
-                </div>
+                </a>
 
             </div>
 
@@ -229,12 +255,18 @@
              CUSTOMER STATISTICS
              ================================================= -->
 
-        <section class="stats-grid">
+        <section
+            class="stats-grid"
+            aria-label="Customer statistics"
+        >
 
 
             <article class="stat-card">
 
-                <div class="stat-icon">
+                <div
+                    class="stat-icon"
+                    aria-hidden="true"
+                >
                     ♙
                 </div>
 
@@ -261,7 +293,10 @@
 
             <article class="stat-card">
 
-                <div class="stat-icon">
+                <div
+                    class="stat-icon"
+                    aria-hidden="true"
+                >
                     +
                 </div>
 
@@ -288,7 +323,10 @@
 
             <article class="stat-card">
 
-                <div class="stat-icon">
+                <div
+                    class="stat-icon"
+                    aria-hidden="true"
+                >
                     ●
                 </div>
 
@@ -315,7 +353,10 @@
 
             <article class="stat-card">
 
-                <div class="stat-icon">
+                <div
+                    class="stat-icon"
+                    aria-hidden="true"
+                >
                     $
                 </div>
 
@@ -368,6 +409,7 @@
                 <button
                     class="primary-button"
                     type="button"
+                    aria-label="Add a new customer"
                 >
                     + Add Customer
                 </button>
@@ -381,28 +423,33 @@
 
                 <table>
 
+                    <caption class="sr-only">
+                        Customer directory with customer details, spending,
+                        join dates, and account status.
+                    </caption>
+
 
                     <thead>
 
                         <tr>
 
-                            <th>
+                            <th scope="col">
                                 Customer
                             </th>
 
-                            <th>
+                            <th scope="col">
                                 Email
                             </th>
 
-                            <th>
+                            <th scope="col">
                                 Total Spent
                             </th>
 
-                            <th>
+                            <th scope="col">
                                 Joined
                             </th>
 
-                            <th>
+                            <th scope="col">
                                 Status
                             </th>
 
@@ -421,7 +468,10 @@
 
                                 <div class="table-user">
 
-                                    <div class="avatar">
+                                    <div
+                                        class="avatar"
+                                        aria-hidden="true"
+                                    >
                                         EM
                                     </div>
 
@@ -469,7 +519,10 @@
 
                                 <div class="table-user">
 
-                                    <div class="avatar">
+                                    <div
+                                        class="avatar"
+                                        aria-hidden="true"
+                                    >
                                         OL
                                     </div>
 
@@ -517,7 +570,10 @@
 
                                 <div class="table-user">
 
-                                    <div class="avatar">
+                                    <div
+                                        class="avatar"
+                                        aria-hidden="true"
+                                    >
                                         NO
                                     </div>
 
@@ -565,7 +621,10 @@
 
                                 <div class="table-user">
 
-                                    <div class="avatar">
+                                    <div
+                                        class="avatar"
+                                        aria-hidden="true"
+                                    >
                                         AV
                                     </div>
 
@@ -613,7 +672,10 @@
 
                                 <div class="table-user">
 
-                                    <div class="avatar">
+                                    <div
+                                        class="avatar"
+                                        aria-hidden="true"
+                                    >
                                         JM
                                     </div>
 
@@ -699,7 +761,10 @@
 
                     <div class="activity-item">
 
-                        <div class="activity-icon">
+                        <div
+                            class="activity-icon"
+                            aria-hidden="true"
+                        >
                             +
                         </div>
 
@@ -721,7 +786,10 @@
 
                     <div class="activity-item">
 
-                        <div class="activity-icon">
+                        <div
+                            class="activity-icon"
+                            aria-hidden="true"
+                        >
                             $
                         </div>
 
@@ -743,7 +811,10 @@
 
                     <div class="activity-item">
 
-                        <div class="activity-icon">
+                        <div
+                            class="activity-icon"
+                            aria-hidden="true"
+                        >
                             ✓
                         </div>
 
@@ -765,7 +836,10 @@
 
                     <div class="activity-item">
 
-                        <div class="activity-icon">
+                        <div
+                            class="activity-icon"
+                            aria-hidden="true"
+                        >
                             ↻
                         </div>
 
@@ -817,7 +891,10 @@
 
                     <div class="activity-item">
 
-                        <div class="activity-icon">
+                        <div
+                            class="activity-icon"
+                            aria-hidden="true"
+                        >
                             ↻
                         </div>
 
@@ -843,7 +920,10 @@
 
                     <div class="activity-item">
 
-                        <div class="activity-icon">
+                        <div
+                            class="activity-icon"
+                            aria-hidden="true"
+                        >
                             $
                         </div>
 
@@ -869,7 +949,10 @@
 
                     <div class="activity-item">
 
-                        <div class="activity-icon">
+                        <div
+                            class="activity-icon"
+                            aria-hidden="true"
+                        >
                             #
                         </div>
 
@@ -936,6 +1019,9 @@
     <div
         class="notification-panel"
         id="notificationPanel"
+        role="dialog"
+        aria-label="Notifications"
+        aria-hidden="true"
     >
 
         <div class="notification-header">
@@ -978,3 +1064,4 @@
 </body>
 
 </html>
+```
