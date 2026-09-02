@@ -1,902 +1,551 @@
-<!DOCTYPE html>
+<!-- =============================================
+     LANGUAGE
+     ============================================= -->
 
-<html lang="en">
-
-<head>
-
-```
-<meta charset="UTF-8">
-
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
-
-<title>NEXORA — Settings</title>
-
-<meta
-    name="description"
-    content="Manage your NEXORA dashboard settings."
->
-
-<link
-    rel="stylesheet"
-    href="../css/style.css"
->
-```
-
-</head>
-
-<body>
+<article class="dashboard-card settings-card">
 
 ```
-<!-- =====================================================
-     SIDEBAR
-     ===================================================== -->
+<div class="card-header">
 
-<aside class="sidebar">
+    <div>
 
+        <h2>
+            Language
+        </h2>
 
-    <div class="logo">
-        NEXORA
-    </div>
-
-
-    <nav class="navigation">
-
-
-        <a
-            href="../index.html"
-            class="nav-link"
-        >
-            <span>▦</span>
-            Dashboard
-        </a>
-
-
-        <a
-            href="analytics.html"
-            class="nav-link"
-        >
-            <span>◫</span>
-            Analytics
-        </a>
-
-
-        <a
-            href="products.html"
-            class="nav-link"
-        >
-            <span>□</span>
-            Products
-        </a>
-
-
-        <a
-            href="orders.html"
-            class="nav-link"
-        >
-            <span>◷</span>
-            Orders
-        </a>
-
-
-        <a
-            href="customers.html"
-            class="nav-link"
-        >
-            <span>♙</span>
-            Customers
-        </a>
-
-
-        <a
-            href="messages.html"
-            class="nav-link"
-        >
-            <span>✉</span>
-            Messages
-        </a>
-
-
-    </nav>
-
-
-    <div class="sidebar-bottom">
-
-
-        <a
-            href="settings.html"
-            class="nav-link active"
-        >
-            <span>⚙</span>
-            Settings
-        </a>
-
-
-        <a
-            href="profile.html"
-            class="nav-link"
-        >
-            <span>◉</span>
-            Profile
-        </a>
-
+        <p>
+            Select your preferred dashboard language.
+        </p>
 
     </div>
-
-
-</aside>
-
-
-
-<!-- =====================================================
-     MAIN CONTENT
-     ===================================================== -->
-
-<main class="main-content">
-
-
-    <!-- =================================================
-         TOPBAR
-         ================================================= -->
-
-    <header class="topbar">
-
-
-        <div class="header-left">
-
-
-            <button
-                class="menu-button"
-                id="menuButton"
-                type="button"
-                aria-label="Open menu"
-            >
-                ☰
-            </button>
-
-
-            <div>
-
-                <h1>
-                    Settings
-                </h1>
-
-                <p>
-                    Manage your dashboard preferences.
-                </p>
-
-            </div>
-
-
-        </div>
-
-
-
-        <div class="header-right">
-
-
-            <!-- LANGUAGE -->
-
-            <button
-                class="icon-button language-button"
-                id="languageButton"
-                type="button"
-                data-language-button
-                aria-label="Language"
-                title="Language"
-            >
-                文
-            </button>
-
-
-            <!-- NOTIFICATIONS -->
-
-            <button
-                class="icon-button"
-                id="notificationButton"
-                type="button"
-                aria-label="Notifications"
-            >
-                🔔
-
-                <span class="notification-dot"></span>
-            </button>
-
-
-            <!-- USER PROFILE -->
-
-            <a
-                href="profile.html"
-                class="user-profile"
-                title="Open profile"
-            >
-
-                <div class="avatar">
-                    A
-                </div>
-
-
-                <div class="user-info">
-
-                    <strong>
-                        Alex Morgan
-                    </strong>
-
-                    <span>
-                        Administrator
-                    </span>
-
-                </div>
-
-            </a>
-
-
-        </div>
-
-
-    </header>
-
-
-
-    <!-- =================================================
-         SETTINGS
-         ================================================= -->
-
-    <section class="settings-layout">
-
-
-        <!-- =============================================
-             APPEARANCE
-             ============================================= -->
-
-        <article class="dashboard-card settings-card">
-
-
-            <div class="card-header">
-
-                <div>
-
-                    <h2>
-                        Appearance
-                    </h2>
-
-                    <p>
-                        Customize how NEXORA looks.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="settings-content">
-
-
-                <div class="setting-row">
-
-
-                    <div class="setting-info">
-
-                        <strong>
-                            Theme
-                        </strong>
-
-                        <span>
-                            Choose your preferred appearance.
-                        </span>
-
-                    </div>
-
-
-                    <select
-                        data-theme-select
-                        aria-label="Theme"
-                    >
-
-                        <option value="system">
-                            System Default
-                        </option>
-
-                        <option value="light">
-                            Light Mode
-                        </option>
-
-                        <option value="dark">
-                            Dark Mode
-                        </option>
-
-                    </select>
-
-
-                </div>
-
-
-
-                <div class="theme-buttons">
-
-
-                    <button
-                        type="button"
-                        class="theme-option-button"
-                        data-theme="light"
-                    >
-                        ☀
-                        <span>Light</span>
-                    </button>
-
-
-
-                    <button
-                        type="button"
-                        class="theme-option-button"
-                        data-theme="dark"
-                    >
-                        ☾
-                        <span>Dark</span>
-                    </button>
-
-
-
-                    <button
-                        type="button"
-                        class="theme-option-button"
-                        data-theme="system"
-                    >
-                        ◉
-                        <span>System</span>
-                    </button>
-
-
-                </div>
-
-
-            </div>
-
-
-        </article>
-
-
-
-        <!-- =============================================
-             LANGUAGE
-             IMPORTANT:
-             SCRIPT.JS GENERATES ALL 21 LANGUAGES HERE
-             ============================================= -->
-
-        <article class="dashboard-card settings-card">
-
-
-            <div class="card-header">
-
-                <div>
-
-                    <h2>
-                        Language
-                    </h2>
-
-                    <p>
-                        Select your preferred dashboard language.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="settings-content">
-
-
-                <div class="setting-row">
-
-
-                    <div class="setting-info">
-
-                        <strong>
-                            Current Language
-                        </strong>
-
-                        <span>
-                            Your language selection is saved automatically.
-                        </span>
-
-                    </div>
-
-
-                    <strong
-                        class="current-language-display"
-                        data-current-language
-                    >
-                        English
-                    </strong>
-
-
-                </div>
-
-
-
-                <!-- ALL 21 LANGUAGES ARE GENERATED BY SCRIPT.JS -->
-
-                <div
-                    class="settings-language-list"
-                    data-language-list
-                ></div>
-
-
-            </div>
-
-
-        </article>
-
-
-
-        <!-- =============================================
-             ACCOUNT
-             ============================================= -->
-
-        <article class="dashboard-card settings-card">
-
-
-            <div class="card-header">
-
-                <div>
-
-                    <h2>
-                        Account
-                    </h2>
-
-                    <p>
-                        Manage your account preferences.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="settings-content">
-
-
-                <div class="setting-row">
-
-
-                    <div class="setting-info">
-
-                        <strong>
-                            Profile
-                        </strong>
-
-                        <span>
-                            Update your personal information.
-                        </span>
-
-                    </div>
-
-
-                    <a
-                        href="profile.html"
-                        class="settings-action-button"
-                    >
-                        Manage Profile
-                    </a>
-
-
-                </div>
-
-
-
-                <div class="setting-row">
-
-
-                    <div class="setting-info">
-
-                        <strong>
-                            Notifications
-                        </strong>
-
-                        <span>
-                            View your latest dashboard notifications.
-                        </span>
-
-                    </div>
-
-
-                    <button
-                        type="button"
-                        class="settings-action-button"
-                        id="settingsNotificationButton"
-                    >
-                        View Notifications
-                    </button>
-
-
-                </div>
-
-
-            </div>
-
-
-        </article>
-
-
-
-        <!-- =============================================
-             QUICK ACCESS
-             ============================================= -->
-
-        <article class="dashboard-card settings-card">
-
-
-            <div class="card-header">
-
-                <div>
-
-                    <h2>
-                        Quick Access
-                    </h2>
-
-                    <p>
-                        Navigate quickly through your workspace.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="settings-content settings-links">
-
-
-                <a
-                    href="../index.html"
-                    class="settings-link"
-                >
-
-                    <span>
-                        ▦
-                    </span>
-
-
-                    <div>
-
-                        <strong>
-                            Dashboard
-                        </strong>
-
-                        <small>
-                            View your dashboard overview
-                        </small>
-
-                    </div>
-
-                </a>
-
-
-
-                <a
-                    href="analytics.html"
-                    class="settings-link"
-                >
-
-                    <span>
-                        ◫
-                    </span>
-
-
-                    <div>
-
-                        <strong>
-                            Analytics
-                        </strong>
-
-                        <small>
-                            Explore your performance
-                        </small>
-
-                    </div>
-
-                </a>
-
-
-
-                <a
-                    href="products.html"
-                    class="settings-link"
-                >
-
-                    <span>
-                        □
-                    </span>
-
-
-                    <div>
-
-                        <strong>
-                            Products
-                        </strong>
-
-                        <small>
-                            Manage your products
-                        </small>
-
-                    </div>
-
-                </a>
-
-
-
-                <a
-                    href="orders.html"
-                    class="settings-link"
-                >
-
-                    <span>
-                        ◷
-                    </span>
-
-
-                    <div>
-
-                        <strong>
-                            Orders
-                        </strong>
-
-                        <small>
-                            Manage customer orders
-                        </small>
-
-                    </div>
-
-                </a>
-
-
-            </div>
-
-
-        </article>
-
-
-    </section>
-
-
-
-    <!-- =================================================
-         FOOTER
-         ================================================= -->
-
-    <footer class="footer">
-
-
-        <span>
-            © 2026 NEXORA. All rights reserved.
-        </span>
-
-
-        <div>
-
-            <a href="../index.html">
-                Dashboard
-            </a>
-
-
-            <a href="profile.html">
-                Profile
-            </a>
-
-        </div>
-
-
-    </footer>
-
-
-</main>
-
-
-
-<!-- =====================================================
-     NOTIFICATIONS
-     ===================================================== -->
-
-<div
-    class="notification-panel"
-    id="notificationPanel"
->
-
-
-    <div class="notification-header">
-
-
-        <h3>
-            Notifications
-        </h3>
-
-
-        <button
-            id="closeNotifications"
-            type="button"
-            aria-label="Close notifications"
-        >
-            ×
-        </button>
-
-
-    </div>
-
-
-
-    <div class="notification-content">
-
-
-        <div class="notification-item">
-
-            <strong>
-                New order received
-            </strong>
-
-            <span>
-                Order #NX-10284 was successfully placed.
-            </span>
-
-        </div>
-
-
-
-        <div class="notification-item">
-
-            <strong>
-                Sales increased
-            </strong>
-
-            <span>
-                Your sales increased by 12.8% this month.
-            </span>
-
-        </div>
-
-
-
-        <div class="notification-item">
-
-            <strong>
-                New customer
-            </strong>
-
-            <span>
-                A new customer joined your store.
-            </span>
-
-        </div>
-
-
-    </div>
-
 
 </div>
 
 
+<div class="settings-content">
 
-<!-- =====================================================
-     MASTER JAVASCRIPT
-     ===================================================== -->
+    <!-- CURRENT LANGUAGE -->
 
-<script
-    src="../js/script.js"
-></script>
+    <div class="setting-row">
 
+        <div class="setting-info">
 
+            <strong>
+                Current Language
+            </strong>
 
-<!-- =====================================================
-     SETTINGS EXTRA FUNCTIONS
-     ===================================================== -->
+            <span>
+                Your language selection is saved automatically.
+            </span>
 
-<script>
-
-
-    document.addEventListener(
-
-        "DOMContentLoaded",
-
-        function () {
+        </div>
 
 
-            const settingsNotificationButton =
+        <strong
+            class="current-language-display"
+            data-current-language
+        >
+            English
+        </strong>
 
-                document.getElementById(
-                    "settingsNotificationButton"
-                );
-
-
-            const notificationButton =
-
-                document.getElementById(
-                    "notificationButton"
-                );
+    </div>
 
 
-            if (
+    <!-- =========================================
+         ALL 21 NEXORA LANGUAGES
+         ========================================= -->
 
-                settingsNotificationButton &&
+    <div
+        class="settings-language-list"
+        data-language-list
+        aria-label="Available languages"
+    >
 
-                notificationButton
+        <!-- 01 — English -->
 
-            ) {
+        <button
+            type="button"
+            class="settings-language-option"
+            data-select-language="en"
+            data-language="en"
+        >
 
-                settingsNotificationButton.addEventListener(
+            <span
+                class="language-flag"
+                aria-hidden="true"
+            >
+                🇬🇧
+            </span>
 
-                    "click",
+            <span class="language-name">
+                English
+            </span>
 
-                    function () {
-
-                        notificationButton.click();
-
-                    }
-
-                );
-
-            }
-
-
-            document
-
-                .querySelectorAll(
-                    ".theme-option-button"
-                )
-
-                .forEach(
-
-                    function (button) {
-
-
-                        button.addEventListener(
-
-                            "click",
-
-                            function () {
+        </button>
 
 
-                                document
+        <!-- 02 — Arabic -->
 
-                                    .querySelectorAll(
-                                        ".theme-option-button"
-                                    )
+        <button
+            type="button"
+            class="settings-language-option"
+            data-select-language="ar"
+            data-language="ar"
+        >
 
-                                    .forEach(
+            <span
+                class="language-flag"
+                aria-hidden="true"
+            >
+                🇸🇦
+            </span>
 
-                                        function (item) {
+            <span class="language-name">
+                العربية
+            </span>
 
-                                            item.classList.remove(
-                                                "active"
-                                            );
-
-                                        }
-
-                                    );
-
-
-                                button.classList.add(
-                                    "active"
-                                );
-
-
-                            }
-
-                        );
+        </button>
 
 
-                    }
+        <!-- 03 — French -->
 
-                );
+        <button
+            type="button"
+            class="settings-language-option"
+            data-select-language="fr"
+            data-language="fr"
+        >
+
+            <span
+                class="language-flag"
+                aria-hidden="true"
+            >
+                🇫🇷
+            </span>
+
+            <span class="language-name">
+                Français
+            </span>
+
+        </button>
 
 
-        }
+        <!-- 04 — Spanish -->
 
-    );
+        <button
+            type="button"
+            class="settings-language-option"
+            data-select-language="es"
+            data-language="es"
+        >
+
+            <span
+                class="language-flag"
+                aria-hidden="true"
+            >
+                🇪🇸
+            </span>
+
+            <span class="language-name">
+                Español
+            </span>
+
+        </button>
 
 
-</script>
+        <!-- 05 — German -->
+
+        <button
+            type="button"
+            class="settings-language-option"
+            data-select-language="de"
+            data-language="de"
+        >
+
+            <span
+                class="language-flag"
+                aria-hidden="true"
+            >
+                🇩🇪
+            </span>
+
+            <span class="language-name">
+                Deutsch
+            </span>
+
+        </button>
+
+
+        <!-- 06 — Italian -->
+
+        <button
+            type="button"
+            class="settings-language-option"
+            data-select-language="it"
+            data-language="it"
+        >
+
+            <span
+                class="language-flag"
+                aria-hidden="true"
+            >
+                🇮🇹
+            </span>
+
+            <span class="language-name">
+                Italiano
+            </span>
+
+        </button>
+
+
+        <!-- 07 — Portuguese -->
+
+        <button
+            type="button"
+            class="settings-language-option"
+            data-select-language="pt"
+            data-language="pt"
+        >
+
+            <span
+                class="language-flag"
+                aria-hidden="true"
+            >
+                🇵🇹
+            </span>
+
+            <span class="language-name">
+                Português
+            </span>
+
+        </button>
+
+
+        <!-- 08 — Russian -->
+
+        <button
+            type="button"
+            class="settings-language-option"
+            data-select-language="ru"
+            data-language="ru"
+        >
+
+            <span
+                class="language-flag"
+                aria-hidden="true"
+            >
+                🇷🇺
+            </span>
+
+            <span class="language-name">
+                Русский
+            </span>
+
+        </button>
+
+
+        <!-- 09 — Japanese -->
+
+        <button
+            type="button"
+            class="settings-language-option"
+            data-select-language="ja"
+            data-language="ja"
+        >
+
+            <span
+                class="language-flag"
+                aria-hidden="true"
+            >
+                🇯🇵
+            </span>
+
+            <span class="language-name">
+                日本語
+            </span>
+
+        </button>
+
+
+        <!-- 10 — Korean -->
+
+        <button
+            type="button"
+            class="settings-language-option"
+            data-select-language="ko"
+            data-language="ko"
+        >
+
+            <span
+                class="language-flag"
+                aria-hidden="true"
+            >
+                🇰🇷
+            </span>
+
+            <span class="language-name">
+                한국어
+            </span>
+
+        </button>
+
+
+        <!-- 11 — Chinese -->
+
+        <button
+            type="button"
+            class="settings-language-option"
+            data-select-language="zh-CN"
+            data-language="zh-CN"
+        >
+
+            <span
+                class="language-flag"
+                aria-hidden="true"
+            >
+                🇨🇳
+            </span>
+
+            <span class="language-name">
+                中文
+            </span>
+
+        </button>
+
+
+        <!-- 12 — Turkish -->
+
+        <button
+            type="button"
+            class="settings-language-option"
+            data-select-language="tr"
+            data-language="tr"
+        >
+
+            <span
+                class="language-flag"
+                aria-hidden="true"
+            >
+                🇹🇷
+            </span>
+
+            <span class="language-name">
+                Türkçe
+            </span>
+
+        </button>
+
+
+        <!-- 13 — Dutch -->
+
+        <button
+            type="button"
+            class="settings-language-option"
+            data-select-language="nl"
+            data-language="nl"
+        >
+
+            <span
+                class="language-flag"
+                aria-hidden="true"
+            >
+                🇳🇱
+            </span>
+
+            <span class="language-name">
+                Nederlands
+            </span>
+
+        </button>
+
+
+        <!-- 14 — Polish -->
+
+        <button
+            type="button"
+            class="settings-language-option"
+            data-select-language="pl"
+            data-language="pl"
+        >
+
+            <span
+                class="language-flag"
+                aria-hidden="true"
+            >
+                🇵🇱
+            </span>
+
+            <span class="language-name">
+                Polski
+            </span>
+
+        </button>
+
+
+        <!-- 15 — Ukrainian -->
+
+        <button
+            type="button"
+            class="settings-language-option"
+            data-select-language="uk"
+            data-language="uk"
+        >
+
+            <span
+                class="language-flag"
+                aria-hidden="true"
+            >
+                🇺🇦
+            </span>
+
+            <span class="language-name">
+                Українська
+            </span>
+
+        </button>
+
+
+        <!-- 16 — Swedish -->
+
+        <button
+            type="button"
+            class="settings-language-option"
+            data-select-language="sv"
+            data-language="sv"
+        >
+
+            <span
+                class="language-flag"
+                aria-hidden="true"
+            >
+                🇸🇪
+            </span>
+
+            <span class="language-name">
+                Svenska
+            </span>
+
+        </button>
+
+
+        <!-- 17 — Greek -->
+
+        <button
+            type="button"
+            class="settings-language-option"
+            data-select-language="el"
+            data-language="el"
+        >
+
+            <span
+                class="language-flag"
+                aria-hidden="true"
+            >
+                🇬🇷
+            </span>
+
+            <span class="language-name">
+                Ελληνικά
+            </span>
+
+        </button>
+
+
+        <!-- 18 — Hebrew -->
+
+        <button
+            type="button"
+            class="settings-language-option"
+            data-select-language="he"
+            data-language="he"
+        >
+
+            <span
+                class="language-flag"
+                aria-hidden="true"
+            >
+                🇮🇱
+            </span>
+
+            <span class="language-name">
+                עברית
+            </span>
+
+        </button>
+
+
+        <!-- 19 — Hindi -->
+
+        <button
+            type="button"
+            class="settings-language-option"
+            data-select-language="hi"
+            data-language="hi"
+        >
+
+            <span
+                class="language-flag"
+                aria-hidden="true"
+            >
+                🇮🇳
+            </span>
+
+            <span class="language-name">
+                हिन्दी
+            </span>
+
+        </button>
+
+
+        <!-- 20 — Indonesian -->
+
+        <button
+            type="button"
+            class="settings-language-option"
+            data-select-language="id"
+            data-language="id"
+        >
+
+            <span
+                class="language-flag"
+                aria-hidden="true"
+            >
+                🇮🇩
+            </span>
+
+            <span class="language-name">
+                Bahasa Indonesia
+            </span>
+
+        </button>
+
+
+        <!-- 21 — Vietnamese -->
+
+        <button
+            type="button"
+            class="settings-language-option"
+            data-select-language="vi"
+            data-language="vi"
+        >
+
+            <span
+                class="language-flag"
+                aria-hidden="true"
+            >
+                🇻🇳
+            </span>
+
+            <span class="language-name">
+                Tiếng Việt
+            </span>
+
+        </button>
+
+    </div>
+
+</div>
 ```
 
-</body>
-
-</html>
+</article>
